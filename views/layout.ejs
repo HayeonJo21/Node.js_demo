@@ -1,48 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Confetti</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Soundy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
 </head>
-  <body>
-    <header>
-        <h1 class="site-heading text-center text-faded d-none d-lg-block">
-            <span class="site-heading-upper text-primary mb-3">Booking classes for cooking</span>
-            <span class="site-heading-lower">Confetti Cuisine</span>
-        </h1>
-    </header>
-      <!-- Navigation-->
-      <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-          <div class="container">
-              <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">Confetti Cuisine</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mx-auto">
-                      <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/">Home</a></li>
-                      <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/courses">Courses</a></li>
-                      <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/contact">Contact</a></li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+                        <!-- Nav brand -->
+                        <a href="index.html" class="nav-brand"><img src="images/core-img/logo.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="#">Sound</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/gameSound">Game Sound</a></li>
+                                            <li><a href="/bgm">BGM</a></li>
+                                              </ul>
+                                      </li>
+                                    <li><a href="/jam">Jam</a></li>
+                                    <li><a href="/market">Market</a></li>
+                                    <li><a href="/contact">Contact</a></li>
+                                </ul>
+                                <!--  <li><a href="#">Sound</a>
+                                      <ul class="dropdown">
+                                          <li><a href="index.html">Game Sound</a></li>
+                                          <li><a href="contact.html">BGM</a></li>
+                                          <li><a href="elements.html">Elements</a></li>
+                                          <li><a href="login.html">Login</a></li>
+                                          <li><a href="#">Dropdown</a>
+                                              <ul class="dropdown">
+                                                  <li><a href="#">Even Dropdown</a></li>
+                                                  <li><a href="#">Even Dropdown</a></li>
+                                                  <li><a href="#">Even Dropdown</a></li>
+                                                  <li><a href="#">Even Dropdown</a>
+                                                      <ul class="dropdown">
+                                                          <li><a href="#">Deeply Dropdown</a></li>
+                                                          <li><a href="#">Deeply Dropdown</a></li>
+                                                          <li><a href="#">Deeply Dropdown</a></li>
+                                                          <li><a href="#">Deeply Dropdown</a></li>
+                                                          <li><a href="#">Deeply Dropdown</a></li>
+                                                      </ul>
+                                                  </li>
+                                                  <li><a href="#">Even Dropdown</a></li>
+                                              </ul>
+                                          </li>
+                                      </ul>
+                                  </li> -->
+
+                                <!-- Login/Register & Cart Button -->
+                                <div class="login-register-cart-button d-flex align-items-center">
+                                    <!-- Login/Register -->
+                                    <div class="login-register-btn mr-50">
+                                        <a href="/login" id="loginBtn">Login / Register</a>
+                                    </div>
+
+                                    <!-- Cart Button -->
+                                    <div class="cart-btn">
+                                        <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
 <%- body%>
-<footer class="footer text-faded text-center py-5">
-    <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2021</p></div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="/js/scripts.js"></script>
-</body>
-</html>

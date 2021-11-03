@@ -8,9 +8,9 @@ subscribersController = require("./controllers/subscribersController"),
 express = require("express");
 
 const app = express();
-const layouts = require("express-ejs-layouts");
 const mongoose = require("mongoose");
 const Subscriber = require("./models/subscriber");
+const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 
 mongoose.connect(
@@ -38,8 +38,8 @@ db.once("open", ()=>{
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
-app.use(layouts);
 app.use(express.static("public"));
+app.use(layouts);
 
 app.use(
   express.urlencoded({
@@ -55,6 +55,8 @@ app.use(express.json());
 
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
+app.get("/login", homeController.loginForm);
+app.get("/gameSound", homeController.gameSoundMain)
 app.get("/contact", subscribersController.getSubscriptionPage);
 app.post("/subscribe", subscribersController.saveSubscriber);
 app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {

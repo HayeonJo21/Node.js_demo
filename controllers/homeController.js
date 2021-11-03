@@ -25,3 +25,11 @@ exports.showCourses = (req, res) => {
 exports.postedContactForm = (req, res) => {
   res.render("thanks");
 };
+
+exports.loginForm = (req, res) => {
+  res.render("login");
+};
+
+exports.gameSoundMain = (req, res) => {
+  res.render("gameSoundMain");
+};
