@@ -30,6 +30,10 @@ exports.loginForm = (req, res) => {
   res.render("login");
 };
 
+exports.registerForm = (req, res) => {
+  res.render("registerForm");
+}
+
 exports.gameSoundMain = (req, res) => {
   res.render("gameSoundMain");
 };
@@ -39,7 +43,7 @@ exports.showMarket = (req, res) => {
 }
 
 exports.showBgm = (req, res) => {
-  res.render("bgm");
+  res.render("elements");
 }
 
 exports.showJam = (req, res) => {

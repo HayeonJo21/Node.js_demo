@@ -11,7 +11,7 @@
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>See what’s new</p>
-            <h2>Login</h2>
+            <h2>Register</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -22,10 +22,14 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3>Welcome Back</h3>
+                        <h3>Welcome!</h3>
                         <!-- Login Form -->
                         <div class="login-form">
-                            <form action="#" method="post">
+                            <form action="/register" method="post">
+                              <div class="form-group">
+                                  <label for="exampleInputEmail1">Username</label>
+                                  <input type="username" class="form-control" id="username" aria-describedby="username" placeholder="Enter Username">
+                              </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
@@ -35,9 +39,7 @@
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                 </div>
-                                <button type="submit" class="btn oneMusic-btn mt-30">Login</button>
-                                <br/><br/>
-                                <a href="/registerForm">Register</a>
+                                <button type="submit" class="btn oneMusic-btn mt-30">Register</button>
                                 </form>
                         </div>
                     </div>

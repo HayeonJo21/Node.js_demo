@@ -56,6 +56,7 @@ app.use(express.json());
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
 app.get("/login", homeController.loginForm);
+app.get("/registerForm", homeController.registerForm);
 app.get("/gameSound", homeController.gameSoundMain);
 app.get("/market", homeController.showMarket);
 app.get("/jam", homeController.showJam);
