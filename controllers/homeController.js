@@ -33,3 +33,19 @@ exports.loginForm = (req, res) => {
 exports.gameSoundMain = (req, res) => {
   res.render("gameSoundMain");
 };
+
+exports.showMarket = (req, res) => {
+  res.render("market");
+}
+
+exports.showBgm = (req, res) => {
+  res.render("bgm");
+}
+
+exports.showJam = (req, res) => {
+  res.render("jam");
+}
+
+exports.showQnA = (req, res) => {
+  res.render("qna");
+}

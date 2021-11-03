@@ -56,7 +56,11 @@ app.use(express.json());
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
 app.get("/login", homeController.loginForm);
-app.get("/gameSound", homeController.gameSoundMain)
+app.get("/gameSound", homeController.gameSoundMain);
+app.get("/market", homeController.showMarket);
+app.get("/jam", homeController.showJam);
+app.get("/bgm", homeController.showBgm);
+app.get("/qna", homeController.showQnA);
 app.get("/contact", subscribersController.getSubscriptionPage);
 app.post("/subscribe", subscribersController.saveSubscriber);
 app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
