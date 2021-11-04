@@ -41,3 +41,5 @@ userSchema = mongoose.Schema({
     ref: "Post"
   }]
 });
+
+module.exports = mongoose.model("User", userSchema); 

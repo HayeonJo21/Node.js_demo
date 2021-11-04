@@ -10,7 +10,7 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>See what’s new</p>
+            <p>Join Us!</p>
             <h2>Register</h2>
         </div>
     </section>
@@ -27,19 +27,39 @@
                         <div class="login-form">
                             <form action="/register" method="post">
                               <div class="form-group">
-                                  <label for="exampleInputEmail1">Username</label>
-                                  <input type="username" class="form-control" id="username" aria-describedby="username" placeholder="Enter Username">
+                                  <label for="name"><strong>Name</strong></label>
+                                  <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Enter your full name.">
+                              </div>
+                              <div class="form-group">
+                                  <label for="id"><strong>ID</strong></label>
+                                  <input type="text" class="form-control" name="id" aria-describedby="id" placeholder="Enter your ID.">
+                              </div>
+                              <div class="form-group">
+                                  <label for="password"><strong>Password</<strong></label>
+                                  <input type="password" class="form-control" name="password" placeholder="Enter your password.">
+                              </div>
+                              <div class="form-group">
+                                  <label for="nickname"><strong>Nickname</strong></label>
+                                  <input type="text" class="form-control" name="nickname" aria-describedby="nickname" placeholder="Enter your nickname to use in this website.">
                               </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                                    <label for="email"><strong>Email address</strong></label>
+                                    <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter E-mail Address">
                                     <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                </div>
-                                <button type="submit" class="btn oneMusic-btn mt-30">Register</button>
+                                    <div class="form-group">
+                                        <label for="profile"><strong>Profile message</strong></label>
+                                        <textarea name="profile" class="form-control" name="profile" cols="30" rows="10" placeholder="Introduce yourself to other users!"></textarea>
+                                    </div>
+                                    <br/>
+                                      <div class="form-group">
+                                          <label for="position"><strong>Check your position</strong></label><br/>
+                                          Guest  <input type="radio" name="position" value="guest"><br/>
+                                          Sound Designer  <input type="radio" name="position" value="soundDesigner"><br/>
+                                          Composer <input type="radio" name="position" value="composer"><br/>
+                                          Producer  <input type="radio" name="position" value="producer"><br/>
+                                        </div>
+                                <button type="submit" class="btn oneMusic-btn mt-30" value="submit">Submit</button>
                                 </form>
                         </div>
                     </div>
