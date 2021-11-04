@@ -20,7 +20,7 @@ mongoose.connect(
 
 const db = mongoose.connection;
 
-db.once("open", ()=>{
+db.once("open", ()=> {
   console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
