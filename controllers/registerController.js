@@ -1,9 +1,7 @@
 const User = require("../models/user");
 
 exports.register = (req, res) => {
-
-  console.log("Request Body: " + req.body.name);
-
+  
   let newUser = new User({
     name: req.body.name,
     nickname: req.body.nickname,

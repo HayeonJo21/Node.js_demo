@@ -2,8 +2,14 @@ const mongoose = require("mongoose"),
 
 userSchema = mongoose.Schema({
   name : {
-    type: String,
-    required: true
+    fisrt: {
+      type: String,
+      trim: true
+    },
+    last: {
+      type: String,
+      trim: true
+    }
   },
 
   nickname: {
@@ -42,4 +48,4 @@ userSchema = mongoose.Schema({
   }]
 });
 
-module.exports = mongoose.model("User", userSchema); 
+module.exports = mongoose.model("User", userSchema);
