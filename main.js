@@ -49,7 +49,7 @@ app.get("/jam", homeController.showJam);
 app.get("/bgm", homeController.showBgm);
 app.get("/qna", homeController.showQnA);
 app.get("/contact", subscribersController.getSubscriptionPage);
-app.post("/register", registerController.register);
+app.post("/register", registerController.create);
 // app.post("/subscribe", subscribersController.saveSubscriber);
 app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
   console.log(req.data);

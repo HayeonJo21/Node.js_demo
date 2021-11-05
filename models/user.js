@@ -45,7 +45,17 @@ userSchema = mongoose.Schema({
   post : [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post"
-  }]
+  }],
+},
+
+  {
+    timestamps: true
 });
+
+userSchema.virtual("fullName")
+.get(function() {
+  return this.name.first + " " + this.name.last;
+});
+
 
 module.exports = mongoose.model("User", userSchema);
