@@ -18,7 +18,15 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-
+<div class="flashes">
+  <% if (flashMessages) { %>
+    <% if (flashMessages.success) { %>
+      <div class="flash success"><strong><p style="color:blue"><%= flashMessages.success %></p></strong></div>
+      <%} else if (flashMessages.error) { %>
+        <div class="flash error"><strong><p style="color:red"><%= flashMessages.error %></p></strong></div>
+        <% } %>
+        <% } %>
+      </div>
 <body>
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">

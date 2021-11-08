@@ -41,11 +41,9 @@ module.exports = {
       // req.flash("Success", user.fullName + "'s account created successfully!");
       // res.locals.redirect ="/thanks";
       // res.locals.user = user;
-      console.log(user.email);
-      console.log(user.fullName);
       res.render("thanks", {
         flashMessages: {
-          success: user.fullName + "님의 회원 등록이 성공적으로 완료되었습니다."
+          success: user.name + "님의 회원 등록이 성공적으로 완료되었습니다."
         }
       });
       next();

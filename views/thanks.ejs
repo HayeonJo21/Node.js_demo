@@ -14,15 +14,6 @@
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
-    <div class="flashes">
-      <% if (flashMessages) { %>
-        <% if (flashMessages.success) { %>
-          <div class="flash success"><strong><%= flashMessages.success %></strong></div>
-          <%} else if (flashMessages.error) { %>
-            <div class="flash error"><strong><%= flashMessages.error %></strong></div>
-            <% } %>
-            <% } %>
-          </div>
     <!-- ##### Login Area Start ##### -->
     <section class="login-area section-padding-100">
         <div class="container">
@@ -35,11 +26,11 @@
                             <form action="/login" method="post">
                                 <div class="form-group">
                                     <label for="id">ID</label>
-                                    <input type="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter your ID">
+                                    <input type="id" class="form-control" name="id" aria-describedby="id" placeholder="Enter your ID">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">Login</button>
                                 <br/><br/>

@@ -55,7 +55,7 @@ userSchema = mongoose.Schema({
 
 userSchema.virtual("fullName")
 .get(function() {
-  return '${this.name.last} ${this.name.first}';
+  return this.name.last + this.name.first;
 });
 
 

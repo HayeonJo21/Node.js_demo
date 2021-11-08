@@ -3,6 +3,7 @@ http = require("http"),
 httpStatus = require("http-status-codes"),
 contentTypes = require("./content-types"),
 homeController = require("./controllers/homeController"),
+userController = require("./controllers/userController"),
 errorController = require("./controllers/errorController"),
 subscribersController = require("./controllers/subscribersController"),
 registerController = require("./controllers/registerController"),
@@ -61,7 +62,8 @@ app.use(express.json());
 
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
-app.get("/login", homeController.loginForm);
+app.get("/login", userController.login);
+app.post("/login", userController.authenticate);
 app.get("/registerForm", homeController.registerForm);
 app.get("/gameSound", homeController.gameSoundMain);
 app.get("/market", homeController.showMarket);

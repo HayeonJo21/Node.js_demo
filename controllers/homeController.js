@@ -26,10 +26,6 @@ exports.postedContactForm = (req, res) => {
   res.render("thanks");
 };
 
-exports.loginForm = (req, res) => {
-  res.render("login");
-};
-
 exports.registerForm = (req, res) => {
   res.render("registerForm");
 }
