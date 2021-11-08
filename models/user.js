@@ -18,7 +18,8 @@ userSchema = mongoose.Schema({
 
   id :{
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
 
   password: {
