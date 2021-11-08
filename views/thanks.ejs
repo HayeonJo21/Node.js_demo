@@ -6,7 +6,6 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
-
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
@@ -15,7 +14,15 @@
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
-
+    <div class="flashes">
+      <% if (flashMessages) { %>
+        <% if (flashMessages.success) { %>
+          <div class="flash success"><strong><%= flashMessages.success %></strong></div>
+          <%} else if (flashMessages.error) { %>
+            <div class="flash error"><strong><%= flashMessages.error %></strong></div>
+            <% } %>
+            <% } %>
+          </div>
     <!-- ##### Login Area Start ##### -->
     <section class="login-area section-padding-100">
         <div class="container">

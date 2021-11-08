@@ -26,10 +26,30 @@ db.once("open", ()=> {
   console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
+const expressSession = require("express-session"),
+cookieParser = require("cookie-parser"),
+connectFlash = require("connect-flash");
+
+app.use(cookieParser("secret_passcode"));
+app.use(expressSession({
+  secret: "secret_passcode",
+  cookie: {
+    maxAge: 4000000
+  },
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(connectFlash());
+
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(layouts);
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+});
 
 app.use(
   express.urlencoded({
@@ -48,6 +68,9 @@ app.get("/market", homeController.showMarket);
 app.get("/jam", homeController.showJam);
 app.get("/bgm", homeController.showBgm);
 app.get("/qna", homeController.showQnA);
+app.get("/thanks", (req, res) => {
+  res.render("thanks");
+});
 app.get("/contact", subscribersController.getSubscriptionPage);
 app.post("/register", registerController.create);
 // app.post("/subscribe", subscribersController.saveSubscriber);

@@ -38,18 +38,30 @@ module.exports = {
     let userParams = getUserParams(req.body);
     User.create(userParams)
     .then(user => {
-      req.flash("Success", user.fullName + "'s account created successfully!");
-      res.locals.redirect ="/";
-      res.locals.user = user;
+      // req.flash("Success", user.fullName + "'s account created successfully!");
+      // res.locals.redirect ="/thanks";
+      // res.locals.user = user;
+      console.log(user.email);
+      console.log(user.fullName);
+      res.render("thanks", {
+        flashMessages: {
+          success: user.fullName + "님의 회원 등록이 성공적으로 완료되었습니다."
+        }
+      });
       next();
     })
     .catch(error => {
       console.log("Error saving user: " + error.message);
-      res.locals.redirect = "/registerForm";
-      req.flash(
-        "error",
-        'Failed to create user account because: ${error.message}'
-      );
+      // res.locals.redirect = "/error";
+      // req.flash(
+      //   "error",
+      //   'Failed to create user account because: ${error.message}'
+      // );
+      res.render("index", {
+        flashMessages: {
+          error: "회원가입에 실패했습니다. 다시 시도해주세요."
+        }
+      });
       next();
     });
   }

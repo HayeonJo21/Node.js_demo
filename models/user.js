@@ -2,7 +2,7 @@ const mongoose = require("mongoose"),
 
 userSchema = mongoose.Schema({
   name : {
-    fisrt: {
+    first: {
       type: String,
       trim: true
     },
@@ -54,7 +54,7 @@ userSchema = mongoose.Schema({
 
 userSchema.virtual("fullName")
 .get(function() {
-  return this.name.first + " " + this.name.last;
+  return '${this.name.last} ${this.name.first}';
 });
 
 
