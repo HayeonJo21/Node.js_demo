@@ -21,9 +21,9 @@
 <div class="flashes">
   <% if (flashMessages) { %>
     <% if (flashMessages.success) { %>
-      <div class="flash success"><strong><p style="color:blue"><%= flashMessages.success %></p></strong></div>
+      <div align="center" style="background-color:black"><strong><p style="color:white"><%= flashMessages.success %></p></strong></div>
       <%} else if (flashMessages.error) { %>
-        <div class="flash error"><strong><p style="color:red"><%= flashMessages.error %></p></strong></div>
+        <div align="center" style="background-color:black"><strong><p style="color:red"><%= flashMessages.error %></p></strong></div>
         <% } %>
         <% } %>
       </div>

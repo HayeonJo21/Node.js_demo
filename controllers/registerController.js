@@ -43,7 +43,7 @@ module.exports = {
       // res.locals.user = user;
       res.render("thanks", {
         flashMessages: {
-          success: user.name + "님의 회원 등록이 성공적으로 완료되었습니다."
+          success: userParams.name + "님의 회원 등록이 성공적으로 완료되었습니다."
         }
       });
       next();

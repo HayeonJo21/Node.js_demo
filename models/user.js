@@ -55,6 +55,7 @@ userSchema = mongoose.Schema({
 
 userSchema.virtual("fullName")
 .get(function() {
+  console.log("first: " + this.name.first + " last: " + this.name.last + "NAME: " + this.name);
   return this.name.last + this.name.first;
 });
 
