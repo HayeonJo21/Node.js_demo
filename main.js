@@ -15,6 +15,7 @@ const Subscriber = require("./models/subscriber");
 const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 const User = require("./models/user");
+const expressValidator = require("express-validator");
 
 mongoose.connect(
   "mongodb://localhost:27017/soundy",
@@ -59,6 +60,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(expressValidator());
 
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
@@ -74,7 +76,7 @@ app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
 app.get("/contact", subscribersController.getSubscriptionPage);
-app.post("/register", registerController.create);
+app.post("/register", registerController.create, registerController.validate);
 // app.post("/subscribe", subscribersController.saveSubscriber);
 app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
   console.log(req.data);

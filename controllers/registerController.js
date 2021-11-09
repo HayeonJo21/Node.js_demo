@@ -34,6 +34,31 @@ getUserParams = (body) => {
 };
 
 module.exports = {
+  validate: (req, res, next) => {
+    req.sanitizeBody("email").normalizeEmail({
+      all_lowercase: true
+    }).trim();
+    req.check("email", "Email is invalid").isEmail();
+    // req.check("zipCode", "Zip code is invalid").notEmpty().isInt().isLength({
+    //   min: 5,
+    //   max: 5
+    // }).equals(req.body.zipCode);
+    req.check("password", "Password cannot be empty.").notEmpty();
+
+    req.getValidationResult().then((error) => {
+      if(!error.isEmpty()) {
+        let messages = error.array().map(e => e.msg);
+        req.skip = true;
+        res.render("index", {
+          flashMessages: {
+            error: "회원가입에 실패했습니다. 다시 시도해주세요."
+          }
+        });
+        next();
+      }
+    });
+  },
+
   create: (req, res, next) => {
     let userParams = getUserParams(req.body);
     User.create(userParams)
