@@ -11,8 +11,10 @@ module.exports = {
     })
     .then(user => {
       if(user){
+        console.log("password: " + req.body.password);
         user.passwordComparison(req.body.password)
         .then(passwordsMatch => {
+          console.log(passwordsMatch);
           if(passwordsMatch){
             res.render("index", {
                 flashMessages: {

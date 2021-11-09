@@ -60,7 +60,7 @@ app.use(
 );
 
 app.use(express.json());
-app.use(expressValidator());
+// app.use(expressValidator());
 
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
