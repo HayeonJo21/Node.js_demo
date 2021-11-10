@@ -83,7 +83,7 @@ app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
 app.get("/contact", subscribersController.getSubscriptionPage);
-app.post("/register", registerController.create, registerController.validate);
+app.post("/register", registerController.create);
 // app.post("/subscribe", subscribersController.saveSubscriber);
 app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
   console.log(req.data);
