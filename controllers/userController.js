@@ -10,8 +10,15 @@ module.exports = {
     failureRedirect: "/login",
     failureFlash: "로그인에 실패했습니다.",
     successRedirect: "/",
-    succressFlash: "로그인 되었습니다."
-  })
+    successFlash: "로그인 되었습니다."
+  }),
+
+  logout: (req, res, next) => {
+    req.logout();
+    req.flash("success", "로그아웃 되었습니다.");
+    res.redirect = "/";
+    next();
+  }
 
   // authenticate: (req, res, next) => {
   //   User.findOne({id: req.body.id})

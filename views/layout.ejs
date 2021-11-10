@@ -107,10 +107,16 @@
                                 <!-- Login/Register & Cart Button -->
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- Login/Register -->
+                                    <% if(loggedIn) { %>
+                                      <div class="login-register-btn mr-50">
+                                          <a href="#" id="loginBtn">Logged in as <%= currentUser.nickname %></a>
+                                          <a href="/logout" id="loginBtn">&nbsp; &nbsp; Logout</a>
+                                      </div>
+                                      <% } else { %>
                                     <div class="login-register-btn mr-50">
                                         <a href="/login" id="loginBtn">Login / Register</a>
                                     </div>
-
+                                    <% } %>
                                     <!-- Cart Button -->
                                     <div class="cart-btn">
                                         <p><span class="icon-shopping-cart"></span> <span class="quantity">1</span></p>

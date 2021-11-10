@@ -5,7 +5,6 @@ contentTypes = require("./content-types"),
 homeController = require("./controllers/homeController"),
 userController = require("./controllers/userController"),
 errorController = require("./controllers/errorController"),
-subscribersController = require("./controllers/subscribersController"),
 registerController = require("./controllers/registerController"),
 express = require("express");
 
@@ -44,6 +43,8 @@ app.use(expressSession({
 }));
 
 app.use(connectFlash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
@@ -51,6 +52,8 @@ app.use(express.static("public"));
 app.use(layouts);
 app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
   next();
 });
 
@@ -62,9 +65,6 @@ app.use(
 
 app.use(express.json());
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 passport.use(User.createStrategy()); //사용자의 로그인 스트래티지 설정
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 작업 하도록 설정
@@ -73,6 +73,7 @@ app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
 app.get("/login", userController.login);
 app.post("/login", userController.authenticate);
+app.get("/logout", userController.logout);
 app.get("/registerForm", homeController.registerForm);
 app.get("/gameSound", homeController.gameSoundMain);
 app.get("/market", homeController.showMarket);
@@ -82,13 +83,7 @@ app.get("/qna", homeController.showQnA);
 app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
-app.get("/contact", subscribersController.getSubscriptionPage);
 app.post("/register", registerController.create);
-// app.post("/subscribe", subscribersController.saveSubscriber);
-app.get("/subscribers", subscribersController.getAllSubscribers, (req, res, next) => {
-  console.log(req.data);
-  next();
-});
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
