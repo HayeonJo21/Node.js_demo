@@ -15,7 +15,8 @@ const Subscriber = require("./models/subscriber");
 const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 const User = require("./models/user");
-const expressValidator = require("express-validator");
+
+const passport = require("passport");
 
 mongoose.connect(
   "mongodb://localhost:27017/soundy",
@@ -60,7 +61,13 @@ app.use(
 );
 
 app.use(express.json());
-// app.use(expressValidator());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy()); //사용자의 로그인 스트래티지 설정
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 작업 하도록 설정
 
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);

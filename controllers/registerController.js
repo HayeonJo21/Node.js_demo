@@ -59,33 +59,56 @@ module.exports = {
     });
   },
 
-  create: (req, res, next) => {
-    let userParams = getUserParams(req.body);
-    User.create(userParams)
-    .then(user => {
-      // req.flash("Success", user.fullName + "'s account created successfully!");
-      // res.locals.redirect ="/thanks";
-      // res.locals.user = user;
+create: (req, res, next) => {
+  if(req.skip) next();
+
+  let newUser = new User(getUserParams(req.body));
+
+  User.register(newUser, req.body.password, (error, user) => {
+    if (user){
       res.render("thanks", {
-        flashMessages: {
-          success: userParams.name + "님의 회원 등록이 성공적으로 완료되었습니다."
-        }
-      });
-      next();
-    })
-    .catch(error => {
-      console.log("Error saving user: " + error.message);
-      // res.locals.redirect = "/error";
-      // req.flash(
-      //   "error",
-      //   'Failed to create user account because: ${error.message}'
-      // );
+            flashMessages: {
+              success: userParams.name + "님의 회원 등록이 성공적으로 완료되었습니다."
+            }
+          });
+          next();
+    } else{
       res.render("index", {
-        flashMessages: {
-          error: "회원가입에 실패했습니다. 다시 시도해주세요."
-        }
-      });
-      next();
-    });
-  }
+           flashMessages: {
+             error: "회원가입에 실패했습니다. 다시 시도해주세요."
+           }
+         });
+    }
+  });
+}
+
+  // create: (req, res, next) => {
+  //   let userParams = getUserParams(req.body);
+  //   User.create(userParams)
+  //   .then(user => {
+  //     // req.flash("Success", user.fullName + "'s account created successfully!");
+  //     // res.locals.redirect ="/thanks";
+  //     // res.locals.user = user;
+  //     res.render("thanks", {
+  //       flashMessages: {
+  //         success: userParams.name + "님의 회원 등록이 성공적으로 완료되었습니다."
+  //       }
+  //     });
+  //     next();
+  //   })
+  //   .catch(error => {
+  //     console.log("Error saving user: " + error.message);
+  //     // res.locals.redirect = "/error";
+  //     // req.flash(
+  //     //   "error",
+  //     //   'Failed to create user account because: ${error.message}'
+  //     // );
+  //     res.render("index", {
+  //       flashMessages: {
+  //         error: "회원가입에 실패했습니다. 다시 시도해주세요."
+  //       }
+  //     });
+  //     next();
+  //   });
+  // }
 };

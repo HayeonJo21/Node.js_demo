@@ -1,5 +1,6 @@
 const mongoose = require("mongoose"),
 bcrypt = require("bcrypt"),
+passportLocalMongoose = require("passport-local-mongoose"),
 
 userSchema = mongoose.Schema({
   name : {
@@ -54,24 +55,28 @@ userSchema = mongoose.Schema({
     timestamps: true
 });
 
+userSchema.plugin(passportLocalMongoose, {
+  usernameField: "id"
+});
+
 userSchema.virtual("fullName")
 .get(function() {
   console.log("first: " + this.name.first + " last: " + this.name.last + "NAME: " + this.name);
   return this.name.last + this.name.first;
 });
 
-userSchema.pre("save", function(next){
-  let user = this;
-
-  bcrypt.hash(user.password, 10).then(hash => {
-    user.password = hash;
-    next();
-  })
-  .catch(error => {
-    console.log("Error in hasing password: " + error.message);
-    next(error);
-  });
-});
+// userSchema.pre("save", function(next){
+//   let user = this;
+//
+//   bcrypt.hash(user.password, 10).then(hash => {
+//     user.password = hash;
+//     next();
+//   })
+//   .catch(error => {
+//     console.log("Error in hasing password: " + error.message);
+//     next(error);
+//   });
+// });
 
 userSchema.methods.passwordComparison = function(inputPassword){
   let user = this;
