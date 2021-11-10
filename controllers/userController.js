@@ -15,7 +15,7 @@ module.exports = {
         user.passwordComparison(req.body.password)
         .then(passwordsMatch => {
           console.log(passwordsMatch);
-          if(passwordsMatch){
+          if(passwordsMatch === true){
             res.render("index", {
                 flashMessages: {
                   success: req.body.id + "님 로그인 되었습니다."
