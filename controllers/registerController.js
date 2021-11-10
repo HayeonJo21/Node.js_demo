@@ -1,26 +1,5 @@
 const User = require("../models/user");
 
-// exports.register = (req, res) => {
-//
-//   let newUser = new User({
-//     name: req.body.name,
-//     nickname: req.body.nickname,
-//     id: req.body.id,
-//     password: req.body.password,
-//     email: req.body.email,
-//     profile: req.body.profile,
-//     position: req.body.position
-//   });
-//
-// newUser.save()
-// .then( () => {
-//   res.render("thanks");
-// })
-// .catch(error => {
-//   res.send(error);
-// });
-// };
-
 getUserParams = (body) => {
   return{
     name: body.name,
@@ -65,23 +44,25 @@ create: (req, res, next) => {
   let newUser = new User(getUserParams(req.body));
 
   User.register(newUser, req.body.password, (error, user) => {
-    console.log("##LOG: " + user);
     if (user) {
-      res.render("thanks", {
-            flashMessages: {
-              success: userParams.name + "님의 회원 등록이 성공적으로 완료되었습니다."
-            }
-          });
-          next();
-    } else {
-      res.render("index", {
-           flashMessages: {
-             error: "회원가입에 실패했습니다. 다시 시도해주세요."
-           }
-         });
-         next();
+      console.log("#######LOG######");
+      req.flash("success", "성공적으로 회원가입 되었습니다.");
+      res.locals.redirect = "/";
+      next();
+    }
+    else {
+      console.log("*******ERROR******");
+      req.flash("error", "회원가입에 실패했습니다. 다시 시도해주세요.");
+      res.locals.redirect = "/registerForm";
+      next();
     }
   });
+},
+
+redirectView: (req, res, next) => {
+  let redirectPath = res.locals.redirect;
+  if(redirectPath) res.redirect(redirectPath);
+  else next();
 }
 
   // create: (req, res, next) => {

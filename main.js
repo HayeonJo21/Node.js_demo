@@ -83,7 +83,7 @@ app.get("/qna", homeController.showQnA);
 app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
-app.post("/register", registerController.create);
+app.post("/register", registerController.create, registerController.redirectView);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
