@@ -73,7 +73,7 @@ app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
 app.get("/login", userController.login);
 app.post("/login", userController.authenticate);
-app.get("/logout", userController.logout);
+app.get("/logout", userController.logout, userController.redirectView);
 app.get("/registerForm", homeController.registerForm);
 app.get("/gameSound", homeController.gameSoundMain);
 app.get("/market", homeController.showMarket);

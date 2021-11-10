@@ -18,6 +18,12 @@ module.exports = {
     req.flash("success", "로그아웃 되었습니다.");
     res.locals.redirect = "/";
     next();
+  },
+
+  redirectView: (req, res, next) => {
+    let redirectPath = res.locals.redirect;
+    if(redirectPath) res.redirect(redirectPath);
+    else next();
   }
 
   // authenticate: (req, res, next) => {
