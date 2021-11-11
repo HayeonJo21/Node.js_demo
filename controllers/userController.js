@@ -24,7 +24,25 @@ module.exports = {
     let redirectPath = res.locals.redirect;
     if(redirectPath) res.redirect(redirectPath);
     else next();
+  },
+
+  show: (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
+    .then(user => {
+      res.locals.user = user;
+      next();
+    })
+    .catch(error => {
+      console.log("Error fetching user by ID: " + error.message);
+      next(error);
+    });
+  },
+
+  showMypage: (req, res) => {
+    res.render("mypage");
   }
+
 
   // authenticate: (req, res, next) => {
   //   User.findOne({id: req.body.id})

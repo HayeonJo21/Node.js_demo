@@ -109,7 +109,7 @@
                                     <!-- Login/Register -->
                                     <% if(loggedIn) { %>
                                       <div class="login-register-btn mr-50">
-                                          <a href="#" id="loginBtn">Logged in as <%= currentUser.nickname %></a>
+                                          <a href="/mypage/<%= currentUser._id %>" id="loginBtn">Logged in as <%= currentUser.nickname %></a>
                                           <a href="/logout" id="loginBtn">&nbsp; &nbsp; Logout</a>
                                       </div>
                                       <% } else { %>

@@ -75,6 +75,7 @@ passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 �
 app.get("/", homeController.showIndex);
 app.get("/courses", homeController.showCourses);
 app.get("/login", userController.login);
+app.get("/mypage/:id", userController.show, userController.showMypage);
 app.post("/login", userController.authenticate);
 app.get("/logout", userController.logout, userController.redirectView);
 app.get("/registerForm", homeController.registerForm);
