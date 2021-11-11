@@ -89,7 +89,8 @@ app.get("/thanks", (req, res) => {
 app.post("/register",
 [
    body("name", "이름을 입력하세요.").notEmpty(),
-   body("email", "이메일 형식을 확인하세요.").isEmail().notEmpty(),
+   body("email", "이메일을 입력해주세요.").notEmpty(),
+   body("email", "이메일 형식을 확인하세요.").isEmail(),
    body("password", "비밀번호를 입력하세요.").notEmpty(),
  ]
  , registerController.errorValidate, registerController.create, registerController.redirectView);
