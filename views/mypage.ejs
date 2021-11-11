@@ -28,35 +28,35 @@
                             <form>
                               <div class="form-group">
                                   <label for="id"><strong>Name</strong></label>
-                                  &nbsp;&nbsp; <%= user.name %>
+                                  &nbsp;&nbsp;&nbsp;  <%= user.name %>
                               </div>
                                 <div class="form-group">
                                     <label for="id"><strong>ID</strong></label>
-                                &nbsp;&nbsp;    <%= user.id %>
+                                &nbsp;&nbsp;&nbsp;     <%= user.id %>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Password</strong></label>
-                                &nbsp;&nbsp;    <%= user.password %>
+                                &nbsp;&nbsp;&nbsp;     <%= user.password %>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Nickname</strong></label>
-                                  &nbsp;&nbsp;  <%= user.nickname %>
+                                  &nbsp;&nbsp;&nbsp;   <%= user.nickname %>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Email</strong></label>
-                                  &nbsp;&nbsp;  <%= user.email %>
+                                  &nbsp;&nbsp;&nbsp;   <%= user.email %>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Position</strong></label>
-                                  &nbsp;&nbsp;  <%= user.position %>
+                                  &nbsp;&nbsp;&nbsp;   <%= user.position %>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Profile</strong></label>
-                                &nbsp;&nbsp;    <%= user.profile %>
+                                &nbsp;&nbsp;&nbsp;     <%= user.profile %>
                                 </div>
                                 </form>
                                 <br/><br/>
-                                <a href="/updateUser">Edit</a>
+                                <a href="/updateUser/<%= user._id %>">Edit</a>
                         </div>
                     </div>
                 </div>

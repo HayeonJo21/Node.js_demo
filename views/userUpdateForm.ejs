@@ -1,0 +1,72 @@
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <p>Hello, <%= user.name %></p>
+            <h2>Edit Page</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Edit Your Information</h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                          <form action="/user/<%= user._id %>/update?_method=PUT" method="post">
+                            <div class="form-group">
+                                <label for="name"><strong>Name</strong></label>
+                                <input type="text" class="form-control" name="name" value= <%= user.name %> aria-describedby="tName" placeholder="Enter your name.">
+                            </div>
+                            <div class="form-group">
+                                <label for="id"><strong>ID</strong></label>
+                                <input type="text" class="form-control" name="id" value= <%= user.id %> aria-describedby="id" placeholder="Enter your ID.">
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><strong>Password</<strong></label>
+                                <input type="password" class="form-control" name="password" value= <%= user.password %> placeholder="Enter your password.">
+                            </div>
+                            <div class="form-group">
+                                <label for="nickname"><strong>Nickname</strong></label>
+                                <input type="text" class="form-control" name="nickname" value= <%= user.nickname %> aria-describedby="nickname" placeholder="Enter your nickname to use in this website.">
+                            </div>
+                              <div class="form-group">
+                                  <label for="email"><strong>Email address</strong></label>
+                                  <input type="text" class="form-control" name="email" value= <%= user.email %> aria-describedby="email" placeholder="Enter E-mail Address">
+                                  <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
+                              </div>
+                                  <div class="form-group">
+                                      <label for="profile"><strong>Profile message</strong></label>
+                                      <textarea name="profile" class="form-control" name="profile" cols="30" rows="10" value= <%= user.profile %> placeholder="Introduce yourself to other users!"></textarea>
+                                  </div>
+                                  <br/>
+                                    <div class="form-group">
+                                        <label for="position"><strong>Check your position</strong></label><br/>
+                                        Guest  <input type="radio" name="position" value="guest"><br/>
+                                        Sound Designer  <input type="radio" name="position" value="soundDesigner"><br/>
+                                        Composer <input type="radio" name="position" value="composer"><br/>
+                                        Producer  <input type="radio" name="position" value="producer"><br/>
+                                      </div>
+                              <button type="submit" class="btn oneMusic-btn mt-30" value="submit">Update</button>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Login Area End ##### -->
+
+</body>

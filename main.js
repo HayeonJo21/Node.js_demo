@@ -79,6 +79,8 @@ app.get("/mypage/:id", userController.show, userController.showMypage);
 app.post("/login", userController.authenticate);
 app.get("/logout", userController.logout, userController.redirectView);
 app.get("/registerForm", homeController.registerForm);
+app.get("/updateUser/:id", userController.edit);
+app.put("/user/:id/update", userController.update, userController.redirectView);
 app.get("/gameSound", homeController.gameSoundMain);
 app.get("/market", homeController.showMarket);
 app.get("/jam", homeController.showJam);
