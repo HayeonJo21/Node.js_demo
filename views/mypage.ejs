@@ -8,9 +8,9 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(images/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>Hello, <%= user.name %> </p>
+            <p>Hello, <%= user.name %></p>
             <h2>MY PAGE</h2>
         </div>
     </section>
@@ -27,32 +27,32 @@
                         <div class="login-form">
                             <form>
                               <div class="form-group">
-                                  <label for="id">Name</label>
-                                  <%= user.name %>
+                                  <label for="id"><strong>Name</strong></label>
+                                  &nbsp;&nbsp; <%= user.name %>
                               </div>
                                 <div class="form-group">
-                                    <label for="id">ID</label>
-                                    <%= user.id %>
+                                    <label for="id"><strong>ID</strong></label>
+                                &nbsp;&nbsp;    <%= user.id %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id">Password</label>
-                                    <%= user.password %>
+                                    <label for="id"><strong>Password</strong></label>
+                                &nbsp;&nbsp;    <%= user.password %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id">Nickname</label>
-                                    <%= user.nickname %>
+                                    <label for="id"><strong>Nickname</strong></label>
+                                  &nbsp;&nbsp;  <%= user.nickname %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id">Email</label>
-                                    <%= user.email %>
+                                    <label for="id"><strong>Email</strong></label>
+                                  &nbsp;&nbsp;  <%= user.email %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id">Position</label>
-                                    <%= user.position %>
+                                    <label for="id"><strong>Position</strong></label>
+                                  &nbsp;&nbsp;  <%= user.position %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id">Profile</label>
-                                    <%= user.profile %>
+                                    <label for="id"><strong>Profile</strong></label>
+                                &nbsp;&nbsp;    <%= user.profile %>
                                 </div>
                                 </form>
                                 <br/><br/>
@@ -66,5 +66,3 @@
     <!-- ##### Login Area End ##### -->
 
 </body>
-
-</html>

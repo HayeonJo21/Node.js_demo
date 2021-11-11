@@ -28,29 +28,13 @@ module.exports = {
         }
   },
 
-
-  // validate: (req, res, next) => {
-  //   console.log("VALIDATOR");
-  //   body("email", "이메일을 다시 확인해주세요.").isEmail().notEmpty();
-  //   body("password", "Password cannot be empty.").notEmpty();
-  //
-  //     const error = validationResult(req).errors;
-  //     if(Object.keys(error).length !== 0) {
-  //       let messages = error.array().map(e => e.msg);
-  //       console.log("###ERROR " + messages);
-  //       req.skip = true;
-  //       req.flash("error", "정확한 정보를 입력해주세요.");
-  //       res.locals.redirect = "/registerForm";
-  //     }
-  //       next();
-  // },
-
 create: (req, res, next) => {
   if(req.skip) next();
 
   let newUser = new User(getUserParams(req.body));
 
   User.register(newUser, req.body.password, (error, user) => {
+
     if (user) {
       console.log("#######LOG######");
       req.flash("success", "성공적으로 회원가입 되었습니다.");
@@ -101,4 +85,22 @@ redirectView: (req, res, next) => {
   //     next();
   //   });
   // }
+
+
+
+    // validate: (req, res, next) => {
+    //   console.log("VALIDATOR");
+    //   body("email", "이메일을 다시 확인해주세요.").isEmail().notEmpty();
+    //   body("password", "Password cannot be empty.").notEmpty();
+    //
+    //     const error = validationResult(req).errors;
+    //     if(Object.keys(error).length !== 0) {
+    //       let messages = error.array().map(e => e.msg);
+    //       console.log("###ERROR " + messages);
+    //       req.skip = true;
+    //       req.flash("error", "정확한 정보를 입력해주세요.");
+    //       res.locals.redirect = "/registerForm";
+    //     }
+    //       next();
+    // },
 };
