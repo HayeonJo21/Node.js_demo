@@ -15,8 +15,11 @@ const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 const User = require("./models/user");
 const {body, validationResult} = require("express-validator");
+const methodOverride = require("method-override");
 
-
+app.use(methodOverride("_method", {
+  methods: ["POST", "GET"]
+}));
 
 const passport = require("passport");
 
