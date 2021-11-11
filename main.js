@@ -14,6 +14,9 @@ const Subscriber = require("./models/subscriber");
 const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 const User = require("./models/user");
+const {body, validationResult} = require("express-validator");
+
+
 
 const passport = require("passport");
 
@@ -83,7 +86,13 @@ app.get("/qna", homeController.showQnA);
 app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
-app.post("/register", registerController.create, registerController.redirectView);
+app.post("/register",
+[
+   body("name", "이름을 입력하세요.").notEmpty(),
+   body("email", "이메일 형식을 확인하세요.").isEmail().notEmpty(),
+   body("password", "비밀번호를 입력하세요.").notEmpty(),
+ ]
+ , registerController.errorValidate, registerController.create, registerController.redirectView);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);

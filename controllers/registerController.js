@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const {body, validationResult} = require("express-validator");
 
 getUserParams = (body) => {
   return{
@@ -13,29 +14,35 @@ getUserParams = (body) => {
 };
 
 module.exports = {
+
+ errorValidate: (req, res, next) => {
+    const error = validationResult(req).errors;
+        if(Object.keys(error).length !== 0) {
+          let messages = error.map(e => e.msg);
+          req.skip = true;
+          req.flash("error",  messages);
+          res.locals.redirect = "/registerForm";
+            next();
+        }else{
+          next();
+        }
+  },
+
+
   // validate: (req, res, next) => {
-  //   req.sanitizeBody("email").normalizeEmail({
-  //     all_lowercase: true
-  //   }).trim();
-  //   req.check("email", "Email is invalid").isEmail();
-  //   // req.check("zipCode", "Zip code is invalid").notEmpty().isInt().isLength({
-  //   //   min: 5,
-  //   //   max: 5
-  //   // }).equals(req.body.zipCode);
-  //   req.check("password", "Password cannot be empty.").notEmpty();
+  //   console.log("VALIDATOR");
+  //   body("email", "이메일을 다시 확인해주세요.").isEmail().notEmpty();
+  //   body("password", "Password cannot be empty.").notEmpty();
   //
-  //   req.getValidationResult().then((error) => {
-  //     if(!error.isEmpty()) {
+  //     const error = validationResult(req).errors;
+  //     if(Object.keys(error).length !== 0) {
   //       let messages = error.array().map(e => e.msg);
+  //       console.log("###ERROR " + messages);
   //       req.skip = true;
-  //       res.render("index", {
-  //         flashMessages: {
-  //           error: "회원가입에 실패했습니다. 다시 시도해주세요."
-  //         }
-  //       });
-  //       next();
+  //       req.flash("error", "정확한 정보를 입력해주세요.");
+  //       res.locals.redirect = "/registerForm";
   //     }
-  //   });
+  //       next();
   // },
 
 create: (req, res, next) => {

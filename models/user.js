@@ -4,14 +4,8 @@ passportLocalMongoose = require("passport-local-mongoose"),
 
 userSchema = mongoose.Schema({
   name : {
-    first: {
-      type: String,
-      trim: true
-    },
-    last: {
-      type: String,
-      trim: true
-    }
+    type: String,
+    required: true
   },
 
   nickname: {
@@ -59,11 +53,11 @@ userSchema.plugin(passportLocalMongoose, {
   usernameField: "id"
 });
 
-userSchema.virtual("fullName")
-.get(function() {
-  console.log("first: " + this.name.first + " last: " + this.name.last + "NAME: " + this.name);
-  return this.name.last + this.name.first;
-});
+// userSchema.virtual("fullName")
+// .get(function() {
+//   console.log("first: " + this.name.first + " last: " + this.name.last + "NAME: " + this.name);
+//   return this.name.last + this.name.first;
+// });
 
 // userSchema.pre("save", function(next){
 //   let user = this;
