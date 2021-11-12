@@ -4,6 +4,14 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+          function conf() {
+            var con = confirm("정말로 탈퇴하시겠습니까?");
+            if(con == true){
+              alert("탈퇴를 진행합니다.");
+            }
+          }
+        </script>
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -57,7 +65,7 @@
                                 </form>
                                 <br/><br/>
                                 <a href="/updateUser/<%= user._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="/deleteUser/<%= user._id %>?_method=DELETE" onClick="return confirm("정말 탈퇴하시겠습니까?")">Delete Account</a>
+                                <a href="/deleteUser/<%= user._id %>?_method=DELETE" onclick="conf()">Delete Account</a>
                         </div>
                     </div>
                 </div>
