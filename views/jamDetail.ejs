@@ -1,0 +1,71 @@
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+          function conf() {
+            var con = confirm("정말로 탈퇴하시겠습니까?");
+            if(con == true){
+              alert("탈퇴를 진행합니다.");
+            }
+          }
+        </script>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <p>Come and join</p>
+            <h2>JAMS</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+    <div class="event-thumbnail">
+        <img src="images/bg-img/e5.jpg" alt="">
+    </div>
+    <!-- ##### Login Area Start ##### -->
+    <section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3><%= jam.title %></h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                            <form>
+                              <div class="form-group">
+                                  <label for="id"><strong>Location</strong></label>
+                                  &nbsp;&nbsp;&nbsp;  <%= jam.location %>
+                              </div>
+                                <div class="form-group">
+                                    <label for="id"><strong>Date</strong></label>
+                                &nbsp;&nbsp;&nbsp;     <%= jam.date %>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id"><strong>Hosted by</strong></label>
+                                &nbsp;&nbsp;&nbsp;     <%= jam.host %>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id"><strong>Required Position</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= jam.requiredPosition %>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id"><strong>Description</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= jam.description %>
+                                </div>
+                                </form>
+                                <br/><br/>
+      <!--                          <a href="/user/edit/<%= user._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/user/delete/<%= user._id %>?_method=DELETE" onclick="conf()">Delete Account</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Login Area End ##### -->
+
+</body>

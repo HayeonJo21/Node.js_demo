@@ -191,22 +191,37 @@
     <section class="newsletter-testimonials-area">
         <div class="container">
             <div class="row">
-
+              <% if(loggedIn) { %>
                 <!-- Newsletter Area -->
                 <div class="col-12 col-lg-6">
                     <div class="newsletter-area mb-100">
                         <div class="section-heading text-left mb-50">
-                            <p>See what’s new</p>
-                            <h2>Subscribe to newsletter</h2>
+                            <p>Get started your own Jam with others!</p>
+                            <h2>Make your one</h2>
                         </div>
                         <div class="newsletter-form">
-                            <form action="#">
-                                <input type="search" name="search" id="newsletterSearch" placeholder="E-mail">
-                                <button type="submit" class="btn oneMusic-btn">Subscribe <i class="fa fa-angle-double-right"></i></button>
+                            <form action="/jam/registerForm">
+                                <button type="submit" class="btn oneMusic-btn">New Post<i class="fa fa-angle-double-right"></i></button>
                             </form>
                         </div>
                     </div>
                 </div>
+                <% } else { %>
+                  <div class="col-12 col-lg-6">
+                      <div class="newsletter-area mb-100">
+                          <div class="section-heading text-left mb-50">
+                              <p>Get started your own Jam with others!</p>
+                              <h2>Make your one</h2>
+                          </div>
+                          <div class="newsletter-form">
+                              <form action="/user/login">
+                                  <button type="submit" class="btn oneMusic-btn">Login fist<i class="fa fa-angle-double-right"></i></button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              <% } %>
+
 
                 <!-- Testimonials Area -->
                 <div class="col-12 col-lg-6">

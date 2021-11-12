@@ -1,0 +1,70 @@
+</div>
+          </nav>
+      </div>
+  </div>
+</div>
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+<div class="bradcumbContent">
+  <p>Play with Us!</p>
+  <h2>Jam Register</h2>
+</div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+
+<!-- ##### Login Area Start ##### -->
+<section class="login-area section-padding-100">
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+          <div class="login-content">
+              <h3>Let's Jam!</h3>
+              <!-- Login Form -->
+              <div class="login-form">
+
+                  <form action="/jam/register" method="post">
+                    <div class="form-group">
+                        <label for="title"><strong>Title</strong></label>
+                        <input type="text" class="form-control" name="title" aria-describedby="tTitle" placeholder="Enter the title.">
+                    </div>
+                    <input type="hidden" name="host" id="host" value=<%= currentUser %>/>
+                    <div class="form-group">
+                        <label for="location"><strong>Location</strong></label>
+                        <input type="text" class="form-control" name="location" aria-describedby="location" placeholder="Enter the location.">
+                    </div>
+                    <div class="form-group">
+                        <label for="date"><strong>Date</<strong></label>
+                        <input type="date" class="form-control" name="date" placeholder="Enter the date you play.">
+                    </div>
+                          <br/>
+                            <div class="form-group">
+                                <label for="requiredPosition"><strong>Check required position</strong></label><br/>
+                                <br/>
+                                <label><input type="checkbox" name="requiredPosition" value="Piano">&nbsp; Piano/Synthesizer<br/>
+                                <label><input type="checkbox" name="requiredPosition" value="Guitar">&nbsp; Guitar<br/>
+                                <label><input type="checkbox" name="requiredPosition" value="Bass">&nbsp; Bass<br/>
+                                <label><input type="checkbox" name="requiredPosition" value="ElecGuitar">&nbsp; Electronical Guitar<br/>
+                                <label><input type="checkbox" name="requiredPosition" value="Drum">&nbsp; Drum/Percussion<br/>
+                                <label><input type="checkbox" name="requiredPosition" value="Vocal">&nbsp; Vocal<br/>
+                                <label><input type="checkbox" name="requiredPosition" value="DJ">&nbsp; DJ/Composer<br/>
+                              </div>
+                              <div class="form-group">
+                                  <label for="description"><strong>Description</strong></label>
+                                  <textarea name="description" class="form-control" name="description" cols="30" rows="50" placeholder="Introduce others what this jam's about!"></textarea>
+                              </div>
+                      <button type="submit" class="btn oneMusic-btn mt-30" value="submit">Post</button>
+                      </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
+<!-- ##### Login Area End ##### -->
+
+</body>
+
+</html>
