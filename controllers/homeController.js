@@ -26,10 +26,6 @@ exports.postedContactForm = (req, res) => {
   res.render("thanks");
 };
 
-exports.registerForm = (req, res) => {
-  res.render("registerForm");
-}
-
 exports.gameSoundMain = (req, res) => {
   res.render("gameSoundMain");
 };

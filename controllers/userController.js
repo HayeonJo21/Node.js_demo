@@ -95,6 +95,10 @@ module.exports = {
     console.log("Error deleting user by ID : " + error.message);
     next();
   });
+},
+
+registerForm: (req, res) => {
+  res.render("registerForm");
 }
 
 

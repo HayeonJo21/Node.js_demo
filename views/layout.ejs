@@ -108,12 +108,12 @@
                                     <!-- Login/Register -->
                                     <% if(loggedIn) { %>
                                       <div class="login-register-btn mr-50">
-                                          <a href="/mypage/<%= currentUser._id %>" id="loginBtn">Logged in as <%= currentUser.nickname %></a>
-                                          <a href="/logout" id="loginBtn">&nbsp; &nbsp; Logout</a>
+                                          <a href="/user/mypage/<%= currentUser._id %>" id="loginBtn">Logged in as <%= currentUser.nickname %></a>
+                                          <a href="/user/logout" id="loginBtn">&nbsp; &nbsp; Logout</a>
                                       </div>
                                       <% } else { %>
                                     <div class="login-register-btn mr-50">
-                                        <a href="/login" id="loginBtn">Login / Register</a>
+                                        <a href="/user/login" id="loginBtn">Login / Register</a>
                                     </div>
                                     <% } %>
                                     <!-- Cart Button -->

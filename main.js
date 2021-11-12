@@ -6,7 +6,8 @@ homeController = require("./controllers/homeController"),
 userController = require("./controllers/userController"),
 errorController = require("./controllers/errorController"),
 registerController = require("./controllers/registerController"),
-express = require("express");
+express = require("express"),
+router = require("./routes/index");
 
 const app = express();
 const mongoose = require("mongoose");
@@ -70,40 +71,16 @@ app.use(
 );
 
 app.use(express.json());
+app.use("/", router);
 
 passport.use(User.createStrategy()); //사용자의 로그인 스트래티지 설정
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 작업 하도록 설정
 
-app.get("/", homeController.showIndex);
-app.get("/courses", homeController.showCourses);
-app.get("/login", userController.login);
-app.get("/mypage/:id", userController.show, userController.showMypage);
-app.post("/login", userController.authenticate);
-app.get("/logout", userController.logout, userController.redirectView);
 
-app.get("/registerForm", homeController.registerForm);
-app.get("/updateUser/:id", userController.edit);
-app.put("/user/:id/update", userController.update, userController.redirectView);
-app.get("/gameSound", homeController.gameSoundMain);
-app.get("/market", homeController.showMarket);
-app.get("/jam", homeController.showJam);
-app.get("/bgm", homeController.showBgm);
-app.get("/qna", homeController.showQnA);
 app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
-app.post("/register",
-[
-   body("name", "이름을 입력하세요.").notEmpty(),
-   body("email", "이메일을 입력해주세요.").notEmpty(),
-   body("email", "이메일 형식을 확인하세요.").isEmail(),
-   body("password", "비밀번호를 입력하세요.").notEmpty(),
- ]
- , registerController.errorValidate, registerController.create, registerController.redirectView);
-app.delete("/deleteUser/:id", userController.delete, userController.redirectView);
-app.use(errorController.pageNotFoundError);
-app.use(errorController.internalServerError);
 
 app.listen(app.get("port"), () => {
   console.log("Server running at http://localhost:" + port);

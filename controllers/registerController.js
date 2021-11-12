@@ -21,7 +21,7 @@ module.exports = {
           let messages = error.map(e => e.msg);
           req.skip = true;
           req.flash("error",  messages);
-          res.locals.redirect = "/registerForm";
+          res.locals.redirect = "/user/registerForm";
             next();
         }else{
           next();
