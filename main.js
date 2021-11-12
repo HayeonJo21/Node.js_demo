@@ -81,6 +81,7 @@ app.get("/login", userController.login);
 app.get("/mypage/:id", userController.show, userController.showMypage);
 app.post("/login", userController.authenticate);
 app.get("/logout", userController.logout, userController.redirectView);
+
 app.get("/registerForm", homeController.registerForm);
 app.get("/updateUser/:id", userController.edit);
 app.put("/user/:id/update", userController.update, userController.redirectView);
@@ -100,7 +101,7 @@ app.post("/register",
    body("password", "비밀번호를 입력하세요.").notEmpty(),
  ]
  , registerController.errorValidate, registerController.create, registerController.redirectView);
-
+app.delete("/deleteUser/:id", userController.delete, userController.redirectView);
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 

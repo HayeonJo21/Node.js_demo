@@ -81,7 +81,21 @@ module.exports = {
       console.log("Error updating user by ID: " + error.message);
       next(error);
     });
-  }
+  },
+
+  delete: (req, res, next) => {
+  let userId = req.params.id;
+  User.findByIdAndRemove(userId)
+  .then(() => {
+    res.locals.redirect = "/"
+    req.flash("success", "탈퇴가 완료되었습니다.");
+    next();
+  })
+  .catch(error => {
+    console.log("Error deleting user by ID : " + error.message);
+    next();
+  });
+}
 
 
   // authenticate: (req, res, next) => {

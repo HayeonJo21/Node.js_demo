@@ -56,7 +56,8 @@
                                 </div>
                                 </form>
                                 <br/><br/>
-                                <a href="/updateUser/<%= user._id %>">Edit</a>
+                                <a href="/updateUser/<%= user._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/deleteUser/<%= user._id %>?_method=DELETE" onClick="return confirm("정말 탈퇴하시겠습니까?")">Delete Account</a>
                         </div>
                     </div>
                 </div>
