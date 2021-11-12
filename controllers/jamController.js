@@ -37,11 +37,13 @@ module.exports = {
    .then(() => {
      console.log("*****SUCCESS******");
       req.flash("success", "글이 등록되었습니다.");
-      res.locals.redirect = "/jam";
+      res.render("jamDetail", {
+        jam: newJam
+      });
       next();
   })
   .catch(error => {
-    console.log("#####ERROR#####");
+    console.log("#####ERROR#####" + error.message);
     req.flash("error", "글 등록에 실패했습니다. 다시 시도해주세요.");
     res.locals.redirect = "/jam/registerForm";
     next();
@@ -127,6 +129,10 @@ module.exports = {
 
 registerForm: (req, res) => {
   res.render("jamRegisterForm");
+},
+
+showDetailPage: (req, res) => {
+  res.render("jamDetail");
 }
 
 
