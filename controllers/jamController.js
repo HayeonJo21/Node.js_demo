@@ -37,8 +37,18 @@ module.exports = {
    .then(() => {
      console.log("*****SUCCESS******");
       req.flash("success", "글이 등록되었습니다.");
-      res.render("jamDetail", {
-        jam: newJam
+      User.findById(newJam.host)
+      .then(user => {
+        console.log("*****SUCCESS!!!!!!******");
+        res.render("jamDetail", {
+          jam: newJam,
+          user: user
+        });
+        next();
+      })
+      .catch(error => {
+        console.log("Error fetching user by ID: " + error.message);
+        next(error);
       });
       next();
   })

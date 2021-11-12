@@ -17,6 +17,6 @@ router.post("/register",
    body("location", "장소를 입력하세요.").notEmpty(),
    body("requiredPosition", "포지션을 선택하세요.").notEmpty(),
  ]
- , jamController.errorValidate, jamController.create, jamController.redirectView);
+ , jamController.errorValidate, jamController.create);
 
  module.exports = router;
