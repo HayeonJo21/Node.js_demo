@@ -22,4 +22,9 @@ router.post("/register",
  //Jam 디테일 페이지
  router.get("/detail", jamController.showDetailPage);
 
+ //Jam Update, edit, DELETE
+ router.get("/edit/:id", jamController.edit);
+ router.put("/update/:id", jamController.update, jamController.redirectView);
+ router.delete("/delete/:id", jamController.delete, jamController.redirectView);
+
  module.exports = router;

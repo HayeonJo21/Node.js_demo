@@ -37,7 +37,6 @@ module.exports = {
    .then(() => {
      console.log("*****SUCCESS******");
       req.flash("success", "글이 등록되었습니다.");
-
       res.locals.jam = newJam;
       next();
   })
@@ -78,7 +77,60 @@ registerForm: (req, res) => {
 
 showDetailPage: (req, res) => {
   res.render("jamDetail");
-}
+},
+
+edit: (req, res, next) => {
+  let jamId = req.params.id;
+  Jam.findById(jamId)
+  .then(jam => {
+    res.render("jamUpdateForm", {
+      jam: jam
+    });
+  })
+  .catch(error => {
+    console.log("Error fetching jam by ID " + error.message);
+    next(error);
+  });
+},
+
+update: (req, res, next) => {
+  let jamId = req.params.id,
+  jamParams = {
+    title: req.body.title,
+    location: req.body.location,
+    date: req.body.date,
+    requiredPosition: req.body.requiredPosition,
+    host: req.body.host,
+    description: req.body.description
+  };
+
+  Jam.findByIdAndUpdate(jamId, {
+    $set: jamParams
+  })
+  .then(jam => {
+    res.locals.redirect = "/jam/detail";
+    res.locals.jam = jam;
+    next();
+  })
+  .catch(error => {
+    console.log("Error updating jam by ID: " + error.message);
+    next(error);
+  });
+},
+
+delete: (req, res, next) => {
+let jamId = req.params.id;
+Jam.findByIdAndRemove(jamId)
+.then(() => {
+  res.locals.redirect = "/"
+  req.flash("success", "삭제가 완료되었습니다.");
+  next();
+})
+.catch(error => {
+  console.log("Error deleting jam by ID : " + error.message);
+  next();
+});
+},
   // show: (req, res, next) => {
   //   let jamId = req.params.id;
   //   User.findById(userId)

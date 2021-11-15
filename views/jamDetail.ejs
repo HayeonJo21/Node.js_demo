@@ -6,9 +6,9 @@
         </div>
         <script type="text/javascript">
           function conf() {
-            var con = confirm("정말로 탈퇴하시겠습니까?");
+            var con = confirm("정말로 삭제하시겠습니까?");
             if(con == true){
-              alert("탈퇴를 진행합니다.");
+              alert("게시물을 삭제합니다.");
             }
           }
         </script>
@@ -59,6 +59,10 @@
                                 </div>
                                 </form>
                                 <br/><br/>
+                                <% if(currentUser._id == user._id) { %>
+                                <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
+                                <% } %>
                         </div>
                     </div>
                 </div>
