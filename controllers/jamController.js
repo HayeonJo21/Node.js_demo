@@ -145,8 +145,9 @@ update: (req, res, next) => {
     $set: jamParams
   })
   .then(jam => {
-    res.locals.redirect = "/jam/detail";
+    console.log("Updated jam : " + jam.title);
     res.locals.jam = jam;
+    res.locals.redirect = "/jam/detail/" + jamId;
     next();
   })
   .catch(error => {

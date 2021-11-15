@@ -60,9 +60,11 @@
                                 </form>
                                 <br/><br/>
 
-                                <% if(loggedIn && currentUser._id == user._id) { %>
+                                <% if(loggedIn) { %>
+                                  <% if(currentUser.id == user.id){ %>
                                 <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
+                                <% } %>
                                 <% } %>
 
                         </div>
