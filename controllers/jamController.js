@@ -170,19 +170,26 @@ Jam.findByIdAndRemove(jamId)
 });
 },
 
-getAllJams: (req, res) => {
+getAllJams: (req, res, next) => {
   Jam.find({})
   .exec()
   .then((jams) => {
-    res.render("jam", {jams: jams});
+    console.log("Get all jams");
+    res.locals.jams = jams;
+    next();
   })
   .catch((error) => {
     console.log(error.message);
-    return [];
-  })
-  .then(() => {
-    console.log("promise complete");
+    next(error);
   });
+},
+
+indexView: (req, res) => {
+  if(req.query.format == "json"){
+    res.json(res.locals.jams);
+  } else{
+  res.render("jam");
+}
 }
 
 }

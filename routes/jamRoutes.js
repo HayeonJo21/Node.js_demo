@@ -8,7 +8,7 @@ router.use(methodOverride("_method", {
   methods: ["POST", "GET"]
 }));
 //Jam 메인페이지
-router.get("/main", jamController.getAllJams);
+router.get("/main", jamController.getAllJams, jamController.indexView);
 
 //Jam 글 등록
 router.get("/registerForm", jamController.registerForm);
