@@ -32,6 +32,8 @@ module.exports = {
    if(req.skip) next();
 
    let newJam = new Jam(getJamParams(req.body));
+   let hostUser;
+   let args;
 
    Jam.create(newJam)
    .then(() => {
@@ -39,33 +41,40 @@ module.exports = {
       req.flash("success", "글이 등록되었습니다.");
       User.findById(newJam.host)
       .then(user => {
-        console.log("*****SUCCESS!!!!!!******");
-        res.render("jamDetail", {
-          jam: newJam,
-          user: user
-        });
+        console.log("USER: " + user.name);
+        hostUser = user;
         next();
-      })
-      .catch(error => {
+      }).catch(error => {
         console.log("Error fetching user by ID: " + error.message);
         next(error);
       });
+
+      args = {jam: newJam, user: hostUser}
+      res.render("jamDetail", args);
       next();
   })
   .catch(error => {
-    console.log("#####ERROR#####" + error.message);
+    console.log("#####ERROR#####  " + error.message);
     req.flash("error", "글 등록에 실패했습니다. 다시 시도해주세요.");
     res.locals.redirect = "/jam/registerForm";
     next();
   });
-  },
+},
 
   redirectView: (req, res, next) => {
+    console.log("redirect view called!");
     let redirectPath = res.locals.redirect;
     if(redirectPath) res.redirect(redirectPath);
     else next();
   },
 
+registerForm: (req, res) => {
+  res.render("jamRegisterForm");
+},
+
+showDetailPage: (req, res) => {
+  res.render("jamDetail");
+}
   // show: (req, res, next) => {
   //   let jamId = req.params.id;
   //   User.findById(userId)
@@ -136,15 +145,6 @@ module.exports = {
 //     next();
 //   });
 // },
-
-registerForm: (req, res) => {
-  res.render("jamRegisterForm");
-},
-
-showDetailPage: (req, res) => {
-  res.render("jamDetail");
-}
-
 
   // authenticate: (req, res, next) => {
   //   User.findOne({id: req.body.id})

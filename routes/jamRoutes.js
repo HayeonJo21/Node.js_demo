@@ -19,4 +19,7 @@ router.post("/register",
  ]
  , jamController.errorValidate, jamController.create);
 
+ //Jam 디테일 페이지
+ router.get("/detail", jamController.showDetailPage);
+
  module.exports = router;

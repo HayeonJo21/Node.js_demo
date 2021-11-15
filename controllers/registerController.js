@@ -44,7 +44,7 @@ create: (req, res, next) => {
     else {
       console.log("*******ERROR******");
       req.flash("error", "회원가입에 실패했습니다. 다시 시도해주세요.");
-      res.locals.redirect = "/registerForm";
+      res.locals.redirect = "/user/registerForm";
       next();
     }
   });
