@@ -7,6 +7,8 @@ const methodOverride = require("method-override");
 router.use(methodOverride("_method", {
   methods: ["POST", "GET"]
 }));
+//Jam 메인페이지
+router.get("/main", jamController.getAllJams);
 
 //Jam 글 등록
 router.get("/registerForm", jamController.registerForm);
@@ -21,6 +23,7 @@ router.post("/register",
 
  //Jam 디테일 페이지
  router.get("/detail", jamController.showDetailPage);
+ router.get("/detail/:id", jamController.getUserForDetail, jamController.showDetailPage);
 
  //Jam Update, edit, DELETE
  router.get("/edit/:id", jamController.edit);

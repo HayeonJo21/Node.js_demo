@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Hosted by</strong></label>
-                                &nbsp;&nbsp;&nbsp;     <%= user.name %>
+                                &nbsp;&nbsp;&nbsp;     <%= user.nickname %>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Required Position</strong></label>
@@ -59,10 +59,12 @@
                                 </div>
                                 </form>
                                 <br/><br/>
-                                <% if(currentUser._id == user._id) { %>
+
+                                <% if(loggedIn && currentUser._id == user._id) { %>
                                 <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
                                 <% } %>
+
                         </div>
                     </div>
                 </div>

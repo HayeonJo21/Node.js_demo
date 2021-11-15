@@ -51,17 +51,38 @@ module.exports = {
 getUserInfo: (req, res, next) => {
   if(req.skip) next();
 
-  let newJam = new Jam(getJamParams(req.body));
+    let newJam = new Jam(getJamParams(req.body));
 
-  User.findById(newJam.host)
-  .then(user => {
-    console.log("USER: " + user.name);
-    res.locals.user = user;
-    next();
-  }).catch(error => {
-    console.log("Error fetching user by ID: " + error.message);
-    next(error);
-  });
+      User.findById(newJam.host)
+      .then(user => {
+        console.log("USER: " + user.name);
+        res.locals.user = user;
+        next();
+      }).catch(error => {
+        console.log("Error fetching user by ID: " + error.message);
+        next(error);
+      });
+
+},
+
+getUserForDetail: (req, res, next) => {
+    let jamId = req.params.id;
+    Jam.findById(jamId)
+    .then(jam => {
+      User.findById(jam.host)
+      .then(user => {
+        res.locals.user = user;
+        console.log("@@@@ USER:" + user.name);
+        next();
+      }).catch(error => {
+        console.log("Error fetching user by ID: " + error.message);
+        next(error);
+      });
+    })
+    .catch(error => {
+      console.log("Error fetching jam by ID " + error.message);
+      next(error);
+    });
 },
 
   redirectView: (req, res, next) => {
@@ -76,7 +97,23 @@ registerForm: (req, res) => {
 },
 
 showDetailPage: (req, res) => {
+  let jamId = req.params.id;
+
+  if(jamId){
+    Jam.findById(jamId)
+    .then(jam => {
+      res.render("jamDetail", {
+        jam: jam
+      });
+    })
+    .catch(error => {
+      console.log("Error fetching jam by ID " + error.message);
+      next(error);
+    });
+  }
+  else{
   res.render("jamDetail");
+}
 },
 
 edit: (req, res, next) => {
@@ -131,120 +168,20 @@ Jam.findByIdAndRemove(jamId)
   next();
 });
 },
-  // show: (req, res, next) => {
-  //   let jamId = req.params.id;
-  //   User.findById(userId)
-  //   .then(user => {
-  //     res.locals.user = user;
-  //     next();
-  //   })
-  //   .catch(error => {
-  //     console.log("Error fetching user by ID: " + error.message);
-  //     next(error);
-  //   });
-  // },
-  //
-  // showDetailPage: (req, res) => {
-  //   res.render("mypage");
-  // },
 
-//   edit: (req, res, next) => {
-//     let userId = req.params.id;
-//     User.findById(userId)
-//     .then(user => {
-//       res.render("userUpdateForm", {
-//         user: user
-//       });
-//     })
-//     .catch(error => {
-//       console.log("Error fetching user by ID " + error.message);
-//       next(error);
-//     });
-//   },
-//
-//   update: (req, res, next) => {
-//     let userId = req.params.id,
-//     userParams = {
-//       name: req.body.name,
-//       nickname: req.body.nicnname,
-//       id: req.body.id,
-//       password: req.body.password,
-//       email: req.body.email,
-//       profile: req.body.profile,
-//       position: req.body.position
-//     };
-//
-//     User.findByIdAndUpdate(userId, {
-//       $set: userParams
-//     })
-//     .then(user => {
-//       res.locals.redirect = "/mypage/" + userId;
-//       res.locals.user = user;
-//       next();
-//     })
-//     .catch(error => {
-//       console.log("Error updating user by ID: " + error.message);
-//       next(error);
-//     });
-//   },
-//
-//   delete: (req, res, next) => {
-//   let userId = req.params.id;
-//   User.findByIdAndRemove(userId)
-//   .then(() => {
-//     res.locals.redirect = "/"
-//     req.flash("success", "탈퇴가 완료되었습니다.");
-//     next();
-//   })
-//   .catch(error => {
-//     console.log("Error deleting user by ID : " + error.message);
-//     next();
-//   });
-// },
-
-  // authenticate: (req, res, next) => {
-  //   User.findOne({id: req.body.id})
-  //   .then(user => {
-  //     if(user){
-  //       user.passwordComparison(req.body.password)
-  //       .then(passwordsMatch => {
-  //         if(passwordsMatch){
-  //           res.render("index", {
-  //               flashMessages: {
-  //                 success: req.body.id + "님 로그인 되었습니다."
-  //               }
-  //             });
-  //         } else{
-  //           res.render("login", {
-  //             flashMessages: {
-  //               error: "로그인 실패입니다. 다시 시도해주세요."
-  //             }
-  //           });
-  //         }
-  //           next();
-  //       });
-  //
-  //     } else {
-  //       res.render("login", {
-  //         flashMessages: {
-  //           error: "로그인 실패입니다. 다시 시도해주세요."
-  //         }
-  //       });
-  //       next();
-  //     }
-  //   })
-  //   .catch(error => {
-  //     console.log("Error logging in user: " + error.message);
-  //     next(error);
-  //   });
-  // }
+getAllJams: (req, res) => {
+  Jam.find({})
+  .exec()
+  .then((jams) => {
+    res.render("jam", {jams: jams});
+  })
+  .catch((error) => {
+    console.log(error.message);
+    return [];
+  })
+  .then(() => {
+    console.log("promise complete");
+  });
 }
 
-//해싱 전 로그인 로직
-// console.log("PASSWORD: " + user.password + "//" + req.body.password);
-// if (user && user.password === req.body.password){
-//   res.render("index", {
-//     flashMessages: {
-//       success: req.body.id + "님 로그인 되었습니다."
-//     }
-//   });
+}
