@@ -41,8 +41,8 @@ module.exports = {
       req.flash("success", "글이 등록되었습니다.");
       User.findById(newJam.host)
       .then(user => {
-        console.log("USER: " + user.name);
         hostUser = user;
+        console.log("USER: " + hostUser.name);
         next();
       }).catch(error => {
         console.log("Error fetching user by ID: " + error.message);
