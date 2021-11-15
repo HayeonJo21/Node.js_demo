@@ -32,25 +32,13 @@ module.exports = {
    if(req.skip) next();
 
    let newJam = new Jam(getJamParams(req.body));
-   let hostUser;
-   let args;
 
    Jam.create(newJam)
    .then(() => {
      console.log("*****SUCCESS******");
       req.flash("success", "글이 등록되었습니다.");
-      User.findById(newJam.host)
-      .then(user => {
-        hostUser = user;
-        console.log("USER: " + hostUser.name);
-        next();
-      }).catch(error => {
-        console.log("Error fetching user by ID: " + error.message);
-        next(error);
-      });
 
-      args = {jam: newJam, user: hostUser}
-      res.render("jamDetail", args);
+      res.locals.jam = newJam;
       next();
   })
   .catch(error => {
@@ -58,6 +46,22 @@ module.exports = {
     req.flash("error", "글 등록에 실패했습니다. 다시 시도해주세요.");
     res.locals.redirect = "/jam/registerForm";
     next();
+  });
+},
+
+getUserInfo: (req, res, next) => {
+  if(req.skip) next();
+
+  let newJam = new Jam(getJamParams(req.body));
+
+  User.findById(newJam.host)
+  .then(user => {
+    console.log("USER: " + user.name);
+    res.locals.user = user;
+    next();
+  }).catch(error => {
+    console.log("Error fetching user by ID: " + error.message);
+    next(error);
   });
 },
 

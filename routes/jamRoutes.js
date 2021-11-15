@@ -17,7 +17,7 @@ router.post("/register",
    body("location", "장소를 입력하세요.").notEmpty(),
    body("requiredPosition", "포지션을 선택하세요.").notEmpty(),
  ]
- , jamController.errorValidate, jamController.create);
+ , jamController.errorValidate, jamController.create, jamController.getUserInfo, jamController.showDetailPage);
 
  //Jam 디테일 페이지
  router.get("/detail", jamController.showDetailPage);
