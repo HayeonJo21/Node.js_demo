@@ -186,6 +186,7 @@ getAllJams: (req, res, next) => {
 
 indexView: (req, res) => {
   if(req.query.format == "json"){
+    console.log("Json query called!");
     res.json(res.locals.jams);
   } else{
   res.render("jam");
