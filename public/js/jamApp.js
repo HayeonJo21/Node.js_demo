@@ -1,9 +1,11 @@
 $(document).ready(() => {
+  $('#myModal').modal('show');
+  console.log("document ready");
   $("#modal-button").click(() => {
-    $("./modal-body").html("");
+    $(".modal-body").html("");
     $.get("/jam/main?format=json", (data) => {
       data.forEach((jam) => {
-        $("./modal-body").append(
+        $(".modal-body").append(
           '<div>
           <span class="jam-title">
           <%= jam.title %>
