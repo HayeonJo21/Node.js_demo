@@ -1,4 +1,4 @@
-const socket = io();
+var socket = io();
 
 $(document).ready(() => {
   $("#modal-button").click(() => {
@@ -40,6 +40,7 @@ let addJoinButtonListener = () => {
 };
 
 $("#chatForm").submit(() => {
+  console.log("chat submit ajax proceed.");
   socket.emit("message");
   $("#chat-input").val("");
   return false;
