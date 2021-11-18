@@ -209,7 +209,7 @@ filterUserJams: (req, res, next) => {
   let currentUser = res.locals.currentUser;
   if(currentUser){
     console.log("사용자 로그인 유무 체크"); // 사용자 로그인 유무 체크
-    let mappedJams = res.locals.jams.map((jams) => { // 사용자가 연계됐는지 표식을 추가하기 위한 강좌 데이터 수
+    let mappedJams = res.locals.jams.map((jam) => { // 사용자가 연계됐는지 표식을 추가하기 위한 강좌 데이터 수
       let userJoined = currentUser.jams.some((userJams) => {
         return userJams.equals(jam._id); // 사용자 강좌 배열에 강좌가 있는지 체크
       });
