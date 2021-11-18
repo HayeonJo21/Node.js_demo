@@ -8,5 +8,6 @@ router.get("/market", homeController.showMarket);
 router.get("/jam", homeController.showJam);
 router.get("/bgm", homeController.showBgm);
 router.get("/qna", homeController.showQnA);
+router.get("/chat", homeController.chat);
 
 module.exports = router;

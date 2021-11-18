@@ -45,3 +45,7 @@ exports.showJam = (req, res) => {
 exports.showQnA = (req, res) => {
   res.render("qna");
 }
+
+exports.chat = (req, res) => {
+  res.render("chat");
+}
