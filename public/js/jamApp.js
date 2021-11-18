@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  console.log("document ready");
   $("#modal-button").click(() => {
     $(".modal-body").html("");
     $.get("/api/jams", (results = {}) => {
@@ -20,7 +19,6 @@ $(document).ready(() => {
 });
 
 let addJoinButtonListener = () => {
-  console.log("버튼 클릭 리스너 실행");
   $(".join-button").click((event) => {
     let $button = $(event.target),
     jamId = $button.data("id");
