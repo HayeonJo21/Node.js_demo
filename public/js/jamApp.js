@@ -29,8 +29,8 @@ let addJoinButtonListener = () => {
       if(data && data.success){
         $button
         .text("Joined")
-        .addJam("joined-button")
-        .removeJam("join-button");
+        .addClass("joined-button")
+        .removeClass("join-button");
       } else{
         $button.text("Try again");
       }
