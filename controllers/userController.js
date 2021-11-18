@@ -102,8 +102,12 @@ registerForm: (req, res) => {
 },
 
 verifyToken: (req, res, next) => {
-  if(req.query.apiToken == token) next();
-  else next(new Error("Invalid API token."));
+  if(req.query.apiToken == token) {
+    next();
+  }
+  else {
+    next( new Error("Invalid API token."));
+  }
 }
 
 

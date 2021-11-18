@@ -54,6 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set("port", process.env.PORT || 3000);
+app.set("token", process.env.TOKEN || "soundyT0k3n");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(layouts);
@@ -81,6 +82,7 @@ passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 �
 app.get("/thanks", (req, res) => {
   res.render("thanks");
 });
+app.get("token");
 
 app.listen(app.get("port"), () => {
   console.log("Server running at http://localhost:" + port);
