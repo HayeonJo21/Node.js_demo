@@ -8,7 +8,8 @@ $(document).ready(() => {
 
       data.jams.forEach((jam) => {
         $(".modal-body").append('<div><span class="jam-title"><strong>' +`${jam.title}`
-        + '</strong></span><div class="jam-description">' + `${jam.description}` + '</div></div>' + '<hr>'
+        + '</strong></span><div class="jam-description">' + `${jam.description}` + '</div></div>' +
+        '<div align="right"><button class="join-button" data-id="' + `${jam._id}` + '"> Join </button></div><hr>'
         );
       });
     });
