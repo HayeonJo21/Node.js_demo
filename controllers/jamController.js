@@ -249,5 +249,4 @@ errorJSON: (error, req, res, next) => {
   }
   res.json(errorObject);
 }
-
 }
