@@ -101,14 +101,14 @@ registerForm: (req, res) => {
   res.render("registerForm");
 },
 
-verifyToken: (req, res, next) => {
-  if(req.query.apiToken == token) {
-    next();
-  }
-  else {
-    next( new Error("Invalid API token."));
-  }
-}
+// verifyToken: (req, res, next) => {
+//   if(req.query.apiToken == token) {
+//     next();
+//   }
+//   else {
+//     next( new Error("Invalid API token."));
+//   }
+// }
 
 
   // authenticate: (req, res, next) => {

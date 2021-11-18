@@ -54,7 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set("port", process.env.PORT || 3000);
-app.set("token", process.env.TOKEN || "soundyT0k3n");
+// app.set("token", process.env.TOKEN || "soundyT0k3n");
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(layouts);
