@@ -17,6 +17,10 @@ const Course = require("./models/course");
 const User = require("./models/user");
 const {body, validationResult} = require("express-validator");
 const methodOverride = require("method-override");
+const server = app.listen(app.get("port"), () => {
+  console.log("Server running at http://localhost:3000");
+}),
+io = require("socket.io")(server);
 
 app.use(methodOverride("_method", {
   methods: ["POST", "GET"]
