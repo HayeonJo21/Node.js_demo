@@ -195,6 +195,7 @@ join: (req, res, next) => {
         jams: jamId
       }
     }).then(() => {
+      console.log("user DB에 Jam 저장 " + "Jam ID: " + jamId + " Username: " + currentUser.name);
       res.locals.success = true;
       next();
     }).catch(error => {
