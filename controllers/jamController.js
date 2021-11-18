@@ -185,6 +185,42 @@ getAllJams: (req, res, next) => {
   });
 },
 
+join: (req, res, next) => {
+  let jamId = req.params.id,
+  currentUser = req.user;
+
+  if(currentUser){
+    User.findByIdAndUpdate(currentUser, {
+      $addToSet: {
+        jams: jamId
+      }
+    }).then(() => {
+      res.locals.success = true;
+      next();
+    }).catch(error => {
+      next(error);
+    }) ;
+  }else {
+    next(new Error("User must log in."));
+  }
+},
+
+filterUserJams: (req, res, next) => {
+  let currentUser = res.locals.currentUser;
+  if(currentUser){ // 사용자 로그인 유무 체
+    let mappedJams = res.locals.jams.map((jams) => { // 사용자가 연계됐는지 표식을 추가하기 위한 강좌 데이터 수
+      let userJoined = currentUser.jams.some((userJams) => {
+        return userCourse.equals(course._id); // 사용자 강좌 배열에 강좌가 있는지 체크
+      });
+      return Object.assign(jam._id);
+    });
+    res.locals.jams = mappedJams;
+    next();
+  } else{
+    next();
+  }
+},
+
 indexView: (req, res) => {
   res.render("jam");
 },

@@ -39,6 +39,11 @@ userSchema = mongoose.Schema({
     required: true
   },
 
+  jams: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Jam"
+  }],
+
   post : [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post"
