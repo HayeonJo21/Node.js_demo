@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Jam = require("../models/jam");
 const passport = require("passport");
+const httpStatus = require("http-status-codes");
 const {body, validationResult} = require("express-validator");
 
 getJamParams = (body) => {
@@ -185,12 +186,31 @@ getAllJams: (req, res, next) => {
 },
 
 indexView: (req, res) => {
-  if(req.query.format == "json"){
-    console.log("Json query called!");
-    res.json(res.locals.jams);
-  } else{
   res.render("jam");
-}
+},
+
+respondJSON: (req, res) => {
+  res.json({
+    status: httpStatus.OK,
+    data: res.locals
+  });
+},
+
+errorJSON: (error, req, res, next) => {
+  let errorObject;
+
+  if(error) {
+    errorObject = {
+      status: httpStatus.INTERNAL_SERVER_ERROR,
+      message: error.message
+    };
+  } else{
+    errorObject = {
+      status: httpStatus.INTERNAL_SERVER_ERROR,
+      message: "Unknown Error."
+    };
+  }
+  res.json(errorObject);
 }
 
 }
