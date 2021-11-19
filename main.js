@@ -1,4 +1,5 @@
 const port = 3000,
+express = require("express"),
 http = require("http"),
 httpStatus = require("http-status-codes"),
 contentTypes = require("./content-types"),
@@ -6,7 +7,6 @@ homeController = require("./controllers/homeController"),
 userController = require("./controllers/userController"),
 errorController = require("./controllers/errorController"),
 registerController = require("./controllers/registerController"),
-express = require("express"),
 router = require("./routes/index");
 
 const app = express();
@@ -17,9 +17,7 @@ const Course = require("./models/course");
 const User = require("./models/user");
 const {body, validationResult} = require("express-validator");
 const methodOverride = require("method-override");
-const server = app.listen(app.get("port"), () => {
-  console.log("Server running at http://localhost:3000");
-}),
+const server = require("http").createServer(app),
 io = require("socket.io")(server);
 const chatController = require("./controllers/chatController")(io);
 
@@ -89,6 +87,6 @@ app.get("/thanks", (req, res) => {
 });
 app.get("token");
 
-app.listen(app.get("port"), () => {
-  console.log("Server running at http://localhost:" + port);
+server.listen(app.get("port"), () => {
+  console.log("Server running at http://localhost:3000");
 });

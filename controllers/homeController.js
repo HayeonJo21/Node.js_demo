@@ -47,5 +47,6 @@ exports.showQnA = (req, res) => {
 }
 
 exports.chat = (req, res) => {
+  console.log("chat homeController called.");
   res.render("chat");
 }

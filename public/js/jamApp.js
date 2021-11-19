@@ -1,4 +1,4 @@
-var socket = io();
+const socket = io();
 
 $(document).ready(() => {
   $("#modal-button").click(() => {
@@ -19,6 +19,16 @@ $(document).ready(() => {
       addJoinButtonListener();
     });
   });
+
+  $("#chatForm").submit(() => {
+    console.log("chat submit ajax proceed.");
+    socket.emit("message");
+    $("#chat-input").val("");
+    return false.socket.emit;
+  });
+  socket.on("message", (message) => {
+    displayMessage(message.content);
+  });
 });
 
 let addJoinButtonListener = () => {
@@ -38,16 +48,6 @@ let addJoinButtonListener = () => {
     });
   });
 };
-
-$("#chatForm").submit(() => {
-  console.log("chat submit ajax proceed.");
-  socket.emit("message");
-  $("#chat-input").val("");
-  return false;
-});
-socket.on("message", (message) => {
-  displayMessage(message.content);
-});
 
 let displayMessage = (message) => {
   $("#chat").prepend($("<li>").html(message));

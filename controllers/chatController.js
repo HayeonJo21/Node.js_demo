@@ -1,4 +1,5 @@
 module.exports = io => {
+  console.log("chatController called");
   io.on("connection", client => {
     console.log("new connection");
 
