@@ -32,7 +32,7 @@ $(document).ready(() => {
     return false;
   });
   socket.on("message", (message) => {
-    displayMessage(message.content, message.date);
+    displayMessage(message);
   });
 
 });
