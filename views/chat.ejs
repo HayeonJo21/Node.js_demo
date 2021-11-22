@@ -9,28 +9,26 @@
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>Chat</p>
+            <p>메시지 보내기</p>
             <h2>💬 Send Message</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
-
     <section class="login-area section-padding-100">
+      <div id="chat"></div>
         <div class="container">
             <div class="row justify-content-center">
 				<form id="chatForm">
 					<div style="width: 500px;">
 						<br>
 						<div class="form-group">
-							<label for="exampleFormControlTextarea1">메시지 보내기</label>
 							<textarea class="form-control" id="chat-input"
-								rows="3" style="width: 500px;" placeholder="이곳에 메세지를 작성하세요."
-								name="content"></textarea>
+								rows="3" style="width: 500px;" placeholder="이곳에 메세지를 작성하세요."></textarea>
 						</div>
-						<input type="submit" value="Send" class="primary" />
+						<input type="submit" value="Send" class="primary" id="chat-submit"/>
 					</div>
 				</form>
-<div id="chat"></div>
+
 </div>
 </div>
 </section>

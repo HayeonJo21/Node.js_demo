@@ -20,15 +20,16 @@ $(document).ready(() => {
     });
   });
 
-  $("#chatForm").submit(() => {
+  $("#chat-submit").click(() => {
     console.log("chat submit ajax proceed.");
     socket.emit("message");
     $("#chat-input").val("");
-    return false.socket.emit;
+    return false;
   });
   socket.on("message", (message) => {
     displayMessage(message.content);
   });
+
 });
 
 let addJoinButtonListener = () => {
