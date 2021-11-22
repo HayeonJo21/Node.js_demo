@@ -1,5 +1,10 @@
 const socket = io();
 
+socket.on("load all messages", (data) => {
+  data.forEach(message => {
+  displayMessage(message);
+});
+
 $(document).ready(() => {
   $("#modal-button").click(() => {
     $(".modal-body").html("");
@@ -23,17 +28,18 @@ $(document).ready(() => {
   $("#chatForm").submit(() => {
     console.log("chat submit ajax proceed.");
     let text =  $("#chat-input").val(),
-    userId = $("#chat-user-id").val();
+    userId = $("#chat-user-id").val(),
+    userName = $("#chat-user-name").val();
     socket.emit("message", {
       content: text,
-      userId: userId
+      userId: userId,
+      userName: userName
     });
+    
     $("#chat-input").val("");
     return false;
   });
-  socket.on("message", (message) => {
-    displayMessage(message);
-  });
+});
 
 });
 
@@ -56,8 +62,10 @@ let addJoinButtonListener = () => {
 };
 
 let displayMessage = (message) => {
-  var messageWithDate = message.content + "  (" + message.date + ")";
-  $("#chat").prepend($("<p>").html('<div class="message' + `${getCurrentUserClass(message.user)}` + '">' + messageWithDate + '</div>'));
+  var messageWithDate = message.content + "    (" + message.date + ")";
+  $("#chat").prepend($("<p>").html('<div class="message' + `${getCurrentUserClass(message.user)}` + '">'
+  + '<strong>' + `${message.userName}` + ':  ' + '</strong>'
+  + messageWithDate + '</div>'));
 };
 
 let getCurrentUserClass = (id) => {

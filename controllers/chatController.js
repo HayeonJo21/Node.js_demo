@@ -1,3 +1,5 @@
+const Message = require("../models/message");
+
 formatDateTime = (date) => {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -21,22 +23,33 @@ formatDateTime = (date) => {
 module.exports = io => {
   console.log("chatController called");
   var currentDate = formatDateTime(new Date());
-  io.on("connection", client => {
+
+    io.on("connection", client => {
     console.log("new connection");
+
+    Message.find({})
+    .sort({createdAt: -1}) // 데이터베이스의 결과를 최근 순으로 정렬
+    .then(messages => {
+      client.emit("load all messages", messages.reverse());
+      console.log("load all message succeed");
+    });
 
     client.on("disconnect", () => {
       console.log("user disconnected");
     });
 
-    client.on("message", data => {
+    client.on("message", (data) => {
       let messageAttributes = {
         content: data.content,
         userName: data.userName,
         user: data.userId,
         date: currentDate
-      };
-
-      io.emit("message", messageAttributes);
+      },
+      m = new Message(messageAttributes);
+      m.save()
+      .then(() => {
+        io.emit("message", messageAttributes);
+      }).catch(error => console.log("Error: " + error.message));
     });
   });
 };
