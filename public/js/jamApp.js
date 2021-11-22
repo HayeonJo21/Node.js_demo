@@ -20,9 +20,12 @@ $(document).ready(() => {
     });
   });
 
-  $("#chat-submit").click(() => {
+  $("#chatForm").submit(() => {
     console.log("chat submit ajax proceed.");
-    socket.emit("message");
+    let text =  $("#chat-input").val();
+    socket.emit("message", {
+      content: text
+    });
     $("#chat-input").val("");
     return false;
   });
