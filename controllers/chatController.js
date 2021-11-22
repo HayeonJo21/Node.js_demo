@@ -29,10 +29,14 @@ module.exports = io => {
     });
 
     client.on("message", data => {
-      io.emit("message", {
+      let messageAttributes = {
         content: data.content,
+        userName: data.userName,
+        user: data.userId,
         date: currentDate
-      });
+      };
+
+      io.emit("message", messageAttributes);
     });
   });
 };

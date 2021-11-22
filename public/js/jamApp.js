@@ -22,9 +22,11 @@ $(document).ready(() => {
 
   $("#chatForm").submit(() => {
     console.log("chat submit ajax proceed.");
-    let text =  $("#chat-input").val();
+    let text =  $("#chat-input").val(),
+    userId = $("#chat-user-id").val();
     socket.emit("message", {
-      content: text
+      content: text,
+      userId: userId
     });
     $("#chat-input").val("");
     return false;
@@ -53,7 +55,12 @@ let addJoinButtonListener = () => {
   });
 };
 
-let displayMessage = (message, date) => {
-  var messageWithDate = message + "  (" + date + ")"
-  $("#chat").prepend($("<p>").html(messageWithDate));
+let displayMessage = (message) => {
+  var messageWithDate = message.content + "  (" + message.date + ")";
+  $("#chat").prepend($("<p>").html('<div class="message' + `${getCurrentUserClass(message.user)}` + '">' + messageWithDate + '</div>'));
 };
+
+let getCurrentUserClass = (id) => {
+  let userId = $("#chat-user-id").val();
+  return userId === id ? "current-user" : "";
+}

@@ -7,6 +7,7 @@
     </header>
     <!-- ##### Header Area End ##### -->
     <!-- ##### Breadcumb Area Start ##### -->
+    <% if(currentUser) { %>
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>메시지 보내기</p>
@@ -22,6 +23,8 @@
         <div class="container">
             <div class="row justify-content-center">
 				<form id="chatForm">
+          <input id="chat-user-name" type="hidden" value="<%= currentUser.name" %>">
+          <input id="chat-user-id" type="hidden" value="<%= currentUser._id %>">
 					<div style="width: 500px;">
 						<br>
 						<div class="form-group">
@@ -35,6 +38,7 @@
 </div>
 </div>
 </section>
+<% } %>
 </body>
 
 </html>
