@@ -37,6 +37,9 @@ socket.on("user disconnected", () => {
 
 socket.on("message", (message) => {
   displayMessage(message);
+  for(let i = 0; i < 2; i++){
+    $(".chat-icon").fadeOut(250).fadeIn(250);
+  }
 });
 
 $(document).ready(() => {
