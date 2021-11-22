@@ -4,11 +4,25 @@ const passport = require("passport");
 const httpStatus = require("http-status-codes");
 const {body, validationResult} = require("express-validator");
 
+formatDate = (date) => {  //date format 메서드
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    var formatedDate = year + '년 ' + month + '월 ' + day + "일";
+
+    return formatedDate;
+};
+
 getJamParams = (body) => {
   return{
     title: body.title,
     location: body.location,
-    date: body.date,
+    date: formatDate(body.date),
     requiredPosition: body.requiredPosition,
     host: body.host,
     description: body.description
