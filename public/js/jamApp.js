@@ -35,7 +35,7 @@ $(document).ready(() => {
       userId: userId,
       userName: userName
     });
-    
+
     $("#chat-input").val("");
     return false;
   });
