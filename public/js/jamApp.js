@@ -27,7 +27,7 @@ $(document).ready(() => {
     return false;
   });
   socket.on("message", (message) => {
-    displayMessage(message.content);
+    displayMessage(message.content, message.date);
   });
 
 });
@@ -50,6 +50,7 @@ let addJoinButtonListener = () => {
   });
 };
 
-let displayMessage = (message) => {
-  $("#chat").prepend($("<li>").html(message));
+let displayMessage = (message, date) => {
+  var messageWithDate = message + "  (" + date + ")"
+  $("#chat").prepend($("<p>").html(messageWithDate));
 };
