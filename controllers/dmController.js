@@ -29,6 +29,7 @@ getDmParams = (body) => {
     content: body.chatContent,
     userName: body.sender,
     user: body.senderId,
+    receiverName: body.receiverName,
     receiver: body.receiver,
     date: currentDate
   };
@@ -48,6 +49,19 @@ module.exports = {
       Message.find({user: userId})
       .then(messages => {
         res.render("chatList", {
+          chats : messages
+        });
+      }).catch(error => {
+        console.log("Error fetching message by ID " + error.message);
+        next(error);
+      });
+    },
+
+    showDM: (req, res, next) => {
+      let userId = req.params.id;
+      Message.find({receiver: userId})
+      .then(messages => {
+        res.render("directMessage", {
           chats : messages
         });
       }).catch(error => {

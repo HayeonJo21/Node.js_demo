@@ -19,12 +19,12 @@
   <div class="container">
 <div class="row justify-content-center">
 				<div class="list-group" style="width: 500px;" align="center">
-            <a href="/chatAll" class="list-group-item list-group-item-action" style="backgroud-color:#212529;">전체 회원 채팅방</a>
-            <a class="list-group-item list-group-item-action active" style="background-color:#b3d9ff;">현재
+            <a href="/chatAll" class="list-group-item list-group-item-action active" style="backgroud-color:#fff6a1;">🗣 전체 회원 채팅방</a>
+            <a class="list-group-item list-group-item-action active" style="background-color:#ebfdff;">현재
               채팅중인 상대</a>
             <% chats.forEach(c => { %>
               <% if(c.receiver){ %>
-                <a href="/chatAll" class="list-group-item list-group-item-action" style="backgroud-color:#212529;"><%= c.receiver %></a>
+                <a href="/directMessage/<%= c.receiver %>" class="list-group-item list-group-item-action" style="backgroud-color:#212529;"><%= c.receiverName %></a>
                 <% } %>
                 <% }); %>
 				</div>

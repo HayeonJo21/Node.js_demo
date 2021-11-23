@@ -1,0 +1,44 @@
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+    <!-- ##### Breadcumb Area Start ##### -->
+    <% if(currentUser) { %>
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <h2>💬 Send Message</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+    <section class="login-area section-padding-100">
+      <div class="container">
+        <div class="row justify-content-center">
+      <div id="chat">
+      </div>
+      <br/>
+        <div class="container">
+            <div class="row justify-content-center">
+				<form id="chatForm">
+          <input id="chat-user-name" type="hidden" value="<%= currentUser.name %>">
+          <input id="chat-user-id" type="hidden" value="<%= currentUser._id %>">
+					<div style="width: 500px;">
+						<br>
+						<div class="form-group">
+							<textarea class="form-control" id="chat-input"
+								rows="3" style="width: 500px;" placeholder="이곳에 메세지를 작성하세요."></textarea>
+						</div>
+						<input type="submit" value="Send"  class="btn btn-light" id="chat-submit">
+					</div>
+				</form>
+</div>
+</div>
+</div>
+</section>
+<% } %>
+</body>
+
+</html>

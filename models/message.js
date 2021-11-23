@@ -15,9 +15,16 @@ const messageSchema = new Schema({
     ref: "User",
     required: true
   },
-  receiver: {
+  
+  receiverName: {
     type: String
   },
+
+  receiver: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
+
   date: {
     type: String
   }

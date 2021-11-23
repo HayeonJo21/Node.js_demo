@@ -31,7 +31,8 @@
               <div class="form-group">
                   <input type="hidden" name="sender" id="sender" value="<%= currentUser.name %>"/>
                   <input name="senderId" id="senderId" type="hidden" value="<%= currentUser._id %>">
-                  <input type="hidden" name="receiver" id="receiver" value="<%= receiver.name %>"/>
+                  <input type="hidden" name="receiverName" id="receiverName" value="<%= receiver.name %>"/>
+                        <input type="hidden" name="receiver" id="receiver" value="<%= receiver._id %>"/>
                 <textarea class="form-control" id="chatContent" name="chatContent"
                   rows="3" style="width: 550px;" placeholder="이곳에 메세지를 작성하세요."></textarea>
                   <div align="right" style="display: table-cell; padding: 0 0 0 550px;">
