@@ -114,15 +114,15 @@
                                           <a href="/user/mypage/<%= currentUser._id %>" id="loginBtn">Logged in as <%= currentUser.nickname %></a>
                                           <a href="/user/logout" id="loginBtn">&nbsp; &nbsp; Logout</a>
                                       </div>
+                                      <!-- chat-btn -->
+                                      <div class="chat-btn">
+                                          <p><a href="/chat/<%= currentUser._id %>" class="chat-icon"><img src="/images/bg-img/chat.png" width="35" height="35"></a></p>
+                                      </div>
                                       <% } else { %>
                                     <div class="login-register-btn mr-50">
                                         <a href="/user/login" id="loginBtn">Login / Register</a>
                                     </div>
                                     <% } %>
-                                    <!-- chat-btn -->
-                                    <div class="chat-btn">
-                                        <p><a href="/chat" class="chat-icon"><img src="/images/bg-img/chat.png" width="35" height="35"></a></p>
-                                    </div>
                                 </div>
                             </div>
                             <!-- Nav End -->

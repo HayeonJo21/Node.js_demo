@@ -1,7 +1,8 @@
 const router = require("express").Router(),
 userController = require("../controllers/userController"),
 homeController = require("../controllers/homeController"),
-registerController = require("../controllers/registerController");
+registerController = require("../controllers/registerController"),
+dmController = require("../controllers/dmController");
 
 const {body, validationResult} = require("express-validator");
 const methodOverride = require("method-override");
@@ -32,8 +33,9 @@ router.get("/edit/:id", userController.edit);
 router.put("/update/:id", userController.update, userController.redirectView);
 router.delete("/delete/:id", userController.delete, userController.redirectView);
 
-//다른 유저 정보 보기 & 메시지 보내기 폼
+//다른 유저 정보 보기 & 메시지 보내기 폼 & 메시지 보내기
 router.get("/:id", userController.show, userController.showUser);
 router.get("/sendMessage/:id", homeController.show, homeController.showDMForm);
+router.post("/dm/send", dmController.create);
 
 module.exports = router;

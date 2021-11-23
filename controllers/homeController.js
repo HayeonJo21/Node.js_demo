@@ -48,8 +48,7 @@ exports.showQnA = (req, res) => {
   res.render("qna");
 }
 
-exports.chat = (req, res) => {
-  console.log("chat homeController called.");
+exports.chatAll = (req, res) => {
   res.render("chat");
 }
 
@@ -57,7 +56,7 @@ exports.show = (req, res, next) => {
     let userId = req.params.id;
     User.findById(userId)
     .then(user => {
-      res.locals.receiverUser = user;
+      res.locals.receiver = user;
       next();
     })
     .catch(error => {

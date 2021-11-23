@@ -1,0 +1,37 @@
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+    <!-- ##### Breadcumb Area Start ##### -->
+
+<!-- Wrapper -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+    <div class="bradcumbContent">
+        <p>메시지 리스트</p>
+        <h2>💬 Message List</h2>
+    </div>
+</section>
+<section class="login-area section-padding-100">
+  <div class="container">
+<div class="row justify-content-center">
+				<div class="list-group" style="width: 500px;" align="center">
+            <a href="/chatAll" class="list-group-item list-group-item-action" style="backgroud-color:#212529;">전체 회원 채팅방</a>
+            <a class="list-group-item list-group-item-action active" style="background-color:#b3d9ff;">현재
+              채팅중인 상대</a>
+            <% chats.forEach(c => { %>
+              <% if(c.receiver){ %>
+                <a href="/chatAll" class="list-group-item list-group-item-action" style="backgroud-color:#212529;"><%= c.receiver %></a>
+                <% } %>
+                <% }); %>
+				</div>
+			</div>
+      </div>
+      </section>
+
+    </body>
+
+    </html>
