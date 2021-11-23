@@ -1,5 +1,6 @@
 const router = require("express").Router(),
 userController = require("../controllers/userController"),
+homeController = require("../controllers/homeController"),
 registerController = require("../controllers/registerController");
 
 const {body, validationResult} = require("express-validator");
@@ -30,5 +31,9 @@ router.get("/mypage/:id", userController.show, userController.showMypage);
 router.get("/edit/:id", userController.edit);
 router.put("/update/:id", userController.update, userController.redirectView);
 router.delete("/delete/:id", userController.delete, userController.redirectView);
+
+//다른 유저 정보 보기 & 메시지 보내기 폼
+router.get("/:id", userController.show, userController.showUser);
+router.get("/sendMessage/:id", homeController.show, homeController.showDMForm);
 
 module.exports = router;

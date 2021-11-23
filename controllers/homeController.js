@@ -1,3 +1,5 @@
+const User = require("../models/user");
+const passport = require("passport");
 
 var courses = [
   {
@@ -50,3 +52,20 @@ exports.chat = (req, res) => {
   console.log("chat homeController called.");
   res.render("chat");
 }
+
+exports.show = (req, res, next) => {
+    let userId = req.params.id;
+    User.findById(userId)
+    .then(user => {
+      res.locals.receiverUser = user;
+      next();
+    })
+    .catch(error => {
+      console.log("Error fetching user by ID: " + error.message);
+      next(error);
+    });
+  }
+
+  exports.showDMForm = (req, res) => {
+    res.render("directChat");
+  }

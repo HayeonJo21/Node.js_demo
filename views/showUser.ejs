@@ -4,69 +4,60 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-          function conf() {
-            var con = confirm("정말로 삭제하시겠습니까?");
-            if(con == true){
-              alert("게시물을 삭제합니다.");
-            }
-          }
-        </script>
     </header>
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
-            <p>Come and join</p>
-            <h2>JAMS</h2>
+            <p>다른 회원의 정보입니다</p>
+            <h2><%= user.name %>'s page</h2>
         </div>
     </section>
-    <br/><br/><br/><br/>
     <!-- ##### Breadcumb Area End ##### -->
-    <div class="event-thumbnail" align="center">
-        <img src="/images/bg-img/e5.jpg" alt="">
-    </div>
+
     <!-- ##### Login Area Start ##### -->
     <section class="login-area section-padding-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3><%= jam.title %></h3>
+                        <h3>Information</h3>
                         <!-- Login Form -->
                         <div class="login-form">
                             <form>
                               <div class="form-group">
-                                  <label for="id"><strong>Location</strong></label>
-                                  &nbsp;&nbsp;&nbsp;  <%= jam.location %>
+                                  <label for="id"><strong>Name</strong></label>
+                                  &nbsp;&nbsp;&nbsp;  <%= user.name %>
                               </div>
                                 <div class="form-group">
-                                    <label for="id"><strong>Date</strong></label>
-                                &nbsp;&nbsp;&nbsp;     <%= jam.date %>
+                                    <label for="id"><strong>Nickname</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= user.nickname %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id"><strong>Hosted by</strong></label>
-                                &nbsp;&nbsp;&nbsp; <a href="/user/<%= user._id %>"> <%= user.nickname %></a>
+                                    <label for="id"><strong>Email</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= user.email %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id"><strong>Required Position</strong></label>
-                                  &nbsp;&nbsp;&nbsp;   <%= jam.requiredPosition %>
+                                    <label for="id"><strong>Position</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= user.position %>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id"><strong>Description</strong></label>
-                                  &nbsp;&nbsp;&nbsp;   <%= jam.description %>
+                                    <label for="id"><strong>Profile</strong></label>
+                                &nbsp;&nbsp;&nbsp;     <%= user.profile %>
                                 </div>
                                 </form>
                                 <br/><br/>
-
                                 <% if(loggedIn) { %>
                                   <% if(currentUser.id == user.id){ %>
-                                <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
-                                <% } %>
-                                <% } %>
-
+                                <a href="/user/edit/<%= user._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/user/delete/<%= user._id %>?_method=DELETE" onclick="conf()">Delete Account</a>
+                                <% } else {%>
+                                  <form action="/user/sendMessage/<%= user._id %>">
+                                  <button type="submit" class="btn btn-info">메시지 보내기</button>
+                                  </form>
+                                  <% } %>
+                              <% } %>
                         </div>
                     </div>
                 </div>

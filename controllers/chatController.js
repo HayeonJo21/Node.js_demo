@@ -21,6 +21,7 @@ formatDateTime = (date) => {
 };
 
 module.exports = io => {
+
   console.log("chatController called");
   var currentDate = formatDateTime(new Date());
 

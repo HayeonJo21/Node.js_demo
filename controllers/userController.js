@@ -39,6 +39,10 @@ module.exports = {
     });
   },
 
+  showUser: (req, res) => {
+    res.render("showUser");
+  },
+
   showMypage: (req, res) => {
     res.render("mypage");
   },

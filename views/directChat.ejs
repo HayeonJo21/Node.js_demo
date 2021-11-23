@@ -1,0 +1,47 @@
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+    <!-- ##### Breadcumb Area Start ##### -->
+
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <p><%=receiverUser.nickname %>에게 메시지 보내기</p>
+            <h2>💬 Send Message </h2>
+        </div>
+    </section>
+    <section class="login-area section-padding-100">
+      <div class="container">
+      <div id="chat"></div>
+      </div>
+      <br/>
+        <div class="container">
+            <div class="row justify-content-center">
+				<form id="chatForm">
+					<div style="width: 500px;">
+						<div style="width: 800px; height: 100px; display: table;">
+							<span class="align-middle"
+								style="display: table-cell; padding: 0 0 0 20px;">받는사람: <%= receiverUser.name %> </span>
+						<br/>
+              <br/>
+              <div class="form-group">
+                <textarea class="form-control" id="chat-input"
+                  rows="3" style="width: 550px;" placeholder="이곳에 메세지를 작성하세요."></textarea>
+                  <div align="right" style="display: table-cell; padding: 0 0 0 550px;">
+                  <button type="submit" class="btn btn-light" style="width: 80px;" id="chat-submit">Send</button>
+                  </div>
+              </div>
+
+
+				</form>
+			</div>
+		</div>
+    </section>
+
+  </body>
+
+  </html>
