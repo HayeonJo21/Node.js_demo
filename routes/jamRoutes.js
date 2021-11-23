@@ -25,8 +25,9 @@ router.post("/register",
  router.get("/detail", jamController.showDetailPage);
  router.get("/detail/:id", jamController.getUserForDetail, jamController.showDetailPage);
 
- //Jam Update, edit, DELETE
+ //Jam Update, edit, delete, join
  router.get("/edit/:id", jamController.edit);
+ router.get("/join/:id", jamController.showJoinForm);
  router.put("/update/:id", jamController.update, jamController.redirectView);
  router.delete("/delete/:id", jamController.delete, jamController.redirectView);
 

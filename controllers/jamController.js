@@ -220,6 +220,10 @@ join: (req, res, next) => {
   }
 },
 
+showJoinForm: (req, res) => {
+  res.render("jamJoinForm");
+},
+
 filterUserJams: (req, res, next) => {
   let currentUser = res.locals.currentUser;
   if(currentUser){ // 사용자 로그인 유무 체크

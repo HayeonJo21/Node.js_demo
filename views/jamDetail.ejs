@@ -64,6 +64,8 @@
                                   <% if(currentUser.id == user.id){ %>
                                 <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
+                                <% } else{ %>
+                                    <a href="/jam/join/<%= jam._id %>"><button type="button" class="btn btn-outline-primary">참여 신청하기</button></a>
                                 <% } %>
                                 <% } %>
 
