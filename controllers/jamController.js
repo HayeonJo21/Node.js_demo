@@ -111,15 +111,14 @@ registerForm: (req, res) => {
   res.render("jamRegisterForm");
 },
 
-showDetailPage: (req, res) => {
+showDetailPage: (req, res, next) => {
   let jamId = req.params.id;
 
   if(jamId){
     Jam.findById(jamId)
     .then(jam => {
-      res.render("jamDetail", {
-        jam: jam
-      });
+      res.locals.jam = jam;
+      next();
     })
     .catch(error => {
       console.log("Error fetching jam by ID " + error.message);
@@ -222,6 +221,10 @@ join: (req, res, next) => {
 
 showJoinForm: (req, res) => {
   res.render("jamJoinForm");
+},
+
+showDetailView: (req, res) => {
+  res.render("jamDetail");
 },
 
 filterUserJams: (req, res, next) => {

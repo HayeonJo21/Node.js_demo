@@ -23,7 +23,7 @@ router.post("/register",
 
  //Jam 디테일 페이지
  router.get("/detail", jamController.showDetailPage);
- router.get("/detail/:id", jamController.getUserForDetail, jamController.showDetailPage);
+ router.get("/detail/:id", jamController.getUserForDetail, jamController.showDetailPage, jamController.showDetailView);
 
  //Jam Update, edit, delete, join
  router.get("/edit/:id", jamController.edit);

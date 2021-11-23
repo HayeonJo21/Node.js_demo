@@ -7,7 +7,7 @@ module.exports = {
   },
 
   authenticate: passport.authenticate("local", {
-    failureRedirect: "/login",
+    failureRedirect: "/user/login",
     failureFlash: "로그인에 실패했습니다.",
     successRedirect: "/",
     successFlash: "로그인 되었습니다."

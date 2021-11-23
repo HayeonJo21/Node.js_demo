@@ -45,7 +45,7 @@ socket.on("message", (message) => {
 $(document).ready(() => {
   $("#modal-button").click(() => {
     $(".modal-body").html("");
-    $.get("/api/jams", (results = {}) => {
+    $.get("/api/jams?apiToken=soundyT0k3n", (results = {}) => {
       let data = results.data;
       if(!data || !data.jams) return;
 
