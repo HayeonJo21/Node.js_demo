@@ -11,6 +11,7 @@
         <div class="bradcumbContent">
             <p>See what’s new</p>
             <h2>News</h2>
+
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -113,10 +114,16 @@
                         </nav>
                     </div>
                 </div>
-
+<% if(loggedIn) { %>
                 <div class="col-12 col-lg-3">
+  <a href="/post/registerForm" class="btn oneMusic-btn m-2">📝 새 게시물 작성 <i class="fa fa-angle-double-right"></i></a>
+  <br/><br/>
+  <% } else {%>
+    <div class="col-12 col-lg-3">
+<a href="/user/login" class="btn oneMusic-btn m-2">📝 새 게시물 작성 <i class="fa fa-angle-double-right"></i></a>
+<br/><br/>
+<% } %>
                     <div class="blog-sidebar-area">
-
                         <!-- Widget Area -->
                         <div class="single-widget-area mb-30">
                             <div class="widget-title">

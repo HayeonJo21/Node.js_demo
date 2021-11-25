@@ -20,7 +20,7 @@ postSchema = mongoose.Schema({
   },
 
   date: {
-    type: Date
+    type: String
   },
 
   views: {
@@ -30,6 +30,11 @@ postSchema = mongoose.Schema({
   writer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+
+  comment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Comment"
   }
 });
 

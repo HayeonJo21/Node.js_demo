@@ -1,0 +1,59 @@
+</div>
+          </nav>
+      </div>
+  </div>
+</div>
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Breadcumb Area Start ##### -->
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+<div class="bradcumbContent">
+  <p>Share anything you want!</p>
+  <h2>Free Board</h2>
+</div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+
+<!-- ##### Login Area Start ##### -->
+<section class="login-area section-padding-100">
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+          <div class="login-content">
+              <h3>게시물 등록</h3>
+              <!-- Login Form -->
+              <div class="login-form">
+
+                  <form action="/post/register" method="post">
+                    <div class="form-group">
+                        <label for="title"><strong>제목</strong></label>
+                        <input class="form-control form-control-lg" type="text" name="title" id="title" placeholder="제목을 입력하세요." aria-label=".form-control-lg example">
+                    </div>
+                    <br/>
+                      <div class="form-group">
+                    <label for="title"><strong>작성자</strong></label>
+                    <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" value="<%= currentUser.nickname %>" disabled>
+                    <input type="hidden" name="writer" id="writer" value="<%= currentUser._id %>"/>
+                        </div>
+                        <br/>
+                              <div class="form-group" height="200">
+                                  <label for="content"><strong>내용</strong></label>
+                                  <textarea class="form-control" name="content" id="exampleFormControlTextarea1" cols="100" rows="700" placeholder="내용을 입력하세요."></textarea>
+                              </div>
+                                  <br/>
+                              <input class="form-control form-control-sm" id="filename" name="filename" type="file">
+                                  <br/>
+                      <button type="submit" class="btn oneMusic-btn mt-30" value="submit">Post</button>
+                      </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
+<!-- ##### Login Area End ##### -->
+
+</body>
+
+</html>
