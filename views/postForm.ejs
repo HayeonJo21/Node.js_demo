@@ -27,6 +27,16 @@
 
                   <form action="/post/register" method="post">
                     <div class="form-group">
+                      <select name="category" class="form-select" aria-label="Default select example">
+                        <option name="category" selected>카테고리를 선택해주세요.</option>
+                        <option name="category" value="music">Music</option>
+                        <option name="category" value="events">Events</option>
+                        <option name="category" value="festivals">Festivals</option>
+                        <option name="category" value="lifestyle">Lifestyle</option>
+                        <option name="category" value="uncategorized">Uncategorized</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                         <label for="title"><strong>제목</strong></label>
                         <input class="form-control form-control-lg" type="text" name="title" id="title" placeholder="제목을 입력하세요." aria-label=".form-control-lg example">
                     </div>

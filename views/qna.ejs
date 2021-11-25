@@ -7,7 +7,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcumb Area Start ##### -->
-    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(images/bg-img/breadcumb3.jpg);">
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>See what’s new</p>
             <h2>News</h2>
@@ -22,11 +22,39 @@
             <div class="row">
                 <div class="col-12 col-lg-9">
 
+                  <% posts.forEach(p => { %>
                     <!-- Single Post Start -->
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="images/bg-img/blog1.jpg" alt=""></a>
+                            <a href="#"><img src="/images/bg-img/blog1.jpg" alt=""></a>
+                            <!-- Post Date -->
+                            <div class="post-date">
+                                <h6><strong><%= p.category %></strong></h6>
+                            </div>
+                        </div>
+
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <!-- Post Title -->
+                            <a href="#" class="post-title"><%= p.title %></a>
+                            <!-- Post Meta -->
+                            <div class="post-meta d-flex mb-30">
+                                <p class="post-author">By<a href="#"><%= p.writer %></a></p>
+                                <p class="tags"><a href="#"><%= p.date %></a></p>
+                                <p class="tags"><a href="#">2 Comments</a></p>
+                            </div>
+                            <!-- Post Excerpt -->
+                            <p><%= p.content %></p>
+                        </div>
+                    </div>
+                      <% }); %>
+
+                    <!-- Single Post Start -->
+                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Post Thumb -->
+                        <div class="blog-post-thumb mt-30">
+                            <a href="#"><img src="/images/bg-img/blog2.jpg" alt=""></a>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <span>15</span>
@@ -53,34 +81,7 @@
                     <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Post Thumb -->
                         <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="images/bg-img/blog2.jpg" alt=""></a>
-                            <!-- Post Date -->
-                            <div class="post-date">
-                                <span>15</span>
-                                <span>June ‘18</span>
-                            </div>
-                        </div>
-
-                        <!-- Blog Content -->
-                        <div class="blog-content">
-                            <!-- Post Title -->
-                            <a href="#" class="post-title">5 Festivals you shouldn’t miss this summer</a>
-                            <!-- Post Meta -->
-                            <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By<a href="#"> Admin</a></p>
-                                <p class="tags">in<a href="#"> Events</a></p>
-                                <p class="tags"><a href="#">2 Comments</a></p>
-                            </div>
-                            <!-- Post Excerpt -->
-                            <p>Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis. Pellentesque sit amet velit a libero viverra porta non eu justo. Vivamus mollis metus sem, ac sodales dui lobortis.</p>
-                        </div>
-                    </div>
-
-                    <!-- Single Post Start -->
-                    <div class="single-blog-post mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Post Thumb -->
-                        <div class="blog-post-thumb mt-30">
-                            <a href="#"><img src="images/bg-img/blog3.jpg" alt=""></a>
+                            <a href="#"><img src="/images/bg-img/blog3.jpg" alt=""></a>
                             <!-- Post Date -->
                             <div class="post-date">
                                 <span>15</span>

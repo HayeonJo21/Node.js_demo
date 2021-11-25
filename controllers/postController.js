@@ -21,6 +21,7 @@ var currentDate = formatDate(new Date());
 
 getPostParams = (body) => {
   return{
+    category: body.category,
     title: body.title,
     content: body.content,
     filename: body.filename,
@@ -40,7 +41,6 @@ module.exports = {
    .then(() => {
      console.log("*****SUCCESS******");
       req.flash("success", "게시글이 등록되었습니다.");
-      res.locals.post = newPost;
       next();
   })
   .catch(error => {
@@ -95,28 +95,32 @@ module.exports = {
     else next();
   },
 
-//
-// showDetailPage: (req, res, next) => {
-//   let jamId = req.params.id;
-//
-//   if(jamId){
-//     Jam.findById(jamId)
-//     .then(jam => {
-//       res.locals.jam = jam;
-//       next();
-//     })
-//     .catch(error => {
-//       console.log("Error fetching jam by ID " + error.message);
-//       next(error);
-//     });
-//   }
-//   else{
-//   res.render("jamDetail");
-// }
-// },
+
+searchPostForIndex: (req, res, next) => {
+    Post.find({})
+    .then(posts => {
+      res.locals.posts = posts;
+      next();
+    })
+    .catch(error => {
+      console.log("Error fetching searching post " + error.message);
+      next(error);
+    });
+},
 
 showRegisterForm: (req, res ) =>{
   res.render("postForm");
+},
+
+indexView: (req, res) => {
+  res.render("qna");
+},
+
+respondJSON: (req, res) => {
+  res.json({
+    status: httpStatus.OK,
+    data: res.locals
+  });
 }
 
 // edit: (req, res, next) => {
@@ -232,16 +236,6 @@ showRegisterForm: (req, res ) =>{
 //   }
 // },
 //
-// indexView: (req, res) => {
-//   res.render("jam");
-// },
-//
-// respondJSON: (req, res) => {
-//   res.json({
-//     status: httpStatus.OK,
-//     data: res.locals
-//   });
-// },
 //
 // errorJSON: (error, req, res, next) => {
 //   let errorObject;
