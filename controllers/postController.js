@@ -26,7 +26,8 @@ getPostParams = (body) => {
     content: body.content,
     filename: body.filename,
     date: currentDate,
-    writer: body.writer
+    writer: body.writer,
+    writerNickname: body.writerNickname
   };
 };
 

@@ -37,6 +37,10 @@ title: {
     ref: "User"
   },
 
+  writerNickname: {
+    type: String
+  },
+
   comment: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Comment"
