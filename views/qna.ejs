@@ -7,7 +7,7 @@
           function conf() {
             var con = confirm("정말로 삭제하시겠습니까?");
             if(con == true){
-              alert("댓글을 삭제합니다.");
+              alert("삭제되었습니다.");
             }
           }
         </script>
@@ -48,9 +48,13 @@
                             <a href="#" class="post-title"><%= p.title %></a>
                             <!-- Post Meta -->
                             <div class="post-meta d-flex mb-30">
-                                <p class="post-author">By &nbsp; <a href="#"><%= p.writerNickname %></a></p>
+                                <p class="post-author">By &nbsp; <a href="/user/<%= p.writer %>"><%= p.writerNickname %></a></p>
                                 <p class="tags"><a href="#"><%= p.date %></a></p>
-                                <p class="tags"><a href="#"> Comments </a></p>
+                                <% if(loggedIn && p.writer.equals(currentUser._id)){ %>
+                                <p class="tags"><a href="/post/delete/<%= p._id %>" onclick="conf()"> Delete </a></p>
+                                <% } else{ %>
+                                    <p class="tags"><a href="#"> Like ♡ </a></p>
+                                    <% } %>
                             </div>
                             <!-- Post Excerpt -->
                             <p><%= p.content %></p>

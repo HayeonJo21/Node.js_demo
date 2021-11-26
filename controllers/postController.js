@@ -181,7 +181,21 @@ searchCommentsForIndex: (req, res, next) => {
     });
 },
 
-delete: (req, res, next) => {
+deletePost: (req, res, next) => {
+let postId = req.params.id;
+Post.findByIdAndRemove(postId)
+.then(() => {
+  res.locals.redirect = "/post/qna"
+  req.flash("success", "게시물 삭제가 완료되었습니다.");
+  next();
+})
+.catch(error => {
+  console.log("Error deleting post by ID : " + error.message);
+  next();
+});
+},
+
+deleteComment: (req, res, next) => {
 let commentId = req.params.id;
 Comment.findByIdAndRemove(commentId)
 .then(() => {
