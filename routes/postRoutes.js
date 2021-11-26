@@ -8,5 +8,6 @@ router.get("/qna", postController.searchPostForIndex, postController.searchComme
 router.post("/comment/register", postController.commentCreate, postController.searchPostForIndex, postController.searchCommentsForIndex, postController.indexView);
 router.get("/comment/delete/:id", postController.deleteComment, postController.redirectView);
 router.get("/delete/:id", postController.deletePost, postController.redirectView);
+router.get("/like/:id", postController.insertLike, postController.redirectView);
 
  module.exports = router;

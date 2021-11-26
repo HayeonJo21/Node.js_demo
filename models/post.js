@@ -20,16 +20,13 @@ title: {
     type: String
   },
 
-  likes: {
-    type: Number
-  },
+  like: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }],
 
   date: {
     type: String
-  },
-
-  views: {
-    type: Number
   },
 
   writer: {

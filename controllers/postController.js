@@ -104,51 +104,7 @@ commentCreate: (req, res, next) => {
 });
 },
 
-getComments: (req, res, next) => {
-  if(req.skip) next();
-
-    let postId = req.params.id;
-
-      Post.findById(postId)
-      .then(post => {
-        console.log("Post: " + post.title);
-        Comment.find({originalPost: post._id}).
-        then(comments => {
-          console.log("comments: " + comments);
-          res.locals.comments = comments;
-          next();
-        }).catch(error => {
-          console.log("Error fetching comments: " + error.message);
-          next(error);
-      });
-        next();
-      }).catch(error => {
-        console.log("Error fetching post by ID: " + error.message);
-        next(error);
-      });
-},
-//
-// getUserForDetail: (req, res, next) => {
-//     let jamId = req.params.id;
-//     Jam.findById(jamId)
-//     .then(jam => {
-//       User.findById(jam.host)
-//       .then(user => {
-//         res.locals.user = user;
-//         console.log("@@@@ USER:" + user.name);
-//         next();
-//       }).catch(error => {
-//         console.log("Error fetching user by ID: " + error.message);
-//         next(error);
-//       });
-//     })
-//     .catch(error => {
-//       console.log("Error fetching jam by ID " + error.message);
-//       next(error);
-//     });
-// },
-
-  redirectView: (req, res, next) => {
+redirectView: (req, res, next) => {
     console.log("redirect view called!");
     let redirectPath = res.locals.redirect;
     if(redirectPath) res.redirect(redirectPath);
@@ -179,6 +135,26 @@ searchCommentsForIndex: (req, res, next) => {
       console.log("Error fetching searching comment " + error.message);
       next(error);
     });
+},
+
+insertLike: (req, res, next) => {
+  let postId = req.params.id,
+  likeUser = req.user;
+
+  Post.findByIdAndUpdate(postId, {
+    $addToSet: {
+      like: likeUser
+  }
+})
+  .then(post=> {
+    console.log("Updated post : " + post.title);
+    res.locals.redirect = "/post/qna"
+    next();
+  })
+  .catch(error => {
+    console.log("Error updating post by ID: " + error.message);
+    next(error);
+  });
 },
 
 deletePost: (req, res, next) => {
@@ -224,6 +200,50 @@ respondJSON: (req, res) => {
   });
 }
 
+//
+// getComments: (req, res, next) => {
+//   if(req.skip) next();
+//
+//     let postId = req.params.id;
+//
+//       Post.findById(postId)
+//       .then(post => {
+//         console.log("Post: " + post.title);
+//         Comment.find({originalPost: post._id}).
+//         then(comments => {
+//           console.log("comments: " + comments);
+//           res.locals.comments = comments;
+//           next();
+//         }).catch(error => {
+//           console.log("Error fetching comments: " + error.message);
+//           next(error);
+//       });
+//         next();
+//       }).catch(error => {
+//         console.log("Error fetching post by ID: " + error.message);
+//         next(error);
+//       });
+// },
+//
+// getUserForDetail: (req, res, next) => {
+//     let jamId = req.params.id;
+//     Jam.findById(jamId)
+//     .then(jam => {
+//       User.findById(jam.host)
+//       .then(user => {
+//         res.locals.user = user;
+//         console.log("@@@@ USER:" + user.name);
+//         next();
+//       }).catch(error => {
+//         console.log("Error fetching user by ID: " + error.message);
+//         next(error);
+//       });
+//     })
+//     .catch(error => {
+//       console.log("Error fetching jam by ID " + error.message);
+//       next(error);
+//     });
+// },
 // edit: (req, res, next) => {
 //   let jamId = req.params.id;
 //   Jam.findById(jamId)

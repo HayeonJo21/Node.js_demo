@@ -9,5 +9,4 @@ router.use(jamController.errorJSON);
 
 router.get("/jams", jamController.getAllJams, jamController.filterUserJams, jamController.respondJSON);
 router.get("/jams/:id/join", jamController.join, jamController.respondJSON);
-router.get("/post/comments/:id/show", postController.getComments);
 module.exports = router;
