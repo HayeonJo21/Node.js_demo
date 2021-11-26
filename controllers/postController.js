@@ -181,6 +181,20 @@ searchCommentsForIndex: (req, res, next) => {
     });
 },
 
+delete: (req, res, next) => {
+let commentId = req.params.id;
+Comment.findByIdAndRemove(commentId)
+.then(() => {
+  res.locals.redirect = "/post/qna"
+  req.flash("success", "댓글 삭제가 완료되었습니다.");
+  next();
+})
+.catch(error => {
+  console.log("Error deleting comment by ID : " + error.message);
+  next();
+});
+},
+
 showRegisterForm: (req, res) =>{
   res.render("postForm");
 },
@@ -236,19 +250,6 @@ respondJSON: (req, res) => {
 //   });
 // },
 //
-// delete: (req, res, next) => {
-// let jamId = req.params.id;
-// Jam.findByIdAndRemove(jamId)
-// .then(() => {
-//   res.locals.redirect = "/"
-//   req.flash("success", "삭제가 완료되었습니다.");
-//   next();
-// })
-// .catch(error => {
-//   console.log("Error deleting jam by ID : " + error.message);
-//   next();
-// });
-// },
 //
 // getAllJams: (req, res, next) => {
 //   Jam.find({})

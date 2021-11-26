@@ -3,6 +3,14 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+          function conf() {
+            var con = confirm("정말로 삭제하시겠습니까?");
+            if(con == true){
+              alert("댓글을 삭제합니다.");
+            }
+          }
+        </script>
     </header>
     <!-- ##### Header Area End ##### -->
 
@@ -61,10 +69,21 @@
 </form>
 <% if(comments){ %>
 <% comments.forEach(c => {
-  console.log(c.originalPost === p._id);
-  if (c.originalPost === p._id){ %>
-      <p><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; <%= c.date %></p>
-  <% } %>
+
+  if (c.originalPost.equals(p._id)){ %>
+    <% if(c.writer.equals(p.writer)){
+      if(c.writer.equals(currentUser._id)){ %>
+      <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp;X </a></div>
+      <%} else{ %>
+            <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)</div>
+            <% } %>
+      <% }else {
+        if(c.writer.equals(currentUser._id)){ %>
+      <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp; &nbsp; X </a></div>
+      <% } else { %>
+        <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)</div>
+        <% } %>
+  <% } } %>
   <% }); %>
   <%} else { %>
     아직 댓글이 없습니다. <% } %>
