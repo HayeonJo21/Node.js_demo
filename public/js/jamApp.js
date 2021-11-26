@@ -76,6 +76,26 @@ $(document).ready(() => {
     $("#chat-input").val("");
     return false;
   });
+
+    // $("#commentLink").click((event) => {
+    //   console.log("~~~ comment button clicked ~~~~");
+    //   $("#blog-comments").html("");
+    //   let $link = $(event.target),
+    //   postId = $link.data("id");
+    //   $.get('/api/post/comments/' + `${postId}` + '/show', (results = {}) => {
+    //     let data = results.data;
+    //     console.log("~~~~ data");
+    //     if(data && data.succcess){
+    //       data.post.forEach((p) => {
+    //         $("#blog-comments").append('<p>댓글댓글~~</p>');
+    //       });
+    //     }else{
+    //       console.log("comments 아직 없음");
+    //       $("#blog-comments").append('<p>댓글댓글 아직 없음~~</p>');
+    //     }
+    //   });
+    //     });
+
 });
 
 });
@@ -97,6 +117,7 @@ let addJoinButtonListener = () => {
     });
   });
 };
+
 
 let displayMessage = (message) => {
   var messageWithDate = message.content + "    (" + message.date + ")";

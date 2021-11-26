@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Post = require("../models/post");
+const Comment = require("../models/comment");
 const passport = require("passport");
 const httpStatus = require("http-status-codes");
 const {body, validationResult} = require("express-validator");
@@ -17,7 +18,29 @@ formatDate = (date) => {  //date format 메서드
 
     return formatedDate;
 };
+
+formatDateTime = (date) => {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear(),
+            hour = d.getHours().toString(),
+            minute = d.getMinutes().toString(),
+            sec = d.getSeconds().toString();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        if (hour.length < 2) hour = '0' + hour;
+        if (minute.length < 2) minute = '0' + minute;
+        if (minute.length < 2) minute = '0' + minute;
+        if (sec.length < 2) sec= '0' + sec;
+
+        var formatedDate = year + "/" + month + "/" + day + " " + hour + ":" + minute +":"+ sec;
+        return formatedDate;
+};
+
 var currentDate = formatDate(new Date());
+var currentDateTime = formatDateTime(new Date());
 
 getPostParams = (body) => {
   return{
@@ -28,6 +51,16 @@ getPostParams = (body) => {
     date: currentDate,
     writer: body.writer,
     writerNickname: body.writerNickname
+  };
+};
+
+getCommentParams = (body) => {
+  return{
+    content: body.content,
+    date: currentDateTime,
+    writer: body.writer,
+    writerNickname: body.writerNickname,
+    originalPost: body.originalPost
   };
 };
 
@@ -51,23 +84,49 @@ module.exports = {
     next();
   });
 },
-//
-// getUserInfo: (req, res, next) => {
-//   if(req.skip) next();
-//
-//     let newJam = new Jam(getJamParams(req.body));
-//
-//       User.findById(newJam.host)
-//       .then(user => {
-//         console.log("USER: " + user.name);
-//         res.locals.user = user;
-//         next();
-//       }).catch(error => {
-//         console.log("Error fetching user by ID: " + error.message);
-//         next(error);
-//       });
-//
-// },
+
+commentCreate: (req, res, next) => {
+ if(req.skip) next();
+
+ let newComment = new Comment(getCommentParams(req.body));
+
+ Comment.create(newComment)
+ .then(() => {
+   console.log("*****SUCCESS******");
+    req.flash("success", "댓글이 등록되었습니다.");
+    next();
+})
+.catch(error => {
+  console.log("#####ERROR#####  " + error.message);
+  req.flash("error", "댓글 등록에 실패했습니다. 다시 시도해주세요.");
+  res.locals.redirect = "/post/registerForm";
+  next();
+});
+},
+
+getComments: (req, res, next) => {
+  if(req.skip) next();
+
+    let postId = req.params.id;
+
+      Post.findById(postId)
+      .then(post => {
+        console.log("Post: " + post.title);
+        Comment.find({originalPost: post._id}).
+        then(comments => {
+          console.log("comments: " + comments);
+          res.locals.comments = comments;
+          next();
+        }).catch(error => {
+          console.log("Error fetching comments: " + error.message);
+          next(error);
+      });
+        next();
+      }).catch(error => {
+        console.log("Error fetching post by ID: " + error.message);
+        next(error);
+      });
+},
 //
 // getUserForDetail: (req, res, next) => {
 //     let jamId = req.params.id;
@@ -105,6 +164,19 @@ searchPostForIndex: (req, res, next) => {
     })
     .catch(error => {
       console.log("Error fetching searching post " + error.message);
+      next(error);
+    });
+},
+
+searchCommentsForIndex: (req, res, next) => {
+    Comment.find({})
+    .then(comments => {
+      console.log("comment searching complete");
+      res.locals.comments = comments;
+      next();
+    })
+    .catch(error => {
+      console.log("Error fetching searching comment " + error.message);
       next(error);
     });
 },
