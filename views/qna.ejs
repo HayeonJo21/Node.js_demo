@@ -59,11 +59,15 @@
   <br/>
 </div>
 </form>
+<% if(comments){ %>
 <% comments.forEach(c => {
-  if (c.originalPost != p._id){ %>
+  console.log(c.originalPost === p._id);
+  if (c.originalPost === p._id){ %>
       <p><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; <%= c.date %></p>
   <% } %>
   <% }); %>
+  <%} else { %>
+    아직 댓글이 없습니다. <% } %>
 <% } else{ %>
   댓글기능은 회원만 이용 가능합니다.
   <%} %>

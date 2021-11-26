@@ -181,7 +181,7 @@ searchCommentsForIndex: (req, res, next) => {
     });
 },
 
-showRegisterForm: (req, res ) =>{
+showRegisterForm: (req, res) =>{
   res.render("postForm");
 },
 
