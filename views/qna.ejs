@@ -50,7 +50,8 @@
                             <div class="post-meta d-flex mb-30">
                                 <p class="post-author">By &nbsp; <a href="/user/<%= p.writer %>"><%= p.writerNickname %></a></p>
                                 <p class="tags"><a href="#"><%= p.date %></a></p>
-                                <% if(loggedIn && p.writer.equals(currentUser._id)){ %>
+                                <% if(loggedIn){
+                                  if(p.writer.equals(currentUser._id)){%>
                                 <p class="tags"><a href="/post/delete/<%= p._id %>" onclick="conf()"> Delete </a></p>
                                 <% } else{
                                   if(p.like && p.like.includes(currentUser._id)) {%>
@@ -58,7 +59,7 @@
                                     <% } else { %>
                                     <p class="tags"><a href="/post/like/<%= p._id %>"> Like ♡ </a></p>
                                     <% } %>
-                                    <% } %>
+                                    <% } }%>
                             </div>
                             <!-- Post Excerpt -->
                             <p><%= p.content %></p>
