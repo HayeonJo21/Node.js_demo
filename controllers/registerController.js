@@ -38,7 +38,7 @@ create: (req, res, next) => {
     if (user) {
       console.log("#######LOG######");
       req.flash("success", "성공적으로 회원가입 되었습니다.");
-      res.locals.redirect = "/";
+      res.locals.redirect = "/thanks";
       next();
     }
     else {

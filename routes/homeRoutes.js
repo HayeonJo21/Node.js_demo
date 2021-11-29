@@ -11,5 +11,6 @@ router.get("/bgm", homeController.showBgm);
 router.get("/chat/:id", dmController.show);
 router.get("/chatAll", homeController.chatAll);
 router.get("/directMessage/:id", dmController.showDM);
+router.get("/thanks", homeController.thanks);
 
 module.exports = router;

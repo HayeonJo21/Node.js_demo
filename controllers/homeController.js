@@ -71,3 +71,8 @@ exports.show = (req, res, next) => {
   exports.showDMForm = (req, res) => {
     res.render("directChat");
   }
+
+
+    exports.thanks = (req, res) => {
+      res.render("thanks");
+    }

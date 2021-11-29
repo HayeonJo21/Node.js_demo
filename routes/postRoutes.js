@@ -10,6 +10,6 @@ router.get("/comment/delete/:id", postController.deleteComment, postController.r
 router.get("/delete/:id", postController.deletePost, postController.redirectView);
 router.get("/like/:id", postController.insertLike, postController.redirectView);
 router.get("/like/dismiss/:id", postController.deleteLike, postController.redirectView);
-router.get("/:id", postController.searchByCategory);
+router.get("/:id", postController.searchByCategory, postController.searchCommentsForIndex, postController.indexView);
 
  module.exports = router;

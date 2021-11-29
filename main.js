@@ -81,10 +81,6 @@ passport.use(User.createStrategy()); //사용자의 로그인 스트래티지 �
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 작업 하도록 설정
 
-
-app.get("/thanks", (req, res) => {
-  res.render("thanks");
-});
 app.get("token");
 
 server.listen(app.get("port"), () => {

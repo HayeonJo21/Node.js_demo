@@ -91,7 +91,6 @@ searchByCategory: (req, res, next) => {
   Post.find({category: cat})
   .then(posts => {
     res.locals.posts = posts;
-    res.render("qna");
     next();
   })
   .catch(error => {
