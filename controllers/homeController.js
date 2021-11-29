@@ -73,6 +73,6 @@ exports.show = (req, res, next) => {
   }
 
 
-    exports.thanks = (req, res) => {
+  exports.thanks = (req, res) => {
       res.render("thanks");
     }
