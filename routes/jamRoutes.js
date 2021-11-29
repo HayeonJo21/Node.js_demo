@@ -15,7 +15,6 @@ router.get("/registerForm", jamController.registerForm);
 router.post("/register",
 [
    body("title", "제목을 입력하세요.").notEmpty(),
-   body("requiredPosition", "포지션을 선택하세요.").notEmpty(),
  ]
  , jamController.errorValidate, jamController.create, jamController.getUserInfo, jamController.showDetailPage);
 
@@ -25,7 +24,7 @@ router.post("/register",
 
  //Jam Update, edit, delete, join
  router.get("/edit/:id", jamController.edit);
- router.get("/join/:id", jamController.showJoinForm, jamController.redirectView);
+ router.get("/join/:id", jamController.showJoinForm);
  router.put("/update/:id", jamController.update, jamController.redirectView);
  router.delete("/delete/:id", jamController.delete, jamController.redirectView);
 

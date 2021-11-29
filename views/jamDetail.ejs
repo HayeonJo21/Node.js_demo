@@ -67,6 +67,45 @@
             </div>
         </div>
     </section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                      여기에 답글 표시
+                        <div class="login-form">
+                            <form>
+                                <div class="form-group">
+                                    <label for="id"><strong>Hosted by</strong></label>
+                                &nbsp;&nbsp;&nbsp; <a href="/user/<%= user._id %>"> <%= user.nickname %></a>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id"><strong>Needed Position</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= jam.requiredPosition %>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id"><strong>Description</strong></label>
+                                  &nbsp;&nbsp;&nbsp;   <%= jam.description %>
+                                </div>
+                                </form>
+                                <br/><br/>
+                                <audio preload="auto" controls>
+                                    <source src="audio/dummy-audio.mp3">
+                                </audio>
+
+                                <% if(loggedIn) { %>
+                                  <% if(currentUser.id == user.id){ %>
+                                <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
+                                <% } else{ %>
+                                    <a href="/jam/join/<%= jam._id %>"><button type="button" class="btn btn-outline-primary">Jam 참여 답글달기</button></a>
+                                <% } %>
+                                <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- ##### Login Area End ##### -->
 
 </body>

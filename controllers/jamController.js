@@ -234,9 +234,9 @@ join: (req, res, next) => {
 
 showJoinForm: (req, res) => {
   let jamId = req.params.id;
-  res.locals.originalJam = jamId;
-  res.locals.redirect = "/jam/jamJoinForm";
-
+  res.render("jamJoinForm", {
+    originalJam: jamId
+  });
 },
 
 showDetailView: (req, res) => {

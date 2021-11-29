@@ -4,12 +4,11 @@ jamSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  
+
   date: String,
 
   requiredPosition: [{
-    type: String,
-    required: true
+    type: String
   }],
 
   host: {
