@@ -55,7 +55,7 @@
                                 <p class="tags"><a href="/post/delete/<%= p._id %>" onclick="conf()"> Delete </a></p>
                                 <% } else{
                                   if(p.like && p.like.includes(currentUser._id)) {%>
-                                    <p class="tags"><a href="#"> Liked <strong style="color:red;">♥</strong></a></p>
+                                    <p class="tags"><a href="/post/like/dismiss/<%= p._id %>"> Liked <strong style="color:red;">♥</strong></a></p>
                                     <% } else { %>
                                     <p class="tags"><a href="/post/like/<%= p._id %>"> Like ♡ </a></p>
                                     <% } %>

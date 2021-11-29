@@ -157,6 +157,22 @@ insertLike: (req, res, next) => {
   });
 },
 
+// deleteLike: (req, res, next) => {
+//   let postId = req.params.id,
+//   likeUser = req.user;
+//
+//   Post.find({like})
+//   .then(likes => {
+//
+//     res.locals.redirect = "/post/qna"
+//     next();
+//   })
+//   .catch(error => {
+//     console.log("Error updating post by ID: " + error.message);
+//     next(error);
+//   });
+// },
+
 deletePost: (req, res, next) => {
 let postId = req.params.id;
 Post.findByIdAndRemove(postId)
