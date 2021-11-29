@@ -4,6 +4,7 @@
 
 - 사운드(게임 사운드, 효과음, bgm 등) 창작물 공유 / 피드백 / 판매 및 음악 N차 창작(JAM) 커뮤니티
 
+
 2. 기능
 - 회원가입 / 로그인
 
@@ -13,9 +14,12 @@
 
 - 구매 기능
 
+
 3. 사용 툴/언어
-- Node.js, Express.js, ejs, JavaScript, css
+- Server: Node.js, Express.js, Passport.js, JavaScript, JSTL등
 
-- MongoDB, Mongoose 사용
+- Client: Node.js, HTML5, CSS, JavaScript, Ajax, jQuery (디자인은 Bootstrap 사용)
 
-- Atom text editor 사용 
+- DB: MongoDB, Mongoose 사용
+
+- 사용 툴: Atom text editor 사용
