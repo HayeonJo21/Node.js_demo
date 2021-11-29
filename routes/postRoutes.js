@@ -9,5 +9,6 @@ router.post("/comment/register", postController.commentCreate, postController.se
 router.get("/comment/delete/:id", postController.deleteComment, postController.redirectView);
 router.get("/delete/:id", postController.deletePost, postController.redirectView);
 router.get("/like/:id", postController.insertLike, postController.redirectView);
+router.get("/like/dismiss/:id", postController.deleteLike, postController.redirectView);
 
  module.exports = router;

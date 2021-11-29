@@ -157,21 +157,36 @@ insertLike: (req, res, next) => {
   });
 },
 
-// deleteLike: (req, res, next) => {
-//   let postId = req.params.id,
-//   likeUser = req.user;
-//
-//   Post.find({like})
-//   .then(likes => {
-//
-//     res.locals.redirect = "/post/qna"
-//     next();
-//   })
-//   .catch(error => {
-//     console.log("Error updating post by ID: " + error.message);
-//     next(error);
-//   });
-// },
+deleteLike: (req, res, next) => {
+  let postId = req.params.id,
+  likeUser = req.user;
+  let array = new Array();
+
+  Post.findById(postId)
+  .then(post => {
+    array = post.like;
+    console.log("array:" + array);
+    console.log("search for: " + likeUser);
+    var index = array.indexOf(likeUser._id);
+    console.log("delete like in index: " + index);
+    array.splice(index, 1);
+  }).then(() => {
+    Post.findByIdAndUpdate(postId, {
+      $set: {
+        like: array
+        }
+      }).then(() => {
+      res.locals.redirect = "/post/qna"
+      next();
+  }).catch(error => {
+    console.log("Error updating post by ID: " + error.message);
+    next(error);
+  });
+}).catch(error => {
+  console.log("Error updating post by ID: " + error.message);
+  next(error);
+});
+},
 
 deletePost: (req, res, next) => {
 let postId = req.params.id;
