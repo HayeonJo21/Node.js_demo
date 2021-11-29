@@ -85,6 +85,21 @@ module.exports = {
   });
 },
 
+searchByCategory: (req, res, next) => {
+  let cat = req.params.id;
+
+  Post.find({category: cat})
+  .then(posts => {
+    res.locals.posts = posts;
+    res.render("qna");
+    next();
+  })
+  .catch(error => {
+    console.log("Error fetching searching post " + error.message);
+    next(error);
+  });
+},
+
 commentCreate: (req, res, next) => {
  if(req.skip) next();
 
@@ -165,8 +180,6 @@ deleteLike: (req, res, next) => {
   Post.findById(postId)
   .then(post => {
     array = post.like;
-    console.log("array:" + array);
-    console.log("search for: " + likeUser);
     var index = array.indexOf(likeUser._id);
     console.log("delete like in index: " + index);
     array.splice(index, 1);
