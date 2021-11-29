@@ -21,11 +21,23 @@ formatDate = (date) => {  //date format 메서드
 getJamParams = (body) => {
   return{
     title: body.title,
-    location: body.location,
-    date: formatDate(body.date),
+    date: formatDate(new Date()),
     requiredPosition: body.requiredPosition,
     host: body.host,
-    description: body.description
+    description: body.description,
+    filename: body.filename
+  };
+};
+
+getJoinJamParams = (body) => {
+  return{
+    title: body.title,
+    date: formatDate(new Date()),
+    requiredPosition: body.requiredPosition,
+    host: body.host,
+    description: body.description,
+    filename: body.filename,
+    originalJam: body.originalJam
   };
 };
 
@@ -62,6 +74,7 @@ module.exports = {
     next();
   });
 },
+
 
 getUserInfo: (req, res, next) => {
   if(req.skip) next();
@@ -220,7 +233,10 @@ join: (req, res, next) => {
 },
 
 showJoinForm: (req, res) => {
-  res.render("jamJoinForm");
+  let jamId = req.params.id;
+  res.locals.originalJam = jamId;
+  res.locals.redirect = "/jam/jamJoinForm";
+
 },
 
 showDetailView: (req, res) => {

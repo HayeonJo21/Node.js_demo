@@ -22,11 +22,8 @@
             <h2>JAMS</h2>
         </div>
     </section>
-    <br/><br/><br/><br/>
-    <!-- ##### Breadcumb Area End ##### -->
-    <div class="event-thumbnail" align="center">
-        <img src="/images/bg-img/e5.jpg" alt="">
-    </div>
+    <br/><br/>
+
     <!-- ##### Login Area Start ##### -->
     <section class="login-area section-padding-100">
         <div class="container">
@@ -37,20 +34,12 @@
                         <!-- Login Form -->
                         <div class="login-form">
                             <form>
-                              <div class="form-group">
-                                  <label for="id"><strong>Location</strong></label>
-                                  &nbsp;&nbsp;&nbsp;  <%= jam.location %>
-                              </div>
-                                <div class="form-group">
-                                    <label for="id"><strong>Date</strong></label>
-                                &nbsp;&nbsp;&nbsp;     <%= jam.date %>
-                                </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Hosted by</strong></label>
                                 &nbsp;&nbsp;&nbsp; <a href="/user/<%= user._id %>"> <%= user.nickname %></a>
                                 </div>
                                 <div class="form-group">
-                                    <label for="id"><strong>Required Position</strong></label>
+                                    <label for="id"><strong>Needed Position</strong></label>
                                   &nbsp;&nbsp;&nbsp;   <%= jam.requiredPosition %>
                                 </div>
                                 <div class="form-group">
@@ -59,13 +48,16 @@
                                 </div>
                                 </form>
                                 <br/><br/>
+                                <audio preload="auto" controls>
+                                    <source src="audio/dummy-audio.mp3">
+                                </audio>
 
                                 <% if(loggedIn) { %>
                                   <% if(currentUser.id == user.id){ %>
                                 <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
                                 <% } else{ %>
-                                    <a href="/jam/join/<%= jam._id %>"><button type="button" class="btn btn-outline-primary">참여 신청하기</button></a>
+                                    <a href="/jam/join/<%= jam._id %>"><button type="button" class="btn btn-outline-primary">Jam 참여 답글달기</button></a>
                                 <% } %>
                                 <% } %>
 

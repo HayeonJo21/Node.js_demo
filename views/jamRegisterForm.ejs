@@ -27,21 +27,13 @@
 
                   <form action="/jam/register" method="post">
                     <div class="form-group">
-                        <label for="title"><strong>Title</strong></label>
+                        <label for="title"><strong>Jam 제목</strong></label>
                         <input type="text" class="form-control" name="title" aria-describedby="tTitle" placeholder="Enter the title.">
                     </div>
                     <input type="hidden" name="host" id="host" value="<%= currentUser._id %>"/>
-                    <div class="form-group">
-                        <label for="location"><strong>Location</strong></label>
-                        <input type="text" class="form-control" name="location" aria-describedby="location" placeholder="Enter the location.">
-                    </div>
-                    <div class="form-group">
-                        <label for="date"><strong>Date</<strong></label>
-                        <input type="date" class="form-control" name="date" placeholder="Enter the date you play.">
-                    </div>
                           <br/>
                             <div class="form-group">
-                                <label for="requiredPosition"><strong>Check required position</strong></label><br/>
+                                <label for="requiredPosition"><strong>추가하고 싶은 악기</strong></label><br/>
                                 <br/>
                                 <label><input type="checkbox" class="form-check-input" name="requiredPosition" value="Piano">&nbsp; Piano/Synthesizer</label><br/>
                                 <label><input type="checkbox" class="form-check-input" name="requiredPosition" value="Guitar">&nbsp; Guitar</label><br/>
@@ -53,9 +45,15 @@
                               </div>
                               <br/>
                               <div class="form-group">
-                                  <label for="description"><strong>Description</strong></label>
+                                  <label for="description"><strong>설명</strong></label>
                                   <textarea name="description" class="form-control" name="description" cols="30" rows="50" placeholder="Introduce others what this jam's about!"></textarea>
                               </div>
+                              <br/>
+                              <div class="form-group">
+                              <label><strong>음악 파일을 첨부해주세요.</strong></label>
+                                <input class="form-control form-control-sm" id="filename" name="filename" type="file">
+                                </div>
+                                <br/>
                       <button type="submit" class="btn oneMusic-btn mt-30" value="submit">Post</button>
                       </form>
               </div>

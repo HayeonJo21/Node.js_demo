@@ -4,14 +4,9 @@ jamSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  location: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: String,
-    required: true
-  },
+  
+  date: String,
+
   requiredPosition: [{
     type: String,
     required: true
@@ -21,7 +16,17 @@ jamSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   },
-  description: String
+
+  description: String,
+
+  filename: String,
+
+  originalJam: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Jam"
+  }],
+
+
 });
 
 module.exports = mongoose.model("Jam", jamSchema);
