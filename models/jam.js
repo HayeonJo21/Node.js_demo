@@ -16,6 +16,8 @@ jamSchema = mongoose.Schema({
     ref: "User"
   },
 
+  hostNickname: String,
+
   description: String,
 
   filename: String,
@@ -25,6 +27,7 @@ jamSchema = mongoose.Schema({
     ref: "Jam"
   }],
 
+  participant: Number
 
 });
 

@@ -31,6 +31,8 @@
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
                         <h3><%= jam.title %></h3>
+                        <p> 🎼 원곡 🎼 </p>
+                        <br/><br/><br/>
                         <!-- Login Form -->
                         <div class="login-form">
                             <form>
@@ -67,24 +69,24 @@
             </div>
         </div>
     </section>
+    <div align="center">🎵</div>
+      <% joinedJam.forEach(j => { %>
+          <section class="login-area section-padding-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                      여기에 답글 표시
+                      <h3><%= j.title %></h3>
+                      <br/><br/>
                         <div class="login-form">
                             <form>
                                 <div class="form-group">
                                     <label for="id"><strong>Hosted by</strong></label>
-                                &nbsp;&nbsp;&nbsp; <a href="/user/<%= user._id %>"> <%= user.nickname %></a>
-                                </div>
-                                <div class="form-group">
-                                    <label for="id"><strong>Needed Position</strong></label>
-                                  &nbsp;&nbsp;&nbsp;   <%= jam.requiredPosition %>
+                                &nbsp;&nbsp;&nbsp; <a href="/user/<%= j.host._id %>"> <%= j.hostNickname %></a>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Description</strong></label>
-                                  &nbsp;&nbsp;&nbsp;   <%= jam.description %>
+                                  &nbsp;&nbsp;&nbsp;   <%= j.description %>
                                 </div>
                                 </form>
                                 <br/><br/>
@@ -93,11 +95,9 @@
                                 </audio>
 
                                 <% if(loggedIn) { %>
-                                  <% if(currentUser.id == user.id){ %>
-                                <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
-                                <% } else{ %>
-                                    <a href="/jam/join/<%= jam._id %>"><button type="button" class="btn btn-outline-primary">Jam 참여 답글달기</button></a>
+                                  <% if(currentUser.id == j.host._id){ %>
+                                <a href="/jam/edit/<%= j._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/jam/delete/<%= j._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
                                 <% } %>
                                 <% } %>
 
@@ -106,6 +106,9 @@
                 </div>
             </div>
         </div>
+        </section>
+        <div align="center">🎵</div>
+        <% }); %>
     <!-- ##### Login Area End ##### -->
 
 </body>

@@ -25,7 +25,8 @@ getJamParams = (body) => {
     requiredPosition: body.requiredPosition,
     host: body.host,
     description: body.description,
-    filename: body.filename
+    filename: body.filename,
+    participant: 0
   };
 };
 
@@ -33,8 +34,8 @@ getJoinJamParams = (body) => {
   return{
     title: body.title,
     date: formatDate(new Date()),
-    requiredPosition: body.requiredPosition,
     host: body.host,
+    hostNickname: body.hostNickname,
     description: body.description,
     filename: body.filename,
     originalJam: body.originalJam
@@ -143,6 +144,19 @@ showDetailPage: (req, res, next) => {
 }
 },
 
+searchForJoinedJam: (req, res, next) => {
+  let jamId = req.params.id;
+
+  Jam.find({originalJam : jamId})
+  .then(jams => {
+    res.locals.joinedJam = jams;
+    next();
+  }).catch(error => {
+    console.log("Error fetching jam by ID " + error.message);
+    next(error);
+  })
+},
+
 edit: (req, res, next) => {
   let jamId = req.params.id;
   Jam.findById(jamId)
@@ -187,7 +201,7 @@ delete: (req, res, next) => {
 let jamId = req.params.id;
 Jam.findByIdAndRemove(jamId)
 .then(() => {
-  res.locals.redirect = "/"
+  res.locals.redirect = "/jam/main"
   req.flash("success", "삭제가 완료되었습니다.");
   next();
 })
@@ -211,7 +225,7 @@ getAllJams: (req, res, next) => {
   });
 },
 
-join: (req, res, next) => {
+joinModal: (req, res, next) => {
   let jamId = req.params.id,
   currentUser = req.user;
 
@@ -237,6 +251,47 @@ showJoinForm: (req, res) => {
   res.render("jamJoinForm", {
     originalJam: jamId
   });
+},
+
+createJoin: (req, res, next) => {
+  if(req.skip) next();
+
+  let newJam = new Jam(getJoinJamParams(req.body));
+
+  Jam.create(newJam)
+  .then(() => {
+    console.log("*****SUCCESS******");
+     req.flash("success", "답글이 등록되었습니다.");
+     res.locals.jam = newJam;
+     next();
+   }).then(() => {
+   Jam.findById(newJam.originalJam)
+   .then(jam => {
+     let part = jam.participant;
+     part = part + 1;
+     console.log("part: " + part);
+     Jam.findByIdAndUpdate(jam._id, {
+       $set: {
+         participant: part
+       }
+     }).catch(error => {
+       console.log("#####ERROR#####  " + error.message);
+       req.flash("error", "답글 등록에 실패했습니다. 다시 시도해주세요.");
+       res.locals.redirect = "/jam/main";
+       next();
+     });
+   }).catch(error => {
+     console.log("#####ERROR#####  " + error.message);
+     req.flash("error", "답글 등록에 실패했습니다. 다시 시도해주세요.");
+     res.locals.redirect = "/jam/main";
+     next();
+   });
+ }).catch(error => {
+   console.log("#####ERROR#####  " + error.message);
+   req.flash("error", "답글 등록에 실패했습니다. 다시 시도해주세요.");
+   res.locals.redirect = "/jam/main";
+   next();
+ });
 },
 
 showDetailView: (req, res) => {
