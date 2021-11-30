@@ -15,10 +15,12 @@ commentSchema = mongoose.Schema({
   writerNickname: {
     type: String
   },
+  
   originalPost: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post"
   },
+
   originalJam: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Jam"
