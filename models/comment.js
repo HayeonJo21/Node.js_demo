@@ -18,6 +18,10 @@ commentSchema = mongoose.Schema({
   originalPost: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post"
+  },
+  originalJam: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Jam"
   }
 });
 

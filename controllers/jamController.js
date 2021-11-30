@@ -298,6 +298,10 @@ showDetailView: (req, res) => {
   res.render("jamDetail");
 },
 
+showJoinedDetailView: (req, res) => {
+  res.render("JoinedjamDetail");
+},
+
 filterUserJams: (req, res, next) => {
   let currentUser = res.locals.currentUser;
   if(currentUser){ // 사용자 로그인 유무 체크

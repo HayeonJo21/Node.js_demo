@@ -28,7 +28,9 @@ router.post("/register",
  router.put("/update/:id", jamController.update, jamController.redirectView);
  router.delete("/delete/:id", jamController.delete, jamController.redirectView);
 
-//Jam 답글 등록
+//Jam 답글 등록, 디테일 페이지
 router.post("/join/register", jamController.createJoin, jamController.getUserInfo, jamController.searchForJoinedJam, jamController.showDetailPage);
+router.get("/joined/detail/:id", jamController.showDetailPage,  jamController.showJoinedDetailView);
+
 
  module.exports = router;

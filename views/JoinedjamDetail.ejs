@@ -23,26 +23,18 @@
         </div>
     </section>
     <br/><br/>
-
-    <!-- ##### Login Area Start ##### -->
-    <section class="login-area section-padding-100">
+          <section class="login-area section-padding-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3><%= jam.title %></h3>
-                        <p> 🎼 원곡 🎼 </p>
-                        <br/><br/><br/>
-                        <!-- Login Form -->
+                      <h3><%= jam.title %></h3>
+                      <br/><br/>
                         <div class="login-form">
                             <form>
                                 <div class="form-group">
                                     <label for="id"><strong>Hosted by</strong></label>
-                                &nbsp;&nbsp;&nbsp; <a href="/user/<%= user._id %>"> <%= user.nickname %></a>
-                                </div>
-                                <div class="form-group">
-                                    <label for="id"><strong>Needed Position</strong></label>
-                                  &nbsp;&nbsp;&nbsp;   <%= jam.requiredPosition %>
+                                &nbsp;&nbsp;&nbsp; <a href="/user/<%= jam.host._id %>"> <%= jam.hostNickname %></a>
                                 </div>
                                 <div class="form-group">
                                     <label for="id"><strong>Description</strong></label>
@@ -55,12 +47,9 @@
                                 </audio>
 
                                 <% if(loggedIn) { %>
-                                  <% if(currentUser.id == user.id){ %>
+                                  <% if(currentUser.id == jam.host._id){ %>
                                 <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
-                                <% } else{ %>
-                                  <br/>
-                                    <a href="/jam/join/<%= jam._id %>"><button type="button" class="btn btn-outline-primary">Jam 참여 답글달기</button></a>
                                 <% } %>
                                 <% } %>
 
@@ -69,34 +58,37 @@
                 </div>
             </div>
         </div>
-    </section>
-    <div align="center">🎵</div>
-          <section class="login-area section-padding-100">
+        <br/>
+        <div align="center">
+          <br/>
+          <h2>💬</h2>
+        <h3>Comments</h3>
+        </div>
+        <hr>
+        <br/>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
-                    <div class="login-content">
-                      <table class="table">
-			<thead>
-				<tr>
-					<th scope="col">글쓴이</th>
-					<th scope="col">제목</th>
-				</tr>
-			</thead>
-			<tbody>
-			<% joinedJam.forEach(j => { %>
-					<tr>
-						<td><a
-							href="/user/<%= j.host %>"><%= j.hostNickname %></a></td>
-						<td><a href="/jam/joined/detail/<%= j._id %>"><%= j.title %></a></td>
-					</tr>
-	        <% }); %>
-			</tbody>
-		</table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  <br/>
+            <form action="/jam/comment/register" method="post">
+              <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="댓글을 입력하세요">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">등록</button>
+    </div>
+<br/>
+</form>
+ </div>
+ </div>
+ </div>
+ <div class="container">
+     <div class="row justify-content-center">
+         <div class="col-12 col-lg-8">
+           <br/>
+    여기에 댓글표시
+</div>
+<br/>
+</div>
+</div>
 
         </section>
     <!-- ##### Login Area End ##### -->
