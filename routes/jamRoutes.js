@@ -30,7 +30,11 @@ router.post("/register",
 
 //Jam 답글 등록, 디테일 페이지
 router.post("/join/register", jamController.createJoin, jamController.getUserInfo, jamController.searchForJoinedJam, jamController.showDetailPage);
-router.get("/joined/detail/:id", jamController.showDetailPage,  jamController.showJoinedDetailView);
+router.get("/joined/detail/:id", jamController.showDetailPage,  jamController.searchCommentsForIndex, jamController.showJoinedDetailView);
+
+//Jam 댓글
+router.post("/comment/register", jamController.commentCreate, jamController.searchCommentsForIndex, jamController.getAllJams, jamController.searchForJoinedJam, jamController.indexView);
+router.get("/comment/delete/:id");
 
 
  module.exports = router;

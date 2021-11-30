@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Jam = require("../models/jam");
+const Comment = require("../models/comment");
 const passport = require("passport");
 const httpStatus = require("http-status-codes");
 const {body, validationResult} = require("express-validator");
@@ -16,6 +17,26 @@ formatDate = (date) => {  //date format 메서드
     var formatedDate = year + '년 ' + month + '월 ' + day + "일";
 
     return formatedDate;
+};
+
+formatDateTime = (date) => {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear(),
+            hour = d.getHours().toString(),
+            minute = d.getMinutes().toString(),
+            sec = d.getSeconds().toString();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        if (hour.length < 2) hour = '0' + hour;
+        if (minute.length < 2) minute = '0' + minute;
+        if (minute.length < 2) minute = '0' + minute;
+        if (sec.length < 2) sec= '0' + sec;
+
+        var formatedDate = year + "/" + month + "/" + day + " " + hour + ":" + minute +":"+ sec;
+        return formatedDate;
 };
 
 getJamParams = (body) => {
@@ -38,6 +59,16 @@ getJoinJamParams = (body) => {
     hostNickname: body.hostNickname,
     description: body.description,
     filename: body.filename,
+    originalJam: body.originalJam
+  };
+};
+
+getCommentParams = (body) => {
+  return{
+    content: body.content,
+    date: formatDateTime(new Date()),
+    writer: body.writer,
+    writerNickname: body.writerNickname,
     originalJam: body.originalJam
   };
 };
@@ -76,6 +107,51 @@ module.exports = {
   });
 },
 
+commentCreate: (req, res, next) => {
+ if(req.skip) next();
+
+ let newComment = new Comment(getCommentParams(req.body));
+
+ Comment.create(newComment)
+ .then(() => {
+   console.log("*****SUCCESS******");
+    req.flash("success", "댓글이 등록되었습니다.");
+    next();
+})
+.catch(error => {
+  console.log("#####ERROR#####  " + error.message);
+  req.flash("error", "댓글 등록에 실패했습니다. 다시 시도해주세요.");
+  res.locals.redirect = "/post/registerForm";
+  next();
+});
+},
+
+searchCommentsForIndex: (req, res, next) => {
+    Comment.find({})
+    .then(comments => {
+      console.log("comment searching complete");
+      res.locals.comments = comments;
+      next();
+    })
+    .catch(error => {
+      console.log("Error fetching searching comment " + error.message);
+      next(error);
+    });
+},
+
+deleteComment: (req, res, next) => {
+let commentId = req.params.id;
+Comment.findByIdAndRemove(commentId)
+.then(() => {
+  res.locals.redirect = "/jam/main"
+  req.flash("success", "댓글 삭제가 완료되었습니다.");
+  next();
+})
+.catch(error => {
+  console.log("Error deleting comment by ID : " + error.message);
+  next();
+});
+},
 
 getUserInfo: (req, res, next) => {
   if(req.skip) next();

@@ -70,9 +70,13 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                   <br/>
+                    <% if(loggedIn) { %>
             <form action="/jam/comment/register" method="post">
               <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="댓글을 입력하세요">
+      <input type="hidden" name="writer" id="writer" value="<%= currentUser._id %>"/>
+      <input type="hidden" name="writerNickname" id="writerNickname" value="<%= currentUser.nickname %>"/>
+      <input type="hidden" name="originalJam" id="originalJam" value="<%= jam._id %>"/>
       <button class="btn btn-outline-secondary" type="submit" id="button-addon2">등록</button>
     </div>
 <br/>
@@ -84,12 +88,32 @@
      <div class="row justify-content-center">
          <div class="col-12 col-lg-8">
            <br/>
-    여기에 댓글표시
+    <% if(!comments){ %>
+    <% comments.forEach(c => {
+      if (c.originalJam.equals(jam._id)){ %>
+        <% if(c.writer.equals(jam.host)){
+          if(c.writer.equals(currentUser._id)){ %>
+          <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp;X </a></div>
+          <%} else{ %>
+                <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)</div>
+                <% } %>
+          <% }else {
+            if(c.writer.equals(currentUser._id)){ %>
+          <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp; &nbsp; X </a></div>
+          <% } else { %>
+            <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)</div>
+            <% } %>
+      <% } } %>
+      <% }); %>
+      <%} else { %>
+        아직 댓글이 없습니다. <% } %>
+    <% } else{ %>
+      댓글기능은 회원만 이용 가능합니다.
+      <%} %>
 </div>
 <br/>
 </div>
 </div>
-
         </section>
     <!-- ##### Login Area End ##### -->
 
