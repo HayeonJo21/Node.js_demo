@@ -27,9 +27,10 @@ router.get("/login", userController.login);
 router.post("/login", userController.authenticate);
 router.get("/logout", userController.logout, userController.redirectView);
 
-// 마이페이지 & 업데이트 & 회원탈퇴
+// 마이페이지 & 업데이트 & 회원탈퇴 & 내 게시물 보기
 router.get("/mypage/:id", userController.show, userController.showMypage);
 router.get("/edit/:id", userController.edit);
+router.get("/manage/postings/:id", userController.searchJams, userController.searchPost, userController.searchComments, userController.showMyPostings);
 router.put("/update/:id", userController.update, userController.redirectView);
 router.delete("/delete/:id", userController.delete, userController.redirectView);
 

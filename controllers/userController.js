@@ -1,4 +1,7 @@
 const User = require("../models/user");
+const Jam = require("../models/jam");
+const Post = require("../models/post");
+const Comment = require("../models/comment");
 const passport = require("passport");
 
 module.exports = {
@@ -104,6 +107,52 @@ module.exports = {
 registerForm: (req, res) => {
   res.render("registerForm");
 },
+
+searchComments: (req, res, next) => {
+  let userId = req.params.id;
+
+  Comment.find({writer : userId})
+  .then(comments => {
+    res.locals.comments = comments;
+    console.log("User Comments loaded.");
+    next();
+  }).catch(error => {
+    console.log("Error fetching user by ID : " + error.message);
+    next();
+  });
+},
+
+searchJams: (req, res, next) => {
+  let userId = req.params.id;
+
+  Jam.find({host : userId})
+  .then(jams => {
+    res.locals.jams = jams;
+    console.log("User Jams loaded.");
+    next();
+  }).catch(error => {
+    console.log("Error fetching user by ID : " + error.message);
+    next();
+  });
+},
+
+searchPost: (req, res, next) => {
+  let userId = req.params.id;
+
+  Post.find({writer : userId})
+  .then(posts => {
+    res.locals.posts = posts;
+    console.log("User Posts loaded.");
+    next();
+  }).catch(error => {
+    console.log("Error fetching user by ID : " + error.message);
+    next();
+  });
+},
+
+showMyPostings: (req, res) => {
+  res.render("myPostings");
+}
 
 // verifyToken: (req, res, next) => {
 //   if(req.query.apiToken == token) {

@@ -78,7 +78,7 @@
 <% if(comments){ %>
 <% comments.forEach(c => {
 
-  if (c.originalPost.equals(p._id)){ %>
+  if (c.originalPost && c.originalPost.equals(p._id)){ %>
     <% if(c.writer.equals(p.writer)){
       if(c.writer.equals(currentUser._id)){ %>
       <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp;X </a></div>

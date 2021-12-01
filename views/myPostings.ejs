@@ -1,0 +1,106 @@
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+          function conf() {
+            var con = confirm("정말로 삭제하시겠습니까?");
+            if(con == true){
+              alert("삭제 되었습니다.");
+            }
+          }
+        </script>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
+        <div class="bradcumbContent">
+            <p>Hello, <%= currentUser.name %></p>
+            <h2>My Postings</h2>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Your Jams</h3>
+                        <!-- Login Form -->
+                        <div class="login-form">
+                          <table class="table">
+    			<thead>
+    				<tr>
+    					<th scope="col">제목</th>
+    					<th scope="col">날짜</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+    			<% jams.forEach(j => { %>
+    					<tr>
+    						<td><a
+    							href="/user/<%= j._id %>"><%= j.title %></a></td>
+    						<td><a href="#"><%= j.date %></a></td>
+    					</tr>
+    	        <% }); %>
+    			</tbody>
+    		</table>
+          </div>
+                                <br/><br/><br/><br/>
+                                  <h3>Your Posts</h3>
+
+                                  <div class="login-form">
+                                    <table class="table">
+                                  <thead>
+                                  <tr>
+                                  <th scope="col">제목</th>
+                                  <th scope="col">날짜</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <% posts.forEach(p => { %>
+                                  <tr>
+                                  <td><a
+                                  href="/user/<%= p._id %>"><%= p.title %></a></td>
+                                  <td><a href="#"><%= p.date %></a></td>
+                                  </tr>
+                                  <% }); %>
+                                  </tbody>
+                                  </table>
+                                  </div>
+<br/><br/><br/><br/>
+<h3>Your Comments</h3>
+
+<div class="login-form">
+  <table class="table">
+<thead>
+<tr>
+<th scope="col">내용</th>
+<th scope="col">날짜</th>
+</tr>
+</thead>
+<tbody>
+<% comments.forEach(c => { %>
+<tr>
+<td><a
+href="/user/<%= c._id %>"><%= c.content %></a></td>
+<td><a href="#"><%= c.date %></a></td>
+</tr>
+<% }); %>
+</tbody>
+</table>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Login Area End ##### -->
+
+
+</body>

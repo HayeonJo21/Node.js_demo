@@ -8,7 +8,7 @@
           function conf() {
             var con = confirm("정말로 탈퇴하시겠습니까?");
             if(con == true){
-              alert("탈퇴를 진행합니다.");
+              alert("탈퇴 되었습니다.");
             }
           }
         </script>
@@ -64,8 +64,9 @@
                                 </div>
                                 </form>
                                 <br/><br/>
-                                <a href="/user/edit/<%= user._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="/user/delete/<%= user._id %>?_method=DELETE" onclick="conf()">Delete Account</a>
+                                <a href="/user/edit/<%= user._id %>">내 정보 수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/user/manage/postings/<%= user._id %>">내 게시물 관리</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/user/delete/<%= user._id %>?_method=DELETE" onclick="conf()">탈퇴</a>
                         </div>
                     </div>
                 </div>
@@ -73,5 +74,6 @@
         </div>
     </section>
     <!-- ##### Login Area End ##### -->
+
 
 </body>
