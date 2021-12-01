@@ -4,6 +4,7 @@ dmController = require("../controllers/dmController");
 
 router.get("/", homeController.showIndex);
 router.get("/courses", homeController.showCourses);
+router.get("/contact", homeController.showContact);
 router.get("/gameSound", homeController.gameSoundMain);
 router.get("/market", homeController.showMarket);
 router.get("/jam", homeController.showJam);

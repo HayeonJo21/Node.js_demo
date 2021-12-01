@@ -72,6 +72,9 @@ exports.show = (req, res, next) => {
     res.render("directChat");
   }
 
+exports.showContact = (req, res) => {
+  res.render("contact");
+}
 
   exports.thanks = (req, res) => {
       res.render("thanks");
