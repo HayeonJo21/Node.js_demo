@@ -33,8 +33,8 @@ router.post("/join/register", jamController.createJoin, jamController.getUserInf
 router.get("/joined/detail/:id", jamController.showDetailPage,  jamController.searchCommentsForIndex, jamController.showJoinedDetailView);
 
 //Jam 댓글
-router.post("/comment/register", jamController.commentCreate, jamController.searchCommentsForIndex, jamController.getAllJams, jamController.searchForJoinedJam, jamController.indexView);
-router.get("/comment/delete/:id");
+router.post("/comment/register", jamController.commentCreate, jamController.redirectView);
+router.get("/comment/delete/:id", jamController.deleteComment, jamController.redirectView);
 
 
  module.exports = router;

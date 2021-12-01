@@ -30,7 +30,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3>Your Jams</h3>
+                        <h3>🥁 Your Jams</h3>
                         <!-- Login Form -->
                         <div class="login-form">
                           <table class="table">
@@ -44,15 +44,15 @@
     			<% jams.forEach(j => { %>
     					<tr>
     						<td><a
-    							href="/user/<%= j._id %>"><%= j.title %></a></td>
-    						<td><a href="#"><%= j.date %></a></td>
+    							href="/jam/detail/<%= j._id %>"><%= j.title %></a></td>
+    						<td><%= j.date %></td>
     					</tr>
     	        <% }); %>
     			</tbody>
     		</table>
           </div>
-                                <br/><br/><br/><br/>
-                                  <h3>Your Posts</h3>
+                                <br/><br/><br/><hr><br/><br/><br/>
+                                  <h3>📝 Your Posts</h3>
 
                                   <div class="login-form">
                                     <table class="table">
@@ -66,15 +66,15 @@
                                   <% posts.forEach(p => { %>
                                   <tr>
                                   <td><a
-                                  href="/user/<%= p._id %>"><%= p.title %></a></td>
-                                  <td><a href="#"><%= p.date %></a></td>
+                                  href="/post/qna"><%= p.title %></a></td>
+                                  <td><%= p.date %></td>
                                   </tr>
                                   <% }); %>
                                   </tbody>
                                   </table>
                                   </div>
-<br/><br/><br/><br/>
-<h3>Your Comments</h3>
+<br/><br/><br/><hr><br/><br/><br/>
+<h3>💬 Your Comments</h3>
 
 <div class="login-form">
   <table class="table">
@@ -87,9 +87,12 @@
 <tbody>
 <% comments.forEach(c => { %>
 <tr>
-<td><a
-href="/user/<%= c._id %>"><%= c.content %></a></td>
-<td><a href="#"><%= c.date %></a></td>
+<% if(c.originalJam){ %>
+  <td><a href="/jam/detail/<%= c.originalJam %>"><%= c.content %></a></td>
+  <% } else{ %>
+<td><a href="/post/qna"><%= c.content %></a></td>
+    <% } %>
+<td><%= c.date %></td>
 </tr>
 <% }); %>
 </tbody>

@@ -118,6 +118,7 @@ commentCreate: (req, res, next) => {
  .then(() => {
    console.log("*****SUCCESS******");
     req.flash("success", "댓글이 등록되었습니다.");
+    res.locals.redirect = "/jam/joined/detail/" + req.body.originalJam;
     next();
 })
 .catch(error => {
@@ -145,8 +146,8 @@ deleteComment: (req, res, next) => {
 let commentId = req.params.id;
 Comment.findByIdAndRemove(commentId)
 .then(() => {
-  res.locals.redirect = "/jam/main"
   req.flash("success", "댓글 삭제가 완료되었습니다.");
+  res.locals.redirect = "/jam/main"
   next();
 })
 .catch(error => {

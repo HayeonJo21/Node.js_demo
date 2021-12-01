@@ -92,13 +92,13 @@
       if (c.originalJam && c.originalJam.equals(jam._id)){ %>
         <% if(c.writer.equals(jam.host)){
           if(c.writer.equals(currentUser._id)){ %>
-          <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp;X </a></div>
+          <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/jam/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp;X </a></div>
           <%} else{ %>
                 <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)</div>
                 <% } %>
           <% }else {
             if(c.writer.equals(currentUser._id)){ %>
-          <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp; &nbsp; X </a></div>
+          <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/jam/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp; &nbsp; X </a></div>
           <% } else { %>
             <div><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)</div>
             <% } %>
