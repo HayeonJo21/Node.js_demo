@@ -47,7 +47,7 @@
                                 </audio>
 
                                 <% if(loggedIn) { %>
-                                  <% if(currentUser.id == jam.host._id){ %>
+                                  <% if(currentUser._id == jam.host._id){ %>
                                 <a href="/jam/edit/<%= jam._id %>">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="/jam/delete/<%= jam._id %>?_method=DELETE" onclick="conf()">Delete Post</a>
                                 <% } %>
@@ -87,10 +87,9 @@
  <div class="container">
      <div class="row justify-content-center">
          <div class="col-12 col-lg-8">
-           <br/>
     <% if(comments){ %>
     <% comments.forEach(c => {
-      if (c.originalJam.equals(jam._id)){ %>
+      if (c.originalJam && c.originalJam.equals(jam._id)){ %>
         <% if(c.writer.equals(jam.host)){
           if(c.writer.equals(currentUser._id)){ %>
           <div class="messagecurrent-user"><strong><%=c.writerNickname %></strong>: &nbsp;<%= c.content %> &nbsp; &nbsp; (<%= c.date %>)<a href="/post/comment/delete/<%= c._id %>" onclick="conf()"> &nbsp;X </a></div>
@@ -111,7 +110,7 @@
       댓글기능은 회원만 이용 가능합니다.
       <%} %>
 </div>
-<br/>
+<br/><br/>
 </div>
 </div>
         </section>

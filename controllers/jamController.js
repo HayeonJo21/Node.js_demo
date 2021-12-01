@@ -110,7 +110,9 @@ module.exports = {
 commentCreate: (req, res, next) => {
  if(req.skip) next();
 
+
  let newComment = new Comment(getCommentParams(req.body));
+ newComment.originalJam = req.body.originalJam;
 
  Comment.create(newComment)
  .then(() => {
