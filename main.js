@@ -83,6 +83,7 @@ passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 �
 
 app.get("token");
 
+
 server.listen(app.get("port"), () => {
   console.log("Server running at http://localhost:3000");
 });
