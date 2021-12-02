@@ -26,33 +26,39 @@
                         <div class="login-form">
                             <form action="/user/register" method="post">
                               <div class="form-group">
-                                  <label for="name"><strong>Name</strong></label>
+                                  <label for="name"><strong>이름</strong></label>
                                   <input type="text" class="form-control" name="name" aria-describedby="tName" placeholder="Enter your name.">
                               </div>
                               <div class="form-group">
-                                  <label for="id"><strong>ID</strong></label>
+                                  <label for="id"><strong>아이디</strong></label>
                                   <input type="text" class="form-control" name="id" aria-describedby="id" placeholder="Enter your ID.">
                               </div>
                               <div class="form-group">
-                                  <label for="password"><strong>Password</<strong></label>
-                                  <input type="password" class="form-control" name="password" placeholder="Enter your password.">
+                                  <label for="password"><strong>비밀번호</<strong></label>
+                                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password.">
                               </div>
                               <div class="form-group">
-                                  <label for="nickname"><strong>Nickname</strong></label>
+                                  <label for="password"><strong>비밀번호 확인</<strong></label>
+                                  <input type="password" class="form-control" id="passwordConfirm" placeholder="Enter your password again.">
+                                  <p id="password_eq" style="color: green;">비밀번호가 일치합니다!</p>
+                                  <p id="password_neq" style="color: red;">비밀번호가 일치하지 않습니다.</p>
+                              </div>
+                              <div class="form-group">
+                                  <label for="nickname"><strong>닉네임</strong></label>
                                   <input type="text" class="form-control" name="nickname" aria-describedby="nickname" placeholder="Enter your nickname to use in this website.">
                               </div>
                                 <div class="form-group">
-                                    <label for="email"><strong>Email address</strong></label>
+                                    <label for="email"><strong>이메일 주소</strong></label>
                                     <input type="text" class="form-control" name="email" aria-describedby="email" placeholder="Enter E-mail Address">
                                     <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
                                 </div>
                                     <div class="form-group">
-                                        <label for="profile"><strong>Profile message</strong></label>
+                                        <label for="profile"><strong>자기 소개</strong></label>
                                         <textarea name="profile" class="form-control" cols="30" rows="10" placeholder="Introduce yourself to other users!"></textarea>
                                     </div>
                                     <br/>
                                       <div class="form-group">
-                                          <label for="position"><strong>Check your position</strong></label><br/>
+                                          <label for="position"><strong>포지션 선택</strong></label><br/>
                                         <input  class="form-check-input" type="radio" name="position" value="guest">  <label> Guest  </label><br/>
                                       <input  class="form-check-input" type="radio" name="position" value="soundDesigner">  <label>  Sound Designer </label>  <br/>
                                       <input  class="form-check-input" type="radio" name="position" value="composer">  <label>  Composer </label> <br/>

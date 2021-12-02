@@ -118,6 +118,24 @@ let addJoinButtonListener = () => {
   });
 };
 
+$(function (){
+$("#password_eq").hide();
+$("#password_neq").hide();
+$("#passwordConfirm").keyup(function () {
+    let firstPw = $("#password").val();
+    let secondPw = $("#passwordConfirm").val();
+    if (firstPw != "" || secondPw != "") {
+        if (firstPw == secondPw) {
+            $("#password_eq").show();
+            $("#password_neq").hide();
+        }
+        else {
+            $("#password_eq").hide();
+            $("#password_neq").show();
+        }
+    }
+});
+});
 
 let displayMessage = (message) => {
   var messageWithDate = message.content + "    (" + message.date + ")";
