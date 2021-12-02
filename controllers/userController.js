@@ -80,7 +80,7 @@ module.exports = {
       $set: userParams
     })
     .then(user => {
-      res.locals.redirect = "/mypage/" + userId;
+      res.locals.redirect = "/user/mypage/" + userId;
       res.locals.user = user;
       next();
     })

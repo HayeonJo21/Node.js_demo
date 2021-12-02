@@ -19,6 +19,7 @@ router.get("/thanks", homeController.thanks);
 router.post("/mail/send", (req, res) => {
     console.log(req.body);
     let transporter = nodemailer.createTransport({
+      service: "gmail",
         auth:{
             user: 'gkdus6629@gmail.com',
             pass: 'Gkdus1121-_-!'
@@ -42,7 +43,8 @@ router.post("/mail/send", (req, res) => {
             console.log(info);
         }
     });
-    res.send("메일 전송 완료");
+    req.flash("success", "메일 전송 완료");
+    res.render("contact");
 });
 
 module.exports = router;
