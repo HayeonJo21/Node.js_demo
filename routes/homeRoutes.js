@@ -18,18 +18,21 @@ router.get("/thanks", homeController.thanks);
 
 router.post("/mail/send", (req, res) => {
     console.log(req.body);
+    let user = req.body.senderEmail;
+    let username = req.body.name;
+    let pass = req.body.password;
+
     let transporter = nodemailer.createTransport({
-      service: "gmail",
         auth:{
-            user: 'gkdus6629@gmail.com',
-            pass: 'Gkdus1121-_-!'
+            user: user,
+            pass: pass
         },
         host: 'smtp.mail.com',
         port: '465'
     });
 
     let mailOptions = {
-        from : "조하연 <gkdus6629@gmail.com>",
+        from : username + " <" + user + ">",
         to : req.body.receiverEmail,
         subject : req.body.title,
         text : req.body.message
