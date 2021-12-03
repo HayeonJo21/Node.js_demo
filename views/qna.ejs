@@ -59,6 +59,7 @@
                                     <p class="tags"><a href="/post/like/<%= p._id %>"> Like ♡ </a></p>
                                     <% } %>
                                     <% } }%>
+                                    <p class="tags" ><a href="#" id="commentLink">comment</a></p>
                             </div>
                             <!-- Post Excerpt -->
                             <p><%= p.content %></p>
@@ -93,6 +94,7 @@
         <% } %>
   <% } } %>
   <% }); %>
+  <div align="right"><a href="#" id="commentClose">댓글창 닫기</a></div>
   <%} else { %>
     아직 댓글이 없습니다. <% } %>
 <% } else{ %>

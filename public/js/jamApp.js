@@ -76,26 +76,6 @@ $(document).ready(() => {
     $("#chat-input").val("");
     return false;
   });
-
-    // $("#commentLink").click((event) => {
-    //   console.log("~~~ comment button clicked ~~~~");
-    //   $("#blog-comments").html("");
-    //   let $link = $(event.target),
-    //   postId = $link.data("id");
-    //   $.get('/api/post/comments/' + `${postId}` + '/show', (results = {}) => {
-    //     let data = results.data;
-    //     console.log("~~~~ data");
-    //     if(data && data.succcess){
-    //       data.post.forEach((p) => {
-    //         $("#blog-comments").append('<p>댓글댓글~~</p>');
-    //       });
-    //     }else{
-    //       console.log("comments 아직 없음");
-    //       $("#blog-comments").append('<p>댓글댓글 아직 없음~~</p>');
-    //     }
-    //   });
-    //     });
-
 });
 
 });
@@ -119,6 +99,7 @@ let addJoinButtonListener = () => {
 };
 
 $(function (){
+  console.log("Password double check jquery function starts");
 $("#password_eq").hide();
 $("#password_neq").hide();
 $("#passwordConfirm").keyup(function () {
@@ -136,6 +117,18 @@ $("#passwordConfirm").keyup(function () {
     }
 });
 });
+
+$(function (){
+  console.log("comment link jquery function starts");
+    $("#blog-comments").hide();
+$("#commentLink").click((event) => {
+  console.log("~~~ comment button clicked ~~~~");
+  $("#blog-comments").show();
+});
+$("#commentClose").click((event) => {
+  $("#blog-comments").hide();
+});
+    });
 
 let displayMessage = (message) => {
   var messageWithDate = message.content + "    (" + message.date + ")";
