@@ -9,23 +9,23 @@
 
     <!-- ##### Breadcumb Area Start ##### -->
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
-        <div class="bradcumbContent">
-            <p>See what’s new</p>
-            <h2>Login</h2>
+        <div class="bradcumbContent" style="background-color: black;">
+            <p style="color:yellow;">관리자 페이지</p>
+            <h2 style="color:white;">Administrator</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
 
     <!-- ##### Login Area Start ##### -->
-    <section class="login-area section-padding-100">
+    <section class="login-area section-padding-100" style="background-color: black;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
-                    <div class="login-content">
-                        <h3>Welcome Back</h3>
+                    <div class="login-content" style="background-color: black;">
+                        <h3 style="color:white;">Administrator</h3>
                         <!-- Login Form -->
                         <div class="login-form">
-                            <form action="/user/login" method="post">
+                            <form action="/admin/login" method="post">
                                 <div class="form-group">
                                     <label for="id">ID</label>
                                     <input type="id" class="form-control" name="id" aria-describedby="id" placeholder="Enter your ID">
@@ -35,13 +35,12 @@
                                     <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                                 <button type="submit" class="btn oneMusic-btn mt-30">Login</button>
-                                <br/><br/>
-                                <a href="/user/registerForm">Register</a>
+
                                 </form>
                         </div>
                     </div>
                     <br/>
-                      <div align="right"><p style="color=grey"><a href="/admin/login">Admin</a></p></div>
+                      <div align="right"><p><a href="/user/login" style="color:grey;">user node</a></p></div>
                 </div>
             </div>
         </div>
