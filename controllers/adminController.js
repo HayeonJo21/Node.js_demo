@@ -11,18 +11,25 @@ module.exports = {
   },
 
   authenticate: (req, res, next) => {
-    passport.use(new LocalStrategy(function(username, password, done) {
-    process.nextTick(function(){
-      console.log("login strategy check: " + username + "/" + password);
+    username = req.body.id;
+    password = req.body.password;
 
-      if(username == 'admin' && password == 'admin'){
-        return done(null, username);
-      }else{
-        return done(false, null);
+    if(username == "admin" && password == "admin"){
+      User.findById(username)
+      .then(user => {
+        if(user.position == "admin"){
+          req.flash("success", "관리자 모드로 로그인 되었습니다.");
+          next();
       }
-      return done(false, null);
-    });
-  }))
+    })
+     .catch(error => {
+        console.log("#####ERROR#####  " + error.message);
+        req.flash("error", "관리자 계정이 아닙니다.");
+        res.locals.redirect = "/";
+        next();
+      });
+
+}
 },
 
   logout: (req, res, next) => {
@@ -47,5 +54,10 @@ module.exports = {
     console.log("Error deleting user by ID : " + error.message);
     next();
   });
+},
+redirectView: (req, res, next) => {
+  let redirectPath = res.locals.redirect;
+  if(redirectPath) res.redirect(redirectPath);
+  else next();
 }
 }
