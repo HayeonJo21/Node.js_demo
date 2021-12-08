@@ -15,13 +15,21 @@ module.exports = {
     password = req.body.password;
 
     if(username == "admin" && password == "admin"){
-      User.findById(username)
-      .then(user => {
-        if(user.position == "admin"){
-          req.flash("success", "관리자 모드로 로그인 되었습니다.");
-          next();
-      }
-    })
+      User.find({id: username})
+      .then(users => {
+        users.forEach(user => {
+          if(user.position == "admin"){
+            req.flash("success", "관리자 모드로 로그인 되었습니다.");
+            res.locals.redirect = "/admin/index";
+            next();
+          }
+          else{
+            req.flash("error", "관리자 계정이 아닙니다. 사용자 모드로 전환합니다.");
+            res.locals.redirect = "/";
+            next();
+          }
+        });
+      })
      .catch(error => {
         console.log("#####ERROR#####  " + error.message);
         req.flash("error", "관리자 계정이 아닙니다.");
@@ -29,6 +37,11 @@ module.exports = {
         next();
       });
 
+}
+else{
+  req.flash("error", "관리자 계정이 아닙니다. 사용자 모드에서 다시 로그인하십시오.");
+  res.locals.redirect = "/";
+  next();
 }
 },
 

@@ -15,7 +15,8 @@ router.use(methodOverride("_method", {
 
 // 로그인 & 로그아웃
 router.get("/login", adminController.login);
-router.post("/login", adminController.authenticate, adminController.showIndex, adminController.redirectView);
+router.get("/index",  adminController.showIndex);
+router.post("/login", adminController.authenticate, adminController.redirectView);
 router.get("/logout", userController.logout, adminController.redirectView);
 
 
