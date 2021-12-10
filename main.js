@@ -55,7 +55,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set("port", process.env.PORT || 3000);
-// app.set("token", process.env.TOKEN || "soundyT0k3n");
 
 const server = app.listen(app.get("port"), () => {
   console.log("Server running at http://localhost:" + `${app.get("port")}`);
