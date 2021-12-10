@@ -17,7 +17,6 @@ const Course = require("./models/course");
 const User = require("./models/user");
 const {body, validationResult} = require("express-validator");
 const methodOverride = require("method-override");
-const server = require("http").createServer(app),
 io = require("socket.io")(server);
 const chatController = require("./controllers/chatController")(io);
 
@@ -27,8 +26,7 @@ app.use(methodOverride("_method", {
 
 const passport = require("passport");
 
-mongoose.connect(
-  "mongodb://localhost:27017/soundy",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://local-host:27017/soundy",
   {useNewUrlParser: true}
 );
 
@@ -58,6 +56,11 @@ app.use(passport.session());
 
 app.set("port", process.env.PORT || 3000);
 // app.set("token", process.env.TOKEN || "soundyT0k3n");
+
+const server = app.listen(app.get("port"), () => {
+  console.log("Server running at http://localhost:" + `${app.get("port")}`);
+});
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(layouts);
@@ -82,8 +85,3 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); //직렬화와 역직렬화 작업 하도록 설정
 
 app.get("token");
-
-
-server.listen(app.get("port"), () => {
-  console.log("Server running at http://localhost:3000");
-});
