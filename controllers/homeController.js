@@ -30,17 +30,14 @@ exports.postedContactForm = (req, res) => {
 
 exports.gameSoundMain = (req, res) => {
   res.render("pre-site");
-  // res.render("gameSoundMain");
 };
 
 exports.showMarket = (req, res) => {
     res.render("pre-site");
-  // res.render("market");
 }
 
 exports.showBgm = (req, res) => {
     res.render("pre-site");
-  // res.render("elements");
 }
 
 exports.showJam = (req, res) => {
