@@ -16,8 +16,15 @@ const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 const User = require("./models/user");
 const {body, validationResult} = require("express-validator");
-const methodOverride = require("method-override"),
-io = require("socket.io")(server);
+const methodOverride = require("method-override");
+
+app.set("port", process.env.PORT || 3000);
+
+const server = app.listen(app.get("port"), () => {
+  console.log("Server running at http://localhost:" + `${app.get("port")}`);
+});
+
+const io = require("socket.io")(server);
 const chatController = require("./controllers/chatController")(io);
 
 app.use(methodOverride("_method", {
@@ -53,12 +60,6 @@ app.use(expressSession({
 app.use(connectFlash());
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.set("port", process.env.PORT || 3000);
-
-const server = app.listen(app.get("port"), () => {
-  console.log("Server running at http://localhost:" + `${app.get("port")}`);
-});
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
