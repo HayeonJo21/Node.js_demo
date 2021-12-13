@@ -16,7 +16,7 @@ const layouts = require("express-ejs-layouts");
 const Course = require("./models/course");
 const User = require("./models/user");
 const {body, validationResult} = require("express-validator");
-const methodOverride = require("method-override");
+const methodOverride = require("method-override"),
 io = require("socket.io")(server);
 const chatController = require("./controllers/chatController")(io);
 
