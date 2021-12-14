@@ -34,9 +34,9 @@ app.use(methodOverride("_method", {
 const passport = require("passport");
 
 mongoose.connect(process.env.MONGODB_URI,
-  {useNewUrlParser: true}
-  console.log("########### mongodb uri: " + process.env.MONGODB_URI);
-);
+  {useNewUrlParser: true});
+
+console.log("########### mongodb uri: " + process.env.MONGODB_URI);
 
 const db = mongoose.connection;
 
