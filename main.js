@@ -33,7 +33,7 @@ app.use(methodOverride("_method", {
 
 const passport = require("passport");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://local-host:27017/soundy",
+mongoose.connect(process.env.MONGODB_URI,
   {useNewUrlParser: true}
 );
 
