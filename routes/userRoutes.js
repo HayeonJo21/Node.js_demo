@@ -23,7 +23,7 @@ router.post("/register",
  , registerController.errorValidate, registerController.create, registerController.redirectView);
 
 // 로그인 & 로그아웃
-router.get("/login", userController.login);
+router.get("/login", userController.login, userController.redirectView);
 router.post("/login", userController.authenticate);
 router.get("/logout", userController.logout, userController.redirectView);
 
