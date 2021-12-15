@@ -118,17 +118,17 @@ $("#passwordConfirm").keyup(function () {
 });
 });
 
-$(function (){
-  console.log("comment link jquery function starts");
-    $("#blog-comments").hide();
-$("#commentLink").click((event) => {
-  console.log("~~~ comment button clicked ~~~~");
-  $("#blog-comments").show();
-});
-$("#commentClose").click((event) => {
-  $("#blog-comments").hide();
-});
-    });
+// $(function (){
+//   console.log("comment link jquery function starts");
+//     $("#blog-comments").hide();
+// $("#commentLink").click((event) => {
+//   console.log("~~~ comment button clicked ~~~~");
+//   $("#blog-comments").show();
+// });
+// $("#commentClose").click((event) => {
+//   $("#blog-comments").hide();
+// });
+//     });
 
 let displayMessage = (message) => {
   var messageWithDate = message.content + "    (" + message.date + ")";
