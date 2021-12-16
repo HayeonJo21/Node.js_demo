@@ -77,9 +77,8 @@ redirectView: (req, res, next) => {
 manageUserView: (req, res, next) => {
   User.find({})
   .then(users => {
-    res.render("adminManageUsers", {
-      "users" : users
-    });
+    res.locals.users = users;
+    res.render("adminManageUsers");
     next();
   })
   .catch(error => {
