@@ -72,5 +72,18 @@ redirectView: (req, res, next) => {
   let redirectPath = res.locals.redirect;
   if(redirectPath) res.redirect(redirectPath);
   else next();
+},
+
+manageUserView: (req, res, next) => {
+  User.find({})
+  .then(users => {
+    res.render("adminManageUsers", {
+      "users" : users
+    });
+    next();
+  })
+  .catch(error => {
+    console.log("Error search all users : " + error.message);
+  });
 }
 }

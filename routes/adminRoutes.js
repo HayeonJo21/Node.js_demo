@@ -19,5 +19,10 @@ router.get("/index",  adminController.showIndex);
 router.post("/login", adminController.authenticate, adminController.redirectView);
 router.get("/logout", userController.logout, adminController.redirectView);
 
+//관리자 페이지 관련
+router.get("/manage/users", adminController.manageUserView);
+router.get("/manage/jams", adminController.login);
+router.get("/manage/freeboard", adminController.login);
+
 
 module.exports = router;
