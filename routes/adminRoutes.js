@@ -22,7 +22,7 @@ router.get("/logout", userController.logout, adminController.redirectView);
 //관리자 페이지 관련
 router.get("/manage/users", adminController.manageUserView);
 router.get("/manage/jams", adminController.manageJamsView);
-router.get("/manage/freeboard", adminController.login);
+router.get("/manage/freeboard", adminController.manageJamsView);
 
 
 module.exports = router;
