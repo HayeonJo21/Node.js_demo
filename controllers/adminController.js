@@ -84,5 +84,17 @@ manageUserView: (req, res, next) => {
   .catch(error => {
     console.log("Error search all users : " + error.message);
   });
+},
+
+manageJamsView: (req, res, next) => {
+  Jam.find({})
+  .then(jams => {
+    res.locals.jams = jams;
+    res.render("adminManageJams");
+    next();
+  })
+  .catch(error => {
+    console.log("Error search all jams : " + error.message);
+  });
 }
 }

@@ -19,7 +19,7 @@
     <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/images/bg-img/breadcumb3.jpg);">
         <div class="bradcumbContent">
             <p>관리자 페이지</p>
-            <h2>Administrator Managing Users</h2>
+            <h2>Administrator Managing Jams</h2>
         </div>
     </section>
     <!-- ##### Breadcumb Area End ##### -->
@@ -30,24 +30,23 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        <h3>Users</h3>
+                        <h3>Jams</h3>
                         <!-- Login Form -->
                         <div class="login-form">
                           <table class="table">
     			<thead>
     				<tr>
-    					<th scope="col">이름</th>
-              <th scope="col">아이디</th>
-    					<th scope="col">포지션</th>
+              <th scope="col">제목</th>
+              <th scope="col">참여자 수</th>
+    					<th scope="col">날짜</th>
     				</tr>
     			</thead>
     			<tbody>
-    			<% users.forEach(u => { %>
+    			<% jams.forEach(j => { %>
     					<tr>
-    						<td><a
-    							href="/user/<%= u._id %>"><%= u.name %></a></td>
-                  <td><%= u.id %></td>
-    						<td><%= u.position %></td>
+                  <td><%= j.title %></td>
+    						<td><%= j.participant %></td>
+                <td><%= j.date %></td>
     					</tr>
     	        <% }); %>
     			</tbody>
