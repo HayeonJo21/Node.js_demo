@@ -1,4 +1,10 @@
 # Node.js_demo
+
+Released v35
+https://soundy-demo.herokuapp.com/ deployed to Heroku
+
+헤로쿠에 데모버전 배포
+
  1. 개요
 - 웹 사이트 명: Soundy
 
